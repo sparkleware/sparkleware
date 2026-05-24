@@ -1,0 +1,20 @@
+{
+  "name": "full-pack",
+  "author": "test_author",
+  "repo": "test_author/full-pack",
+  "description": "A fully-populated pack fixture exercising every schema field.",
+  "long_description_md": "## About\n\nThis is a *longer* description in **markdown**.",
+  "category": "crypto",
+  "tags": ["defi", "alerts"],
+  "version": "1.4.2",
+  "verified": true,
+  "featured": false,
+  "skills_count": 12,
+  "skills": [
+    { "name": "skill-one", "description": "Does thing one." },
+    { "name": "skill-two", "description": "Does thing two." }
+  ],
+  "install_command": "./install-skill-pack test_author/full-pack",
+  "submitted_at": "2025-09-12T10:30:00Z",
+  "license": "MIT"
+}

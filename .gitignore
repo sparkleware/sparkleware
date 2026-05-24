@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.astro/
+.output/
+.vercel/
+.netlify/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Brainstorm ephemeral state (server ports, runtime info) — keep content/, ignore state/
+.superpowers/brainstorm/*/state/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Internal AI tooling artifacts (kept locally for reference, not committed)
+.superpowers/
+docs/superpowers/

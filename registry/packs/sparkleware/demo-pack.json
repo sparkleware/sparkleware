@@ -1,0 +1,19 @@
+{
+  "name": "demo-pack",
+  "author": "sparkleware",
+  "repo": "sparkleware/demo-pack",
+  "description": "A placeholder demo pack maintained by Sparkleware — used to validate the registry pipeline end to end.",
+  "long_description_md": "# Demo pack\n\nThis pack exists so the registry has something to render before real packs are seeded at launch.\n\nIt will be removed (or replaced with real content) when the registry goes live.",
+  "category": "meta",
+  "tags": ["demo", "placeholder"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": true,
+  "skills_count": 1,
+  "skills": [
+    { "name": "hello-world", "description": "Prints a sparkly greeting." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/demo-pack",
+  "submitted_at": "2026-05-24T00:00:00Z",
+  "license": "MIT"
+}

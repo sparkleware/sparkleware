@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sparkleware/sparkleware/blob/main/registry/pack-schema.json",
+  "title": "Sparkleware pack manifest",
+  "description": "Schema for a single skill pack entry in the Sparkleware registry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "author",
+    "repo",
+    "description",
+    "category",
+    "version",
+    "skills_count",
+    "install_command",
+    "submitted_at",
+    "license"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9][a-z0-9-_]*$",
+      "description": "Pack identifier (kebab/snake-case, lowercase)."
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-_]*$",
+      "description": "GitHub-style handle of the pack maintainer."
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9-_]*\\/[a-zA-Z0-9][a-zA-Z0-9-_.]*$",
+      "description": "GitHub repo slug in `owner/name` form."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 280,
+      "description": "Short one-liner (used in cards and meta tags)."
+    },
+    "long_description_md": {
+      "type": "string",
+      "maxLength": 8000,
+      "description": "Optional longer description in Markdown (used on the detail page)."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["research", "crypto", "dev", "social", "productivity", "meta"],
+      "description": "One of six fixed categories (per spec §5)."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 32,
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "maxItems": 10,
+      "uniqueItems": true,
+      "description": "Optional free-form tags (lowercase, hyphenated)."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH, optional pre-release/build)."
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "True when this pack was reviewed and merged via PR (set by maintainer)."
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "True when this pack appears in the homepage Featured slot / Pack of the Day rotation."
+    },
+    "skills_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000
+    },
+    "skills": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "description"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9][a-z0-9-_]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 280
+          }
+        }
+      }
+    },
+    "install_command": {
+      "type": "string",
+      "pattern": "^\\./install-skill-pack [a-zA-Z0-9][a-zA-Z0-9-_]*\\/[a-zA-Z0-9][a-zA-Z0-9-_.]*$",
+      "description": "Exact command displayed in the install block (must match `./install-skill-pack <repo>`)."
+    },
+    "submitted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of initial PR merge."
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "SPDX identifier (e.g. `MIT`, `Apache-2.0`)."
+    }
+  }
+}

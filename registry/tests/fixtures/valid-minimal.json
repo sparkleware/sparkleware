@@ -1,0 +1,12 @@
+{
+  "name": "minimal-pack",
+  "author": "test_author",
+  "repo": "test_author/minimal-pack",
+  "description": "A minimal pack used as a schema test fixture.",
+  "category": "meta",
+  "version": "0.1.0",
+  "skills_count": 1,
+  "install_command": "./install-skill-pack test_author/minimal-pack",
+  "submitted_at": "2026-05-24T00:00:00Z",
+  "license": "MIT"
+}

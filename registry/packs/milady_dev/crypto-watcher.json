@@ -1,0 +1,19 @@
+{
+  "name": "crypto-watcher",
+  "author": "milady_dev",
+  "repo": "milady_dev/crypto-watcher",
+  "description": "Monitor DeFi positions, yield alerts, and swap detection across chains. (Placeholder fixture — not a real pack.)",
+  "category": "crypto",
+  "tags": ["defi", "alerts", "wallet"],
+  "version": "1.4.2",
+  "verified": true,
+  "featured": false,
+  "skills_count": 12,
+  "skills": [
+    { "name": "defi-position-watch", "description": "Track positions across chains." },
+    { "name": "yield-alert", "description": "APR drop alerts." }
+  ],
+  "install_command": "./install-skill-pack milady_dev/crypto-watcher",
+  "submitted_at": "2025-09-12T10:30:00Z",
+  "license": "MIT"
+}

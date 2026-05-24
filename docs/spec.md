@@ -239,7 +239,7 @@ Score per pack: `score = (stars_now - stars_14d_ago) * 1 + (installs_now - insta
 
 ### Next.js-specific implementation notes
 - **App Router + static export:** all routes generated statically via `generateStaticParams`. Dynamic segments (pack detail, author page) emit one HTML file per pack/author at build time.
-- **`/@username` route caveat:** Next.js App Router reserves the `@folder` filename for Parallel Routes. To preserve the spec's `/@username` URL pattern (per §5), Plan 2 will implement it via `next.config.mjs` rewrites mapping `/@:user` → an internal `/users/:user` route (the public URL stays `/@username`).
+- **`/@username` route caveat:** Next.js App Router reserves the `@folder` filename for Parallel Routes, AND `next.config.mjs` rewrites do not run with `output: 'export'` (no server runtime). To preserve the spec's `/@username` URL pattern (per §5), Plan 2 implements it via a Cloudflare Pages `_redirects` file at `public/_redirects` with a 200-status rewrite: `/@:user /users/:user 200`. The Next.js route physically lives at `src/app/users/[user]/page.tsx` and is statically generated for every author. The browser address bar shows `/@username` (because the edge rewrites without changing the URL) — same UX as the original spec intent.
 - **Data loader:** a build-time helper at `src/lib/registry.ts` reads `../registry/packs/**/*.json` directly (sibling subfolder, monorepo, no network fetch). Use `fs.readdir` + `fs.readFile` in a Server Component or generator function.
 - **GitHub API enrichment:** runs in a build-time script (`scripts/enrich-stars.ts`) that mutates an intermediate cache file, NOT inside React components. Keeps pages purely static.
 

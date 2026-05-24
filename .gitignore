@@ -36,3 +36,10 @@ pnpm-debug.log*
 # Internal AI tooling artifacts (kept locally for reference, not committed)
 .superpowers/
 docs/superpowers/
+
+# Next.js build output
+.next/
+out/
+
+# Next.js misc
+next-env.d.ts

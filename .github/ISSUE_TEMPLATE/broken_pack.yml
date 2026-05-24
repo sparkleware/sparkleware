@@ -1,0 +1,50 @@
+name: Broken pack
+description: A pack listed in the registry is broken, abandoned, or impersonating another project
+labels: [broken-pack, triage]
+title: "[broken-pack] <author>/<pack-name>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report packs that are broken, abandoned, or misleading.
+        Packs whose source repo becomes unreachable for 30+ days are auto-archived. This template is for reporting issues earlier than that, or for reporting impersonation / misleading metadata.
+
+  - type: input
+    id: pack
+    attributes:
+      label: Pack identifier
+      description: As listed in the registry — `<author>/<pack-name>`.
+      placeholder: milady_dev/crypto-watcher
+    validations:
+      required: true
+
+  - type: input
+    id: manifest
+    attributes:
+      label: Manifest file
+      description: Path to the JSON manifest under `registry/packs/`.
+      placeholder: registry/packs/milady_dev/crypto-watcher.json
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What's wrong?
+      options:
+        - Source repo is unreachable / deleted / archived
+        - Pack does not install (./install-skill-pack fails)
+        - Metadata is wrong (description, category, skill list, etc.)
+        - Impersonating another project
+        - License changed to non-OSS
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Steps to verify, link to the affected repo, screenshots if relevant.
+    validations:
+      required: true

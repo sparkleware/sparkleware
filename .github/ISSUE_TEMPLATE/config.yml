@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Submit a new pack
+    url: https://github.com/sparkleware/sparkleware/blob/main/registry/CONTRIBUTING.md
+    about: To list your skill pack in the registry, open a PR — not an issue. See the contributor guide for the JSON template and quality criteria.
+  - name: Report a security vulnerability
+    url: https://github.com/sparkleware/sparkleware/security/advisories/new
+    about: Please report security issues privately via GitHub Security Advisories, not as public issues. See SECURITY.md.
+  - name: Question or discussion
+    url: https://github.com/sparkleware/sparkleware/discussions
+    about: For general questions, ideas, or design discussions, please use Discussions (when enabled). Issues are for actionable bugs and reports.

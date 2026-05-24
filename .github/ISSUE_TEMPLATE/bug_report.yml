@@ -1,0 +1,65 @@
+name: Bug report
+description: Something in Sparkleware (registry validator, website, CI, docs) is broken
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug ✦
+        Before filing: please check [existing issues](https://github.com/sparkleware/sparkleware/issues) to avoid duplicates.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected component
+      description: Which part of Sparkleware is broken?
+      options:
+        - Registry validator / schema (`registry/scripts`, `registry/pack-schema.json`)
+        - Registry CI workflow (`.github/workflows/validate-registry.yml`)
+        - Website (when shipped — `src/`)
+        - Documentation (`docs/`, `README.md`, etc.)
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear, concise description of the bug. Include error messages and screenshots if relevant.
+      placeholder: I ran `pnpm validate` and it crashed with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps so we can reproduce locally.
+      placeholder: |
+        1. Clone the repo
+        2. `cd registry && pnpm install`
+        3. `pnpm validate`
+        4. Observe the error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: I expected `pnpm validate` to print "3/3 packs valid" and exit 0.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node version, pnpm version (run `node --version` and `pnpm --version`).
+      placeholder: |
+        OS: macOS 15.3 / Windows 11 / Ubuntu 22.04
+        Node: 20.11.1
+        pnpm: 8.15.9
+    validations:
+      required: false

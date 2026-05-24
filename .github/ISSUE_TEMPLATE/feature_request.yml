@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest a new feature or improvement to Sparkleware
+labels: [enhancement, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement ✦
+        Before filing: skim [`docs/spec.md`](https://github.com/sparkleware/sparkleware/blob/main/docs/spec.md) §10 (v1 MVP) and §13 (future considerations). If your idea is already on the roadmap there, no need to file — but feel free to comment on an existing issue.
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Registry (schema, validator, contribution flow)
+        - Website (UI, search, browse, detail page)
+        - Brand / aesthetic
+        - Documentation
+        - Tooling / DX (local dev, CI)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: A clear description of the gap or friction this addresses.
+      placeholder: When I try to find packs for X, I have to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: Add a new filter for X, or change Y to Z, or build a new page that...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you weighed and why this is preferable.
+    validations:
+      required: false

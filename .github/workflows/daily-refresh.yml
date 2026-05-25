@@ -46,7 +46,7 @@ jobs:
         run: |
           git config user.name "sparkleware-bot"
           git config user.email "287155556+sparkleware@users.noreply.github.com"
-          git add registry/.cache/stars.json registry/.cache/discovered.json src/lib/packs-snapshot.json
+          git add registry/.cache/stars.json registry/.cache/discovered.json
           if git diff --cached --quiet; then
             echo "No cache changes — skipping commit."
           else

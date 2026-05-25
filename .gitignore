@@ -43,3 +43,4 @@ out/
 
 # Next.js misc
 next-env.d.ts
+*.tsbuildinfo

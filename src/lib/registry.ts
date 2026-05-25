@@ -7,6 +7,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const REGISTRY_PACKS_DIR = join(process.cwd(), 'registry', 'packs');
 const STARS_CACHE_PATH = join(process.cwd(), 'registry', '.cache', 'stars.json');
+const DISCOVERED_CACHE_PATH = join(process.cwd(), 'registry', '.cache', 'discovered.json');
+
+interface DiscoveredEntry {
+  name: string;
+  author: string;
+  repo: string;
+  description: string;
+  stars: number;
+  pushed_at: string | null;
+}
 
 function walkJsonFiles(dir: string): string[] {
   const out: string[] = [];
@@ -30,13 +40,23 @@ function loadStarsCache(): Record<string, StarsEntry> {
   }
 }
 
+function loadDiscoveredCache(): DiscoveredEntry[] {
+  try {
+    return JSON.parse(readFileSync(DISCOVERED_CACHE_PATH, 'utf8'));
+  } catch {
+    return [];
+  }
+}
+
 let cache: EnrichedPack[] | null = null;
 
 export function getAllPacks(): EnrichedPack[] {
   if (cache) return cache;
+
+  // Tier 2 — verified packs from registry/packs/**/*.json
   const files = walkJsonFiles(REGISTRY_PACKS_DIR);
   const stars = loadStarsCache();
-  const packs: EnrichedPack[] = files.map((file) => {
+  const verified: EnrichedPack[] = files.map((file) => {
     const raw = readFileSync(file, 'utf8');
     const pack = JSON.parse(raw) as Pack;
     const entry = stars[pack.repo];
@@ -46,12 +66,34 @@ export function getAllPacks(): EnrichedPack[] {
           stars: entry.stars,
           pushed_at: entry.pushed_at,
           archived: entry.archived,
+          tier: 'verified' as const,
         }
-      : pack;
+      : { ...pack, tier: 'verified' as const };
   });
-  packs.sort((a, b) => b.submitted_at.localeCompare(a.submitted_at));
-  cache = packs;
-  return packs;
+
+  // Tier 1 — auto-discovered from GitHub topic search
+  const discovered = loadDiscoveredCache();
+  const autoIndexed: EnrichedPack[] = discovered.map((d) => ({
+    name: d.name,
+    author: d.author,
+    repo: d.repo,
+    description: d.description,
+    category: 'meta', // unknown until claimed
+    version: '0.0.0',
+    skills_count: 0,
+    install_command: `./install-skill-pack ${d.repo}`,
+    submitted_at: d.pushed_at ?? new Date(0).toISOString(),
+    license: 'unknown',
+    stars: d.stars,
+    pushed_at: d.pushed_at,
+    archived: false,
+    tier: 'auto-indexed' as const,
+  }));
+
+  const all = [...verified, ...autoIndexed];
+  all.sort((a, b) => b.submitted_at.localeCompare(a.submitted_at));
+  cache = all;
+  return all;
 }
 
 export function getPackBySlug(author: string, name: string): EnrichedPack | undefined {

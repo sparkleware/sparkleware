@@ -12,9 +12,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "tsx scripts/enrich-stars.ts || echo 'enrichment failed — building with stale cache'",
+    "prebuild": "tsx scripts/enrich-stars.ts && tsx scripts/crawl-topic.ts || echo 'data refresh failed — building with stale cache'",
     "postbuild": "pagefind --site out --output-subdir _pagefind",
     "enrich": "tsx scripts/enrich-stars.ts",
+    "crawl": "tsx scripts/crawl-topic.ts",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"

@@ -45,4 +45,5 @@ export interface EnrichedPack extends Pack {
   stars?: number;
   pushed_at?: string | null;
   archived?: boolean;
+  tier: 'verified' | 'auto-indexed';
 }

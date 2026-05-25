@@ -1,0 +1,70 @@
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 0 0 var(--space-5);
+  letter-spacing: -0.02em;
+}
+
+.mission {
+  font-family: var(--font-italic);
+  font-style: italic;
+  text-align: center;
+  font-size: 18px;
+  color: var(--purple-deep);
+  margin: 0 0 var(--space-6);
+}
+
+.section {
+  margin-bottom: var(--space-6);
+}
+
+.sectionTitle {
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: 20px;
+  margin: 0 0 var(--space-3);
+}
+
+.body {
+  color: var(--purple-deep);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 var(--space-3);
+}
+
+.body a {
+  color: var(--magenta-link);
+  text-decoration: none;
+}
+
+.body a:hover {
+  text-decoration: underline;
+}
+
+.faq dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--purple-deep);
+  margin-top: var(--space-4);
+  font-size: 15px;
+}
+
+.faq dd {
+  margin: var(--space-2) 0 0;
+  color: var(--purple-deep);
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -24,3 +24,25 @@ export interface Pack {
   submitted_at: string;
   license: string;
 }
+
+/**
+ * Enrichment data fetched from GitHub at build time.
+ * Keyed by `repo` slug in registry/.cache/stars.json.
+ */
+export interface StarsEntry {
+  stars: number;
+  pushed_at: string | null;
+  archived: boolean;
+  fetched_at: string;
+}
+
+/**
+ * Pack with optional GitHub enrichment merged in.
+ * `stars` / `pushed_at` are undefined when the cache miss the repo
+ * (e.g. first time the pack is added before next prebuild).
+ */
+export interface EnrichedPack extends Pack {
+  stars?: number;
+  pushed_at?: string | null;
+  archived?: boolean;
+}

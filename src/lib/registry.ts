@@ -1,14 +1,12 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { Pack } from './types';
+import type { EnrichedPack, Pack, StarsEntry } from './types';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Resolve the registry packs directory relative to this file at build time.
-// Build: __dirname is somewhere under .next/, so we walk up to repo root, then registry/packs.
-// During Next build, process.cwd() is the project root, which is more reliable than __dirname.
 const REGISTRY_PACKS_DIR = join(process.cwd(), 'registry', 'packs');
+const STARS_CACHE_PATH = join(process.cwd(), 'registry', '.cache', 'stars.json');
 
 function walkJsonFiles(dir: string): string[] {
   const out: string[] = [];
@@ -24,30 +22,46 @@ function walkJsonFiles(dir: string): string[] {
   return out;
 }
 
-let cache: Pack[] | null = null;
+function loadStarsCache(): Record<string, StarsEntry> {
+  try {
+    return JSON.parse(readFileSync(STARS_CACHE_PATH, 'utf8'));
+  } catch {
+    return {};
+  }
+}
 
-/**
- * Load and return all packs from registry/packs/**\/*.json.
- * Called at build time only (Server Components / generateStaticParams).
- * Cached per-process to avoid re-reading on every page render.
- */
-export function getAllPacks(): Pack[] {
+let cache: EnrichedPack[] | null = null;
+
+export function getAllPacks(): EnrichedPack[] {
   if (cache) return cache;
   const files = walkJsonFiles(REGISTRY_PACKS_DIR);
-  const packs = files.map((file) => {
+  const stars = loadStarsCache();
+  const packs: EnrichedPack[] = files.map((file) => {
     const raw = readFileSync(file, 'utf8');
-    return JSON.parse(raw) as Pack;
+    const pack = JSON.parse(raw) as Pack;
+    const entry = stars[pack.repo];
+    return entry
+      ? {
+          ...pack,
+          stars: entry.stars,
+          pushed_at: entry.pushed_at,
+          archived: entry.archived,
+        }
+      : pack;
   });
-  // Newest submission first by default.
   packs.sort((a, b) => b.submitted_at.localeCompare(a.submitted_at));
   cache = packs;
   return packs;
 }
 
-/**
- * Look up a single pack by author + name (the URL slug components).
- * Returns undefined if not found.
- */
-export function getPackBySlug(author: string, name: string): Pack | undefined {
+export function getPackBySlug(author: string, name: string): EnrichedPack | undefined {
   return getAllPacks().find((p) => p.author === author && p.name === name);
+}
+
+export function getPacksByAuthor(author: string): EnrichedPack[] {
+  return getAllPacks().filter((p) => p.author === author);
+}
+
+export function getAllCategories(): readonly Pack['category'][] {
+  return ['research', 'crypto', 'dev', 'social', 'productivity', 'meta'] as const;
 }

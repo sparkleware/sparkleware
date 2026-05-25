@@ -1,0 +1,6 @@
+# Cloudflare Pages edge config (Netlify-compatible format).
+# This file is copied verbatim by `next build` from public/ into out/_redirects.
+
+# Author profile pages — preserve /@username URL aesthetic.
+# Status 200 = rewrite (URL stays /@username; content served from /users/:user).
+/@:user /users/:user 200

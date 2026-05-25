@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import type { Pack } from '@/lib/types';
+import type { EnrichedPack } from '@/lib/types';
 import styles from './HoloCard.module.css';
 
 interface HoloCardProps {
-  pack: Pack;
+  pack: EnrichedPack;
 }
 
 export function HoloCard({ pack }: HoloCardProps) {
@@ -16,6 +16,12 @@ export function HoloCard({ pack }: HoloCardProps) {
         <span>
           {pack.skills_count} skill{pack.skills_count === 1 ? '' : 's'}
         </span>
+        {typeof pack.stars === 'number' && (
+          <>
+            <span>·</span>
+            <span className={styles.stars}>✦ {pack.stars}</span>
+          </>
+        )}
         <span>·</span>
         <span>by @{pack.author}</span>
         {pack.verified && (

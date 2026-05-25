@@ -74,3 +74,8 @@
   color: var(--white);
   -webkit-text-fill-color: var(--white);
 }
+
+.stars {
+  font-weight: 700;
+  color: var(--magenta-link);
+}

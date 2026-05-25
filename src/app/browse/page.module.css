@@ -1,0 +1,49 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  text-align: center;
+  color: var(--purple-medium);
+  font-size: 14px;
+  margin: 0 0 var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.count {
+  text-align: center;
+  font-size: 13px;
+  color: var(--purple-medium);
+  margin: var(--space-3) 0 var(--space-5);
+}
+
+.empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--purple-medium);
+  padding: var(--space-7);
+}

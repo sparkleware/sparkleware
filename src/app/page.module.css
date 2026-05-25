@@ -1,0 +1,48 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-7) var(--space-5) var(--space-6);
+  gap: var(--space-4);
+}
+
+.banner {
+  width: min(90vw, 900px);
+  height: auto;
+  filter: drop-shadow(0 12px 32px rgba(204, 0, 102, 0.25));
+}
+
+.tagline {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--purple-deep);
+  max-width: 600px;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: 22px;
+  text-align: center;
+  margin: var(--space-6) 0 var(--space-4);
+  letter-spacing: 0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+  padding: 0 var(--space-5) var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--purple-medium);
+  padding: var(--space-7);
+}

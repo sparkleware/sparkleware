@@ -1,93 +1,37 @@
+import { getAllPacks } from '@/lib/registry';
+import { HoloCard } from '@/components/HoloCard';
+import styles from './page.module.css';
+
 export default function HomePage() {
+  const packs = getAllPacks();
   return (
-    <main
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100dvh',
-        textAlign: 'center',
-        padding: 'var(--space-5)',
-      }}
-    >
-      <img
-        src="/banner.png"
-        alt="Sparkleware"
-        style={{
-          width: 'min(90vw, 900px)',
-          height: 'auto',
-          filter: 'drop-shadow(0 12px 32px rgba(204, 0, 102, 0.25))',
-        }}
-      />
-      <h1 style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
-        Sparkleware
-      </h1>
+    <main>
+      <section className={styles.hero}>
+        <img
+          src="/banner.png"
+          alt="Sparkleware"
+          className={styles.banner}
+        />
+        <p className={styles.tagline}>
+          A holographic registry for Aeon AI agent skill packs.
+          <br />
+          Discover, browse, and one-click-install community skills.
+        </p>
+      </section>
 
-      <p
-        style={{
-          fontFamily: 'var(--font-italic)',
-          fontStyle: 'italic',
-          fontSize: 'clamp(16px, 2vw, 20px)',
-          color: 'var(--purple-deep)',
-          marginTop: 'var(--space-3)',
-          maxWidth: '600px',
-        }}
-      >
-        A holographic registry for Aeon AI agent skill packs.
-        <br />
-        Coming soon — the registry data is live, the website is being built.
-      </p>
+      <h2 className={styles.sectionTitle}>『 ✦ all packs ✦ 』</h2>
 
-      <div
-        className="holo-card"
-        style={{
-          marginTop: 'var(--space-6)',
-          maxWidth: '400px',
-          textAlign: 'left',
-          borderRadius: 'var(--radius-lg)',
-        }}
-      >
-        <div
-          className="holo-text"
-          style={{ fontSize: '18px', marginBottom: 'var(--space-2)' }}
-        >
-          demo-pack ✦
+      {packs.length === 0 ? (
+        <p className={styles.empty}>
+          No packs yet — be the first to submit one ✦
+        </p>
+      ) : (
+        <div className={styles.grid}>
+          {packs.map((pack) => (
+            <HoloCard key={`${pack.author}/${pack.name}`} pack={pack} />
+          ))}
         </div>
-        <div
-          style={{
-            fontSize: '12px',
-            color: 'var(--purple-medium)',
-            marginBottom: 'var(--space-2)',
-          }}
-        >
-          1 skill · ✦ 0 · by @sparkleware
-        </div>
-        <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            background: 'var(--dark-violet)',
-            color: 'var(--purple-light)',
-            padding: 'var(--space-2) var(--space-3)',
-            fontSize: '12px',
-            borderRadius: 'var(--radius-sm)',
-          }}
-        >
-          $ ./install-skill-pack sparkleware/demo-pack
-        </div>
-      </div>
-
-      <footer
-        style={{
-          marginTop: 'var(--space-7)',
-          fontSize: '12px',
-          color: 'var(--purple-medium)',
-          fontStyle: 'italic',
-        }}
-      >
-        ~ est. 2026 — built around{' '}
-        <a href="https://github.com/aaronjmars/aeon">Aeon</a> ~
-      </footer>
+      )}
     </main>
   );
 }

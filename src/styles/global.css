@@ -1,0 +1,156 @@
+/* ============================================================
+ * Sparkleware design tokens — locked per spec §4
+ * ============================================================ */
+
+:root {
+  /* Y2K palette (hex values from spec §4 Color Palette table) */
+  --pink-hot: #ff85c1;
+  --pink-soft: #ffd1f0;
+  --pink-pearl: #ffe3f5;
+  --blue-soft: #c5d4ff;
+  --blue-pearl: #e0eaff;
+  --blue-cool: #6680c8;
+  --purple-light: #d9c5ff;
+  --purple-pale: #ede0ff;
+  --purple-deep: #6b3aa0;
+  --purple-medium: #9c7bc4;
+  --magenta-link: #cc0066;
+  --white: #ffffff;
+  --dark-violet: #1a0033;
+  --cyan-pale: #c5e8ff;
+  --crt-green: #00ff00;
+
+  /* Signature holo gradient (spec §4) */
+  --holo-gradient: linear-gradient(
+    135deg,
+    var(--pink-soft) 0%,
+    var(--blue-soft) 25%,
+    var(--purple-light) 50%,
+    var(--cyan-pale) 75%,
+    var(--pink-pearl) 100%
+  );
+
+  /* Holo text gradient (spec §4) */
+  --holo-text-gradient: linear-gradient(
+    90deg,
+    var(--pink-hot),
+    var(--blue-cool)
+  );
+
+  /* Pack-card surface gradient (spec §6 Holo Skill Pack Card) */
+  --card-surface: linear-gradient(
+    135deg,
+    var(--white) 0%,
+    var(--pink-pearl) 30%,
+    var(--blue-pearl) 70%,
+    var(--white) 100%
+  );
+
+  /* Shadows */
+  --shadow-card: 0 2px 6px rgba(184, 165, 232, 0.2);
+  --shadow-hover: 0 4px 12px rgba(184, 165, 232, 0.35);
+
+  /* Typography stacks (spec §4 Typography table) */
+  --font-ui: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  --font-display: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+  --font-accent: 'Comic Sans MS', 'Marker Felt', cursive;
+  --font-mono: 'Courier New', 'Consolas', monospace;
+  --font-italic: 'Georgia', 'Times New Roman', serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+}
+
+/* ============================================================
+ * Reset & base
+ * ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--purple-deep);
+  background: var(--purple-pale);
+  background-image: var(--holo-gradient);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  min-height: 100dvh;
+}
+
+a {
+  color: var(--magenta-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--pink-hot);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ============================================================
+ * Utility: holo text fill
+ * Use on h1, brand wordmark, etc.
+ * ============================================================ */
+
+.holo-text {
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  font-family: var(--font-display);
+  font-weight: 900;
+}
+
+/* ============================================================
+ * Utility: holo card surface
+ * ============================================================ */
+
+.holo-card {
+  background: var(--card-surface);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, var(--pink-hot), var(--blue-soft)) 1;
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+}
+
+.holo-card:hover {
+  box-shadow: var(--shadow-hover);
+}

@@ -11,46 +11,18 @@ export default function HomePage() {
         padding: 'var(--space-5)',
       }}
     >
-      <div
+      <img
+        src="/banner.png"
+        alt="Sparkleware"
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 'clamp(8px, 2vw, 24px)',
-          flexWrap: 'nowrap',
+          width: 'min(90vw, 900px)',
+          height: 'auto',
+          filter: 'drop-shadow(0 12px 32px rgba(204, 0, 102, 0.25))',
         }}
-      >
-        <img
-          src="/logo.png"
-          alt=""
-          style={{
-            width: 'clamp(60px, 10vw, 120px)',
-            height: 'auto',
-            flexShrink: 0,
-            filter: 'drop-shadow(0 8px 20px rgba(204, 0, 102, 0.3))',
-          }}
-        />
-        <h1
-          className="holo-text-3d"
-          style={{
-            fontSize: 'clamp(40px, 9vw, 110px)',
-            margin: 0,
-            lineHeight: 1,
-          }}
-        >
-          Sparkleware
-        </h1>
-        <img
-          src="/logo.png"
-          alt=""
-          style={{
-            width: 'clamp(60px, 10vw, 120px)',
-            height: 'auto',
-            flexShrink: 0,
-            filter: 'drop-shadow(0 8px 20px rgba(204, 0, 102, 0.3))',
-          }}
-        />
-      </div>
+      />
+      <h1 style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
+        Sparkleware
+      </h1>
 
       <p
         style={{

@@ -1,0 +1,55 @@
+name: daily-refresh
+
+on:
+  schedule:
+    # Daily at 06:00 UTC (13:00 WIB). Adjust if needed.
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          package_json_file: package.json
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Refresh GitHub stars cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm enrich
+
+      - name: Refresh auto-discovery cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm crawl
+
+      - name: Commit + push if caches changed
+        run: |
+          git config user.name "sparkleware-bot"
+          git config user.email "287155556+sparkleware@users.noreply.github.com"
+          git add registry/.cache/stars.json registry/.cache/discovered.json src/lib/packs-snapshot.json
+          if git diff --cached --quiet; then
+            echo "No cache changes — skipping commit."
+          else
+            git commit -m "chore(data): daily refresh of stars + discovery caches"
+            git push
+          fi

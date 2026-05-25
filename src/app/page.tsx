@@ -11,27 +11,46 @@ export default function HomePage() {
         padding: 'var(--space-5)',
       }}
     >
-      <img
-        src="/logo.png"
-        alt=""
-        width={180}
-        height={180}
+      <div
         style={{
-          width: 'clamp(120px, 18vw, 200px)',
-          height: 'auto',
-          marginBottom: 'var(--space-3)',
-          filter: 'drop-shadow(0 8px 24px rgba(204, 0, 102, 0.3))',
-        }}
-      />
-      <h1
-        className="holo-text-3d"
-        style={{
-          fontSize: 'clamp(64px, 12vw, 128px)',
-          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 'clamp(8px, 2vw, 24px)',
+          flexWrap: 'nowrap',
         }}
       >
-        Sparkleware
-      </h1>
+        <img
+          src="/logo.png"
+          alt=""
+          style={{
+            width: 'clamp(60px, 10vw, 120px)',
+            height: 'auto',
+            flexShrink: 0,
+            filter: 'drop-shadow(0 8px 20px rgba(204, 0, 102, 0.3))',
+          }}
+        />
+        <h1
+          className="holo-text-3d"
+          style={{
+            fontSize: 'clamp(40px, 9vw, 110px)',
+            margin: 0,
+            lineHeight: 1,
+          }}
+        >
+          Sparkleware
+        </h1>
+        <img
+          src="/logo.png"
+          alt=""
+          style={{
+            width: 'clamp(60px, 10vw, 120px)',
+            height: 'auto',
+            flexShrink: 0,
+            filter: 'drop-shadow(0 8px 20px rgba(204, 0, 102, 0.3))',
+          }}
+        />
+      </div>
 
       <p
         style={{

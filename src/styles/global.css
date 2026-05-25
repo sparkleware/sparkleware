@@ -149,38 +149,40 @@ button {
 .holo-text-3d {
   font-family: var(--font-display);
   font-weight: 900;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 
-  /* SATURATED iridescent gradient — vivid like the logo, not pastel.
-   * Pink-hot at top, deepening through magenta/lavender into bright cyan-blue. */
+  /* Chrome-banded iridescent gradient — alternating light/saturated stops
+   * mimic the reflective banding on inflated chrome lettering. */
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #ffb3d9 8%,
-    #ff5b9d 20%,
-    #ff2d8f 35%,
-    #c044d4 50%,
-    #6b3aa0 65%,
-    #3d5fb8 80%,
-    #5fb8ff 92%,
-    #c5e8ff 100%
+    #ffb3d9 10%,
+    #ff5b9d 22%,
+    #ffffff 32%,
+    #ff85c1 42%,
+    #c044d4 54%,
+    #ffffff 64%,
+    #6680c8 76%,
+    #5fb8ff 88%,
+    #ffffff 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 
-  /* Thin dark outline gives definition against the bright holo background */
-  -webkit-text-stroke: 1.5px rgba(107, 58, 160, 0.55);
+  /* Thick chrome rim outline */
+  -webkit-text-stroke: 2px rgba(107, 58, 160, 0.6);
 
-  /* Strong layered drop-shadows: dark separation shadow + colored glow halo.
-   * Order: solid dark shadow (depth) → soft purple drop → outer pink glow → ambient. */
+  /* Stacked dark drop-shadows for puffy depth + outer iridescent glow */
   filter:
-    drop-shadow(0 2px 0 rgba(107, 58, 160, 0.6))
-    drop-shadow(0 4px 0 rgba(107, 58, 160, 0.35))
-    drop-shadow(0 6px 12px rgba(107, 58, 160, 0.45))
-    drop-shadow(0 8px 24px rgba(204, 0, 102, 0.3))
-    drop-shadow(0 0 32px rgba(255, 91, 157, 0.25));
+    drop-shadow(0 2px 0 rgba(107, 58, 160, 0.65))
+    drop-shadow(0 4px 0 rgba(107, 58, 160, 0.4))
+    drop-shadow(0 6px 2px rgba(107, 58, 160, 0.25))
+    drop-shadow(0 8px 16px rgba(107, 58, 160, 0.5))
+    drop-shadow(0 0 28px rgba(255, 91, 157, 0.35))
+    drop-shadow(0 0 48px rgba(95, 184, 255, 0.2));
 }
 
 /* ============================================================

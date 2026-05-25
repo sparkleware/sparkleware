@@ -125,8 +125,8 @@ button {
 }
 
 /* ============================================================
- * Utility: holo text fill
- * Use on h1, brand wordmark, etc.
+ * Utility: holo text fill (flat — for small inline accents)
+ * Use on small wordmark mentions, card titles, etc.
  * ============================================================ */
 
 .holo-text {
@@ -137,6 +137,43 @@ button {
   color: transparent;
   font-family: var(--font-display);
   font-weight: 900;
+}
+
+/* ============================================================
+ * Utility: holo text 3D (puffy iridescent — matches brand logo)
+ * Multi-stop vertical gradient (white → pink → magenta → lavender
+ * → periwinkle → mint) + stacked drop-shadows for 3D pop and outer
+ * holographic glow. Use on the main brand wordmark (large H1).
+ * ============================================================ */
+
+.holo-text-3d {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffe3f5 12%,
+    #ffb3d9 26%,
+    #ff85c1 42%,
+    #d9c5ff 58%,
+    #b8a5e8 73%,
+    #6680c8 88%,
+    #c5e8ff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  /* Layered drop-shadows: highlight rim → soft inner depth → mid offset → outer pink glow → ambient halo */
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9))
+    drop-shadow(0 2px 0 rgba(255, 220, 240, 0.5))
+    drop-shadow(0 3px 2px rgba(184, 130, 200, 0.28))
+    drop-shadow(0 6px 12px rgba(255, 133, 193, 0.4))
+    drop-shadow(0 0 32px rgba(184, 165, 232, 0.45));
 }
 
 /* ============================================================

@@ -12,11 +12,10 @@ export default function HomePage() {
       }}
     >
       <h1
-        className="holo-text"
+        className="holo-text-3d"
         style={{
-          fontSize: 'clamp(48px, 10vw, 96px)',
+          fontSize: 'clamp(64px, 12vw, 128px)',
           margin: 0,
-          letterSpacing: '-0.02em',
         }}
       >
         ✦ Sparkleware ✦

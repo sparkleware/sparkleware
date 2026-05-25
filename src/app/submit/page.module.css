@@ -1,0 +1,105 @@
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  text-align: center;
+  color: var(--purple-medium);
+  font-size: 15px;
+  margin: 0 0 var(--space-6);
+}
+
+.path {
+  background: var(--white);
+  border: 1px solid var(--purple-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.pathTitle {
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: 18px;
+  margin: 0 0 var(--space-3);
+}
+
+.pathDescription {
+  font-size: 14px;
+  color: var(--purple-deep);
+  line-height: 1.5;
+  margin: 0 0 var(--space-3);
+}
+
+.steps {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--purple-deep);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.steps li {
+  margin-bottom: var(--space-2);
+}
+
+.codeBlock {
+  background: var(--dark-violet);
+  color: var(--purple-light);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  white-space: pre;
+  margin: var(--space-3) 0;
+}
+
+.cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--white);
+  background: var(--holo-text-gradient);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: var(--space-3);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.cta:hover {
+  color: var(--white);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255, 133, 193, 0.5);
+}
+
+.link {
+  color: var(--magenta-link);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,9 @@
+name = "sparkleware"
+compatibility_date = "2026-01-01"
+
+# Static site deploy — Workers Assets (Cloudflare 2026 unified Workers+Pages model).
+# Build pipeline produces `out/` via Next.js `output: 'export'`, then wrangler
+# uploads the directory as edge assets. No server-side Worker logic needed.
+[assets]
+directory = "./out"
+not_found_handling = "404-page"

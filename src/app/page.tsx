@@ -11,6 +11,18 @@ export default function HomePage() {
         padding: 'var(--space-5)',
       }}
     >
+      <img
+        src="/logo.png"
+        alt=""
+        width={180}
+        height={180}
+        style={{
+          width: 'clamp(120px, 18vw, 200px)',
+          height: 'auto',
+          marginBottom: 'var(--space-3)',
+          filter: 'drop-shadow(0 8px 24px rgba(204, 0, 102, 0.3))',
+        }}
+      />
       <h1
         className="holo-text-3d"
         style={{
@@ -18,7 +30,7 @@ export default function HomePage() {
           margin: 0,
         }}
       >
-        ✦ Sparkleware ✦
+        Sparkleware
       </h1>
 
       <p

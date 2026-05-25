@@ -13,6 +13,7 @@
     "dev": "next dev",
     "build": "next build",
     "prebuild": "tsx scripts/enrich-stars.ts || echo 'enrichment failed — building with stale cache'",
+    "postbuild": "pagefind --site out --output-subdir _pagefind",
     "enrich": "tsx scripts/enrich-stars.ts",
     "start": "next start",
     "lint": "next lint",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.0.0",
+    "pagefind": "^1.5.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SearchBar } from './SearchBar';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -14,6 +15,9 @@ export function Header() {
         />
         <span className={styles.brandName}>Sparkleware</span>
       </Link>
+      <div className={styles.searchSlot}>
+        <SearchBar />
+      </div>
       <nav className={styles.nav}>
         <Link href="/browse/" className={styles.navLink}>
           browse

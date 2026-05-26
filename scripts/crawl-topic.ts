@@ -109,8 +109,13 @@ async function main(): Promise<void> {
   // De-dupe: if a discovered repo also has a verified manifest in registry/packs/,
   // drop it from discovered (the verified entry takes precedence).
   const verified = loadVerifiedRepoSlugs();
-  const tier1 = discovered.filter((d) => !verified.has(d.repo.toLowerCase()));
-  console.log(`After dedup with verified: ${tier1.length} Tier-1 entries`);
+  // Denylist: repos that have the topic for reference reasons but are not skill packs.
+  // (E.g. the Sparkleware registry website itself.)
+  const DENYLIST = new Set(['sparkleware/sparkleware']);
+  const tier1 = discovered
+    .filter((d) => !verified.has(d.repo.toLowerCase()))
+    .filter((d) => !DENYLIST.has(d.repo.toLowerCase()));
+  console.log(`After dedup with verified + denylist: ${tier1.length} Tier-1 entries`);
 
   mkdirSync(dirname(CACHE_PATH), { recursive: true });
   writeFileSync(CACHE_PATH, JSON.stringify(tier1, null, 2) + '\n', 'utf8');

@@ -1,0 +1,19 @@
+{
+  "name": "morning-briefing",
+  "author": "sparkleware",
+  "repo": "sparkleware/morning-briefing",
+  "description": "Daily morning briefing — date, day-of-week, current weather (wttr.in), and a sparkly closer. No API key required.",
+  "long_description_md": "## What it does\n\nA small, friendly skill that prints a one-screen briefing each morning: today's date and weekday, current weather pulled from wttr.in, and a closing line that varies by day-of-week.\n\nOptional `${var}` overrides the location (e.g. `${var}=\"Jakarta\"` or `${var}=\"Tokyo\"`). Default uses wttr.in's IP-geo (accurate within ~50 km).\n\n## Why\n\nThe terminal can feel cold at 7am. This skill makes it feel a tiny bit more like a thoughtful assistant — without overpromising. No alerts, no notifications, no obligations. Just a short, friendly hello.\n\n## How it works\n\nThree sections, ≤8 lines total:\n1. Date + day-of-week from `date -u`\n2. Weather from `curl https://wttr.in/<location>?format=4&M` — one-line metric summary\n3. Closing line — deterministic by day-of-week (seven preset tones, one per weekday)\n\nGraceful fallback if wttr.in is unreachable. Optional log append to `memory/logs/morning-briefing.log` for searchable archive.",
+  "category": "productivity",
+  "tags": ["weather", "daily", "wttr"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "morning-briefing", "description": "Date + day-of-week + weather + sparkly closer. wttr.in for weather, no API key required." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/morning-briefing",
+  "submitted_at": "2026-05-26T05:00:00Z",
+  "license": "MIT"
+}

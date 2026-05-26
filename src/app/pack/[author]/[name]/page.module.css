@@ -23,13 +23,43 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(36px, 6vw, 56px);
-  background: var(--holo-text-gradient);
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-3);
+
+  /* Chrome-banded iridescent gradient — matches the 3D banner aesthetic
+   * via alternating white highlights between saturated stops. */
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffb3d9 12%,
+    #ff5b9d 24%,
+    #ffffff 34%,
+    #ff85c1 44%,
+    #c044d4 56%,
+    #ffffff 66%,
+    #6680c8 78%,
+    #5fb8ff 90%,
+    #ffffff 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  margin: 0 0 var(--space-3);
-  letter-spacing: -0.02em;
+
+  /* Thin purple-deep outline for definition — 1.2px so it doesn't dominate
+   * smaller dynamic text like 'crypto-watcher ✦'. */
+  -webkit-text-stroke: 1.2px rgba(107, 58, 160, 0.55);
+
+  /* Stacked drop-shadows: solid dark layers for puffy depth + soft outer
+   * pink/cyan halo for the holographic glow. Tuned slightly lighter than
+   * the .holo-text-3d global utility because this renders inline within
+   * a content page, not as a hero banner. */
+  filter:
+    drop-shadow(0 1.5px 0 rgba(107, 58, 160, 0.55))
+    drop-shadow(0 3px 0 rgba(107, 58, 160, 0.3))
+    drop-shadow(0 5px 8px rgba(107, 58, 160, 0.35))
+    drop-shadow(0 0 20px rgba(255, 91, 157, 0.25))
+    drop-shadow(0 0 36px rgba(95, 184, 255, 0.15));
 }
 
 .byline {

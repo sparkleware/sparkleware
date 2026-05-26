@@ -45,6 +45,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate build-time data snapshot
+        # Required before typecheck because src/app/browse/page.tsx imports
+        # src/lib/packs-snapshot.json (gitignored, regenerated each build).
+        run: pnpm enrich
+        continue-on-error: true
+
       - name: TypeScript typecheck
         run: pnpm typecheck
 

@@ -1,0 +1,19 @@
+{
+  "name": "aeon-pulse",
+  "author": "sparkleware",
+  "repo": "sparkleware/aeon-pulse",
+  "description": "Daily activity summary for the Aeon framework — recent commits, latest release freshness, and open-issue scan from aaronjmars/aeon.",
+  "long_description_md": "## What it does\n\nEach morning, prints a one-screen summary of upstream Aeon activity:\n\n- **Recent commits** — last 5 to the default branch, with author + one-line message\n- **Latest release** — tag + age check (flagged if older than 30 days)\n- **Open issues** — total count + 3 most-recently-updated\n\n## Why\n\nIf you're using Aeon in production, you want to know when new commits land or a release ships. Manually pulling and checking GitHub for changes is friction; this skill makes the digest show up automatically in your daily terminal session.\n\n## How it works\n\nThree `curl` calls to GitHub's public REST API (no auth required for normal use, optional `GITHUB_TOKEN` for higher rate limits), piped through `jq` for formatting. Each section has independent failure handling — if one endpoint is rate-limited or unreachable, that section prints `(unavailable)` and the others still render.",
+  "category": "dev",
+  "tags": ["aeon", "upstream", "digest"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "aeon-activity", "description": "Fetches and summarizes recent commits, releases, and open issues from aaronjmars/aeon." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/aeon-pulse",
+  "submitted_at": "2026-05-26T02:35:00Z",
+  "license": "MIT"
+}

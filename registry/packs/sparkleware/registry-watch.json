@@ -1,0 +1,19 @@
+{
+  "name": "registry-watch",
+  "author": "sparkleware",
+  "repo": "sparkleware/registry-watch",
+  "description": "Daily digest of new packs added to the Sparkleware registry. Stay current on community skills without manually browsing the site.",
+  "long_description_md": "## What it does\n\nFetches the live Sparkleware registry snapshot once a day, diffs it against a local last-seen file in your Aeon `memory/` directory, and prints a holographic digest of any newly-added packs.\n\n## Why\n\nThe registry grows over time as contributors submit new packs (PR-based) or as the daily auto-discovery crawl picks up repos tagged `aeon-skill-pack`. Without this skill, you'd have to manually check the website to know what's new. With it, the digest shows up in your morning terminal session.\n\n## How it works\n\n1. `curl` the live `packs-snapshot.json` from `github.com/sparkleware/sparkleware`\n2. `jq` diff against the snapshot in `memory/sparkleware-seen.json`\n3. Print sparkle ASCII banner + new-pack summary\n4. Persist updated snapshot for next run\n\nIdempotent — running twice in a row without registry changes prints \"no new packs\".",
+  "category": "meta",
+  "tags": ["digest", "discovery", "sparkleware"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "new-packs-digest", "description": "Daily diff of the live registry against a local last-seen snapshot — prints new packs." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/registry-watch",
+  "submitted_at": "2026-05-26T02:30:00Z",
+  "license": "MIT"
+}

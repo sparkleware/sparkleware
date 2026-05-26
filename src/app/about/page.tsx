@@ -8,7 +8,13 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className={styles.wrapper}>
-      <h1 className={styles.title}>about</h1>
+      <h1 className={styles.srOnly}>About</h1>
+      <img
+        src="/about-banner.png"
+        alt=""
+        className={styles.banner}
+        aria-hidden="true"
+      />
       <p className={styles.mission}>
         ~ a discovery surface for the Aeon agent ecosystem ~
       </p>

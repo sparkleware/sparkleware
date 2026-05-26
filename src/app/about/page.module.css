@@ -4,18 +4,24 @@
   padding: var(--space-6) var(--space-5);
 }
 
-.title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(32px, 5vw, 48px);
-  background: var(--holo-text-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  margin: 0 0 var(--space-5);
-  letter-spacing: -0.02em;
+.banner {
+  display: block;
+  width: min(72vw, 540px);
+  height: auto;
+  margin: 0 auto var(--space-3);
+  filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .mission {

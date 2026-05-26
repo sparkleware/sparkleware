@@ -1,5 +1,5 @@
 .footer {
-  padding: var(--space-7) var(--space-5);
+  padding: var(--space-6) var(--space-5) var(--space-5);
   text-align: center;
   font-size: 12px;
   color: var(--purple-medium);
@@ -9,6 +9,10 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .footer a {
@@ -16,5 +20,42 @@
 }
 
 .line {
-  margin: 4px 0;
+  margin: 0;
+}
+
+.ecosystemBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--holo-gradient);
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-style: normal;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--purple-deep);
+  box-shadow: 0 2px 0 var(--magenta-link);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.ecosystemBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 var(--magenta-link);
+  color: var(--purple-deep);
+}
+
+.ecosystemLabel {
+  color: var(--purple-medium);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ecosystemName {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--magenta-link);
+  letter-spacing: -0.01em;
 }

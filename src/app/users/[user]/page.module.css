@@ -50,3 +50,98 @@
   color: var(--purple-medium);
   padding: var(--space-7);
 }
+
+.roleTag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--pink-pearl);
+  color: var(--magenta-link);
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-style: normal;
+}
+
+.welcome {
+  font-size: 14px;
+  color: var(--purple-deep);
+  line-height: 1.5;
+  margin: 0 0 var(--space-3);
+}
+
+.welcome a {
+  color: var(--magenta-link);
+}
+
+.ctaRow {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--magenta-link);
+  color: var(--white);
+  border: 2px solid var(--magenta-link);
+  border-top-color: var(--pink-soft);
+  border-left-color: var(--pink-soft);
+  border-right-color: var(--purple-deep);
+  border-bottom-color: var(--purple-deep);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.ctaPrimary:hover {
+  background: var(--pink-hot);
+}
+
+.ctaPrimary:active {
+  border-top-color: var(--purple-deep);
+  border-left-color: var(--purple-deep);
+  border-right-color: var(--pink-soft);
+  border-bottom-color: var(--pink-soft);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--white);
+  color: var(--purple-deep);
+  border: 2px solid var(--purple-deep);
+  border-top-color: var(--white);
+  border-left-color: var(--white);
+  border-right-color: var(--purple-deep);
+  border-bottom-color: var(--purple-deep);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.ctaSecondary:hover {
+  background: var(--purple-pale);
+  color: var(--magenta-link);
+}
+
+.metaLine {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--purple-medium);
+  margin-top: var(--space-5);
+}
+
+.metaLine a {
+  color: var(--magenta-link);
+}

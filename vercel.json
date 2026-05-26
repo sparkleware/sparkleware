@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm install --frozen-lockfile && pnpm build",
+  "outputDirectory": "out",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/@:user",
+      "destination": "/users/:user"
+    },
+    {
+      "source": "/@:user/",
+      "destination": "/users/:user/"
+    }
+  ]
+}

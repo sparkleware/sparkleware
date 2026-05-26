@@ -23,11 +23,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(36px, 6vw, 56px);
-  background: var(--holo-text-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--magenta-link);
   margin: 0 0 var(--space-3);
   letter-spacing: -0.02em;
 }

@@ -1,0 +1,19 @@
+{
+  "name": "eth-gas-watch",
+  "author": "sparkleware",
+  "repo": "sparkleware/eth-gas-watch",
+  "description": "Ethereum gas-price status check on a schedule — traffic-light status against a configurable gwei threshold, logs price history.",
+  "long_description_md": "## What it does\n\nQueries Etherscan's gas oracle every few hours, prints Safe / Standard / Fast gwei, classifies with 🟢 (cheap) / 🟨 (moderate) / 🔴 (high) relative to a `${var}` gwei threshold (default 20), and appends each reading to `memory/logs/gas-watch.log` for searchable price history.\n\n## Why\n\nGas spikes are the #1 friction for on-chain ops. A scheduled glance lets you batch transactions during cheap overnight / weekend windows instead of reactively paying peak rates.\n\n## How it works\n\nSingle `curl` to Etherscan's `gasoracle` endpoint (no API key required for casual cadence; optional `ETHERSCAN_API_KEY` env var raises the rate limit). Parsed with `jq`. Classification is plain integer comparison on the standard-tier gwei value.\n\nAll read — no on-chain writes, never spends gas. Default schedule is every 4 hours.",
+  "category": "crypto",
+  "tags": ["ethereum", "gas", "defi"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "gas-status", "description": "Current Safe/Std/Fast gwei + traffic-light status against a configurable threshold; logs each reading to memory." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/eth-gas-watch",
+  "submitted_at": "2026-05-26T04:10:00Z",
+  "license": "MIT"
+}

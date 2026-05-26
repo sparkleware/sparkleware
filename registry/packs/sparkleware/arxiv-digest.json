@@ -1,0 +1,19 @@
+{
+  "name": "arxiv-digest",
+  "author": "sparkleware",
+  "repo": "sparkleware/arxiv-digest",
+  "description": "Daily digest of newest AI / autonomous-agent papers on arXiv — top submissions in cs.AI, cs.LG, cs.MA. No API key required.",
+  "long_description_md": "## What it does\n\nQueries the arXiv API daily for the latest submissions across the three subject classes most relevant to autonomous AI agents (`cs.AI`, `cs.LG`, `cs.MA`), de-duplicates, and prints title + authors + abstract snippet for the top 10. Optional `${var}` filters the query to a topic (e.g. `${var}=\"reinforcement learning\"`).\n\n## Why\n\nKeeping up with AI / agent research is a full-time job. This skill compresses it into one terminal-sized digest per morning — scan in 30 seconds, decide what to actually open.\n\n## How it works\n\nFetches arXiv's Atom feed via `curl`, parses with `xmllint --xpath` (preferred) or an awk fallback if xmllint isn't installed. Optionally logs the digest to `memory/logs/arxiv-digest-<date>.md` so you can grep your history later.\n\nNo authentication, no API key, no rate-limit risk at daily cadence.",
+  "category": "research",
+  "tags": ["arxiv", "papers", "ai-research"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "daily-papers", "description": "Top 10 newest AI/agent paper submissions from arXiv, formatted as a daily digest." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/arxiv-digest",
+  "submitted_at": "2026-05-26T04:00:00Z",
+  "license": "MIT"
+}

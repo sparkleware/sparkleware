@@ -1,0 +1,19 @@
+{
+  "name": "hn-top",
+  "author": "sparkleware",
+  "repo": "sparkleware/hn-top",
+  "description": "Daily digest of HackerNews top stories — dev / startup / AI conversation in one terminal screen. No API key required.",
+  "long_description_md": "## What it does\n\nFetches HackerNews' top stories via the public Firebase API and prints the top 10 with title, author, score, comment count, and link. Optional `${var}` substring filter narrows to a topic (e.g. `${var}=\"rust\"` or `${var}=\"AI\"`).\n\n## Why\n\nHN is high-signal but easy to spend an hour scrolling. This skill compresses the current top-of-page into 30 seconds of glance time.\n\n## How it works\n\n11 requests per run (1 for the ranked ID list, 10 for individual story metadata). Pure JSON / `jq` parsing. Falls back to the HN discussion URL when a story has no external link (Ask HN, etc.). Optional log to `memory/logs/hn-daily-<date>.md` builds a searchable archive.\n\nNo auth, no key, generous Firebase rate limits — daily schedule is well under any threshold.",
+  "category": "social",
+  "tags": ["hackernews", "news", "tech"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    { "name": "hn-daily", "description": "Top 10 HackerNews stories with score + comments + author, plus optional title-substring filter." }
+  ],
+  "install_command": "./install-skill-pack sparkleware/hn-top",
+  "submitted_at": "2026-05-26T04:05:00Z",
+  "license": "MIT"
+}

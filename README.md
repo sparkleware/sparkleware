@@ -17,7 +17,11 @@
 </p>
 
 <p align="center">
-  <em>🚧 Pre-launch — registry data subsystem is live; website is in active development.</em>
+  <em>🚧 Pre-launch — registry + website both live; community pack onboarding in progress.</em>
+</p>
+
+<p align="center">
+  <img src="assets/screenshot-homepage.png" alt="Sparkleware homepage — 3D chrome wordmark, holographic gradient background, and a grid of skill pack cards" width="900" />
 </p>
 
 ---

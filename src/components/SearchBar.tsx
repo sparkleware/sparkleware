@@ -94,7 +94,13 @@ export function SearchBar() {
             <p className={styles.empty}>no matches</p>
           ) : (
             results.map((r) => (
-              <a key={r.url} href={r.url} className={styles.result} role="option">
+              <a
+                key={r.url}
+                href={r.url}
+                className={styles.result}
+                role="option"
+                aria-selected={false}
+              >
                 <span className={styles.resultTitle}>{r.title}</span>
                 <span
                   className={styles.resultExcerpt}

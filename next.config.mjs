@@ -5,9 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    typedRoutes: true,
-  },
+  // Promoted from `experimental` to top-level stable in Next 15.5.
+  typedRoutes: true,
 };
 
 export default nextConfig;

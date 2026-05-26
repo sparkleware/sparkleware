@@ -63,5 +63,4 @@ jobs:
       - name: Verify static output
         run: |
           test -f out/index.html
-          test -f out/_redirects
-          echo "✓ out/index.html and out/_redirects both present"
+          echo "✓ out/index.html present"

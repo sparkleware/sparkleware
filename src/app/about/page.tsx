@@ -86,7 +86,7 @@ export default function AboutPage() {
           <dt>What&apos;s the tech stack?</dt>
           <dd>
             Next.js 15 (static export), React 19, plain CSS — deployed to
-            Cloudflare Pages / Workers. Search by Pagefind (planned).
+            Vercel. Pagefind for client-side static search.
           </dd>
         </dl>
       </section>

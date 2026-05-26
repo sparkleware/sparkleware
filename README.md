@@ -88,7 +88,7 @@ CI runs the same commands on every PR touching `registry/**`.
 
 ### Run the website locally
 
-Pending — the Next.js scaffold lands in upcoming commits. Tech stack is locked in [`docs/spec.md`](./docs/spec.md) §8 (Next.js 15 App Router, static export, Cloudflare Pages).
+Tech stack is locked in [`docs/spec.md`](./docs/spec.md) §8 (Next.js 15 App Router, static export, deployed to Vercel).
 
 ---
 
@@ -182,7 +182,7 @@ Packs whose source repo becomes unreachable for 30+ days are auto-archived (hidd
 ### What's the tech stack?
 
 - **Registry:** TypeScript + pnpm + Vitest + ajv (JSON Schema draft 2020-12 validator). Data + scripts, no website code.
-- **Website (in progress):** Next.js 15 App Router with `output: 'export'`, deployed to Cloudflare Pages. Pagefind for client-side static search. No backend in v1.
+- **Website:** Next.js 15 App Router with `output: 'export'`, deployed to Vercel. Pagefind for client-side static search. No backend in v1.
 
 Full stack rationale: [`docs/spec.md`](./docs/spec.md) §8.
 

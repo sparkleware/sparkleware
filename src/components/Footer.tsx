@@ -3,16 +3,6 @@ import styles from './Footer.module.css';
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <a
-        href="https://github.com/aaronjmars/aeon"
-        className={styles.ecosystemBadge}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span className={styles.ecosystemLabel}>✦ part of the</span>
-        <span className={styles.ecosystemName}>Aeon</span>
-        <span className={styles.ecosystemLabel}>ecosystem ✦</span>
-      </a>
       <p className={styles.line}>
         the community discovery catalog for{' '}
         <a href="https://github.com/aaronjmars/aeon">Aeon AI agent</a>{' '}

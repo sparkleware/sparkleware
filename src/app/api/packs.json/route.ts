@@ -22,7 +22,7 @@ interface ApiPackEntry {
   url: string;
 }
 
-const SITE_URL = 'https://sparkleware.vercel.app';
+const SITE_URL = 'https://sparkleware.fun';
 
 export function GET() {
   const packs = getAllPacks();

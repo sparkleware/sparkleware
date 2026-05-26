@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm enrich && pnpm build && pnpm postbuild",
+  "buildCommand": "pnpm enrich && pnpm build",
   "outputDirectory": "out",
   "rewrites": [
     {

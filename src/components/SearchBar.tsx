@@ -7,54 +7,19 @@ import type { EnrichedPack } from '@/lib/types';
 
 const PACKS = packsData as unknown as EnrichedPack[];
 
-interface PagefindResult {
-  id: string;
-  data: () => Promise<{
-    url: string;
-    excerpt: string;
-    meta: { title?: string };
-  }>;
-}
-
-interface PagefindAPI {
-  search: (query: string) => Promise<{ results: PagefindResult[] }>;
-}
-
-interface PagefindWindow extends Window {
-  pagefind?: PagefindAPI;
-}
-
-async function loadPagefind(): Promise<PagefindAPI | null> {
-  const w = window as PagefindWindow;
-  if (w.pagefind) return w.pagefind;
-  try {
-    // @ts-expect-error — runtime URL import; types live in a non-bundled chunk
-    const mod = await import(/* webpackIgnore: true */ '/_pagefind/pagefind.js');
-    w.pagefind = mod as PagefindAPI;
-    return mod as PagefindAPI;
-  } catch {
-    return null;
-  }
-}
-
 interface ResolvedResult {
   url: string;
   title: string;
   excerpt: string;
 }
 
-/**
- * Fallback search used when Pagefind isn't available (dev mode, or
- * `_pagefind/` not yet generated). Filters the packs snapshot on name,
- * author, description, and tags with a simple case-insensitive substring
- * match. Less robust than Pagefind's full-text index over built HTML,
- * but ensures the search bar always returns sensible results.
- */
-function localSearch(query: string): ResolvedResult[] {
+function searchPacks(query: string): ResolvedResult[] {
   const q = query.toLowerCase().trim();
   if (!q) return [];
   return PACKS.filter((p) => {
-    const hay = `${p.name} ${p.author} ${p.description} ${(p.tags ?? []).join(' ')}`.toLowerCase();
+    const skillNames = (p.skills ?? []).map((s) => s.name).join(' ');
+    const skillDescs = (p.skills ?? []).map((s) => s.description).join(' ');
+    const hay = `${p.name} ${p.author} ${p.description} ${(p.tags ?? []).join(' ')} ${p.category} ${skillNames} ${skillDescs}`.toLowerCase();
     return hay.includes(q);
   })
     .slice(0, 8)
@@ -80,29 +45,9 @@ export function SearchBar() {
       setResults([]);
       return;
     }
-    debounceRef.current = setTimeout(async () => {
-      const pf = await loadPagefind();
-      if (pf) {
-        // Pagefind available (production / built static export) — full-text
-        // search across every indexed HTML page.
-        const { results: raw } = await pf.search(query);
-        const resolved = await Promise.all(
-          raw.slice(0, 8).map(async (r) => {
-            const d = await r.data();
-            return {
-              url: d.url,
-              title: d.meta.title ?? d.url,
-              excerpt: d.excerpt,
-            };
-          }),
-        );
-        setResults(resolved);
-      } else {
-        // Pagefind missing (dev mode, or static asset not yet generated) —
-        // fall back to client-side filter on the build-time packs snapshot.
-        setResults(localSearch(query));
-      }
-    }, 200);
+    debounceRef.current = setTimeout(() => {
+      setResults(searchPacks(query));
+    }, 150);
   }, [query]);
 
   return (
@@ -138,10 +83,7 @@ export function SearchBar() {
                 aria-selected={false}
               >
                 <span className={styles.resultTitle}>{r.title}</span>
-                <span
-                  className={styles.resultExcerpt}
-                  dangerouslySetInnerHTML={{ __html: r.excerpt }}
-                />
+                <span className={styles.resultExcerpt}>{r.excerpt}</span>
               </a>
             ))
           )}

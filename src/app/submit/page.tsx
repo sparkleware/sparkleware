@@ -28,7 +28,13 @@ export default function SubmitPage() {
 
   return (
     <main className={styles.wrapper}>
-      <h1 className={styles.title}>submit a pack ✦</h1>
+      <h1 className={styles.srOnly}>Submit a pack</h1>
+      <img
+        src="/submit-banner.png"
+        alt=""
+        className={styles.banner}
+        aria-hidden="true"
+      />
       <p className={styles.subtitle}>two paths — pick whichever fits</p>
 
       <section className={styles.path}>

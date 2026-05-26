@@ -13,7 +13,13 @@ export default function TrendingPage() {
 
   return (
     <main className={styles.wrapper}>
-      <h1 className={styles.title}>trending</h1>
+      <h1 className={styles.srOnly}>Trending</h1>
+      <img
+        src="/trending-banner.png"
+        alt=""
+        className={styles.banner}
+        aria-hidden="true"
+      />
       <p className={styles.subtitle}>~ active packs (pushed in the last 90 days) by ★ count ~</p>
 
       {trending.length === 0 ? (

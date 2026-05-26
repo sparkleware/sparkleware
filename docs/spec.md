@@ -205,7 +205,7 @@ At build time, for each pack, the build pipeline calls the GitHub API to fetch:
 Enriched data is merged with the static JSON and rendered into the static site. No runtime API calls from the browser — everything is baked at build time.
 
 ### Rebuild Cadence
-- **Daily**: GitHub Action triggers a Cloudflare Pages rebuild to refresh stats + auto-discovery
+- **Daily**: GitHub Action `daily-refresh.yml` re-runs the stars enrichment + topic crawl, commits any cache deltas, which auto-triggers a Vercel redeploy via the connected Git integration
 - **On PR merge**: registry repo merges trigger immediate rebuild (webhook)
 - **Manual**: maintainer can trigger rebuild via Action dispatch
 
@@ -214,12 +214,14 @@ Score per pack: `score = (stars_now - stars_14d_ago) * 1 + (installs_now - insta
 
 ## 8. Tech Stack
 
-> **Amended 2026-05-24:** originally specified Astro. Project owner re-audited and chose Next.js (App Router, static export) for transferable React skill / ecosystem familiarity / smoother v1.5 path. Static-export keeps Cloudflare Pages free-tier hosting viable.
+> **Amended 2026-05-24:** originally specified Astro. Project owner re-audited and chose Next.js (App Router, static export) for transferable React skill / ecosystem familiarity / smoother v1.5 path.
+>
+> **Amended 2026-05-26:** hosting migrated from Cloudflare Workers Assets to Vercel. The original Cloudflare choice was driven by unlimited bandwidth on the free tier; in practice Vercel's 100 GB/month free tier is well above realistic Sparkleware traffic for the foreseeable future, and Vercel's native Next.js DX (built-in analytics, edge rewrites via `vercel.json` instead of a separate `_redirects` file, push-to-deploy with preview deployments) outweighs the bandwidth concern. `output: 'export'` is preserved so the site stays portable to any static host.
 
 | Layer | Choice | Rationale |
 |---|---|---|
-| Web framework | **Next.js 15+ (App Router, `output: 'export'`)** | React-based, mature ecosystem (shadcn, radix), strong DX; static export keeps bundle delivery via Cloudflare Pages free tier; App Router enables clean App / Layout / Metadata composition for the Y2K shell |
-| Hosting | **Cloudflare Pages** | Unlimited bandwidth free tier (insurance against viral launch); edge network global; static export builds deploy as plain HTML/JS — no Next adapter needed |
+| Web framework | **Next.js 15+ (App Router, `output: 'export'`)** | React-based, mature ecosystem (shadcn, radix), strong DX; static export ships pure HTML/JS (no SSR runtime), keeping the site portable + cheap; App Router enables clean App / Layout / Metadata composition for the Y2K shell |
+| Hosting | **Vercel** | Native Next.js DX; edge rewrites via `vercel.json`; built-in Vercel Analytics (privacy-first, no cookies); 100 GB/month free-tier bandwidth is plenty for projected traffic |
 | Search | **Pagefind** | Static search index, zero backend, client-side; very fast; framework-agnostic (operates on built HTML in `out/`) |
 | Build pipeline | **GitHub Actions** | Daily cron rebuild; PR merge triggers; matches Aeon's own infrastructure philosophy |
 | Data store | **JSON files under `registry/packs/**/*.json` in this monorepo** | Source of truth, transparent, PR-reviewable, no DB needed; loaded at build time via `fs.readdir` (no cross-repo fetch) |
@@ -231,7 +233,7 @@ Score per pack: `score = (stars_now - stars_14d_ago) * 1 + (installs_now - insta
 
 ### Why Not Other Options
 - **Astro** (previous choice): genuinely better-suited for pure-static catalog, but team prefers React/Next ecosystem for transferable skill + larger component library (shadcn, radix). The trade-off accepted: ~70-100 KB additional client JS for React runtime vs Astro's 0-KB-JS default. Mitigated by `output: 'export'` which still ships pure HTML.
-- **Next.js with Vercel hosting**: simpler deploy but Vercel free tier caps at 100 GB/month bandwidth — risky for a viral launch. Cloudflare Pages free tier is unlimited.
+- **Cloudflare Workers Assets**: deployed there briefly (2026-05-24 → 2026-05-26). Worked, but `wrangler.toml` + `public/_redirects` setup felt brittle vs Vercel's native single-file config. Migrated; documented in the §8 amendment above.
 - **Next.js with full SSR / dynamic rendering**: not needed in v1 (no per-request personalization). Static export keeps the deploy story simple and the runtime cost zero.
 - **SvelteKit / Remix**: viable but smaller AI-codegen training data and smaller component ecosystem.
 - **Algolia / hosted search**: overkill for a static catalog; Pagefind is sufficient and free.
@@ -416,7 +418,7 @@ When/if Sparkleware proves adoption, the following are natural next features:
 - **Submission velocity**: 2-3 PR submissions per week by week 4
 - **Social signal**: featured in at least 2 AI/dev newsletters, organic shares on X
 
-Tracked via Cloudflare Analytics (privacy-preserving, no cookies).
+Tracked via Vercel Analytics (privacy-preserving, no cookies).
 
 ---
 

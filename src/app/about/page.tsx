@@ -1,3 +1,4 @@
+import { Win95Window } from '@/components/Win95Window';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -19,8 +20,7 @@ export default function AboutPage() {
         ~ a discovery surface for the Aeon agent ecosystem ~
       </p>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>『 ✦ what this is ✦ 』</h2>
+      <Win95Window title="what this is">
         <p className={styles.body}>
           Sparkleware is a public catalog of skill packs for the{' '}
           <a href="https://github.com/aaronjmars/aeon">Aeon</a> AI agent
@@ -34,10 +34,9 @@ export default function AboutPage() {
           signals (verified badge, star counts, freshness). Y2K aesthetic because
           tool directories shouldn&apos;t all look like enterprise SaaS.
         </p>
-      </section>
+      </Win95Window>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>『 ✦ data model ✦ 』</h2>
+      <Win95Window title="data model">
         <p className={styles.body}>
           Each pack is one JSON file at{' '}
           <code>registry/packs/&lt;author&gt;/&lt;name&gt;.json</code> in this{' '}
@@ -45,10 +44,9 @@ export default function AboutPage() {
           JSON Schema validates every PR. The website builds nightly from these
           files via a static export; no database, no backend.
         </p>
-      </section>
+      </Win95Window>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>『 ✦ FAQ ✦ 』</h2>
+      <Win95Window title="FAQ">
         <dl className={styles.faq}>
           <dt>Do you host the pack source?</dt>
           <dd>
@@ -89,10 +87,9 @@ export default function AboutPage() {
             Vercel. Pagefind for client-side static search.
           </dd>
         </dl>
-      </section>
+      </Win95Window>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>『 ✦ credits ✦ 』</h2>
+      <Win95Window title="credits">
         <p className={styles.body}>
           Built around{' '}
           <a href="https://github.com/aaronjmars/aeon">Aeon</a> by{' '}
@@ -100,7 +97,7 @@ export default function AboutPage() {
           inspiration: Remilia Corporation, Milady NFT, Pokémon TCG holographic
           foil cards, late-1990s sticker sheets.
         </p>
-      </section>
+      </Win95Window>
     </main>
   );
 }

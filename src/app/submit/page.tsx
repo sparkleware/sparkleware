@@ -1,3 +1,4 @@
+import { Win95Window } from '@/components/Win95Window';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -37,17 +38,15 @@ export default function SubmitPage() {
       />
       <p className={styles.subtitle}>two paths — pick whichever fits</p>
 
-      <section className={styles.path}>
-        <h2 className={styles.pathTitle}>『 ✦ path A — auto-discovery ✦ 』</h2>
+      <Win95Window title="path A — auto-discovery">
         <p className={styles.pathDescription}>
           Add the GitHub topic <code>aeon-skill-pack</code> to your repo. A daily
           crawler picks it up within 24 hours. Pack appears with the{' '}
           <code>auto-indexed</code> badge. Easiest path, no PR required.
         </p>
-      </section>
+      </Win95Window>
 
-      <section className={styles.path}>
-        <h2 className={styles.pathTitle}>『 ✦ path B — verified submission ✦ 』</h2>
+      <Win95Window title="path B — verified submission">
         <p className={styles.pathDescription}>
           Open a PR adding <code>registry/packs/&lt;your-handle&gt;/&lt;pack-name&gt;.json</code>.
           CI validates the schema; a maintainer reviews within ~3 business days.
@@ -71,7 +70,7 @@ export default function SubmitPage() {
         >
           open new file on github →
         </a>
-      </section>
+      </Win95Window>
 
       <p style={{ textAlign: 'center', color: 'var(--purple-medium)', fontSize: 13 }}>
         Full submission guide:{' '}

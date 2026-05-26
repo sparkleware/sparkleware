@@ -1,0 +1,39 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  user-select: none;
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display);
+  font-weight: 900;
+  filter: drop-shadow(0 2px 6px rgba(255, 133, 193, 0.35));
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.solid {
+  color: var(--pink-hot);
+  background: none;
+  -webkit-text-fill-color: var(--pink-hot);
+  filter: drop-shadow(0 2px 4px rgba(255, 133, 193, 0.4));
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle {
+    animation: none;
+  }
+}

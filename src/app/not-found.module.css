@@ -1,51 +1,171 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 70vh;
-  text-align: center;
   padding: var(--space-6) var(--space-5);
-  gap: var(--space-4);
 }
 
-.code {
+.dialog {
+  width: min(92vw, 540px);
+  background: var(--white);
+  border: 2px solid var(--magenta-link);
+  box-shadow: 8px 8px 0 var(--magenta-link);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--magenta-link);
+  color: var(--white);
+  padding: 6px var(--space-3);
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.titleText {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.controls {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 18px;
+  background: var(--white);
+  color: var(--magenta-link);
+  border: 1.5px solid var(--magenta-link);
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
+  user-select: none;
+}
+
+.body {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  align-items: flex-start;
+}
+
+.icon {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--holo-gradient);
+  border: 2px solid var(--magenta-link);
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(96px, 18vw, 200px);
-  background: var(--holo-text-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  color: var(--magenta-link);
   line-height: 1;
-  margin: 0;
+}
+
+.messageBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--purple-deep);
+  margin: 0 0 var(--space-2);
 }
 
 .message {
   font-family: var(--font-italic);
   font-style: italic;
-  font-size: 18px;
-  color: var(--purple-deep);
-  margin: 0;
-}
-
-.back {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--white);
-  background: var(--holo-text-gradient);
-  padding: 10px 24px;
-  border-radius: var(--radius-pill);
-  text-decoration: none;
   font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  color: var(--purple-medium);
+  margin: 0 0 var(--space-3);
 }
 
-.back:hover {
+.errorDetails {
+  background: var(--purple-pale);
+  border: 1px solid var(--purple-light);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-deep);
+  line-height: 1.5;
+}
+
+.errorDetails span {
+  display: block;
+}
+
+.errorLabel {
+  color: var(--magenta-link);
+  font-weight: 700;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  border-top: 1px solid var(--purple-light);
+}
+
+.button {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  background: var(--white);
+  color: var(--purple-deep);
+  border-top: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+  border-right: 2px solid var(--purple-deep);
+  border-bottom: 2px solid var(--purple-deep);
+  padding: 6px 18px;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 80px;
+  text-align: center;
+  display: inline-block;
+}
+
+.button:hover {
+  background: var(--purple-pale);
+  color: var(--magenta-link);
+}
+
+.button:active,
+.buttonPrimary:active {
+  border-top: 2px solid var(--purple-deep);
+  border-left: 2px solid var(--purple-deep);
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+}
+
+.buttonPrimary {
+  background: var(--magenta-link);
   color: var(--white);
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 133, 193, 0.4);
+  border-top: 2px solid var(--pink-soft);
+  border-left: 2px solid var(--pink-soft);
+  border-right: 2px solid var(--purple-deep);
+  border-bottom: 2px solid var(--purple-deep);
+}
+
+.buttonPrimary:hover {
+  background: var(--pink-hot);
+  color: var(--white);
 }

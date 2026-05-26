@@ -1,5 +1,6 @@
 import { getAllPacks } from '@/lib/registry';
 import { HoloCard } from '@/components/HoloCard';
+import { FloatingSparkles } from '@/components/FloatingSparkles';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -7,6 +8,7 @@ export default function HomePage() {
   return (
     <main>
       <section className={styles.hero}>
+        <FloatingSparkles />
         <img
           src="/banner.png"
           alt="Sparkleware"

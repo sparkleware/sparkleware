@@ -65,13 +65,30 @@
   color: var(--magenta-link);
 }
 
+.badgeAutoIndexed {
+  background: var(--purple-pale);
+  color: var(--purple-medium);
+  border: 1px dashed var(--purple-light);
+}
+
 .badgeFeatured {
   background: var(--holo-text-gradient);
   color: var(--white);
   -webkit-text-fill-color: var(--white);
 }
 
+.badgeArchived {
+  background: #f5e1e1;
+  color: #a02020;
+  border: 1px solid #d49a9a;
+}
+
 .stars {
   font-weight: 700;
   color: var(--magenta-link);
+}
+
+.updated {
+  font-style: italic;
+  opacity: 0.8;
 }

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPacks, getPackBySlug } from '@/lib/registry';
+import { formatRelativeTime } from '@/lib/time';
 import { InstallCommand } from '@/components/InstallCommand';
 import { Win95Window } from '@/components/Win95Window';
 import { WelcomeBanner } from '@/components/WelcomeBanner';
@@ -34,6 +35,7 @@ export default async function PackDetailPage({ params }: PageProps) {
   if (!pack) notFound();
 
   const repoUrl = `https://github.com/${pack.repo}`;
+  const updated = formatRelativeTime(pack.pushed_at);
 
   return (
     <main className={styles.wrapper}>
@@ -42,6 +44,12 @@ export default async function PackDetailPage({ params }: PageProps) {
       <div className={styles.breadcrumb}>
         <Link href="/">home</Link> · pack
       </div>
+
+      {pack.archived && (
+        <div className={styles.archivedNotice} role="alert">
+          ⚠ This repository is <strong>archived</strong> on GitHub — pack may be unmaintained.
+        </div>
+      )}
 
       <h1 className={styles.title}>{pack.name} ✦</h1>
       <p className={styles.byline}>
@@ -60,9 +68,13 @@ export default async function PackDetailPage({ params }: PageProps) {
         <span className={`${styles.badge} ${styles.badgeCategory}`}>
           {pack.category}
         </span>
-        {pack.verified && (
+        {pack.tier === 'verified' ? (
           <span className={`${styles.badge} ${styles.badgeVerified}`}>
             verified ✦
+          </span>
+        ) : (
+          <span className={`${styles.badge} ${styles.badgeAutoIndexed}`}>
+            auto-indexed
           </span>
         )}
         {pack.featured && (
@@ -104,6 +116,20 @@ export default async function PackDetailPage({ params }: PageProps) {
 
           <span className={styles.metaLabel}>submitted</span>
           <span className={styles.metaValue}>{pack.submitted_at.slice(0, 10)}</span>
+
+          {updated && (
+            <>
+              <span className={styles.metaLabel}>last updated</span>
+              <span className={styles.metaValue}>
+                {updated}
+                {pack.pushed_at && (
+                  <span className={styles.metaSubtle}>
+                    {' '}({pack.pushed_at.slice(0, 10)})
+                  </span>
+                )}
+              </span>
+            </>
+          )}
 
           {pack.tags && pack.tags.length > 0 && (
             <>

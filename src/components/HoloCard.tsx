@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { EnrichedPack } from '@/lib/types';
+import { formatRelativeTime } from '@/lib/time';
 import styles from './HoloCard.module.css';
 
 interface HoloCardProps {
@@ -8,6 +9,7 @@ interface HoloCardProps {
 
 export function HoloCard({ pack }: HoloCardProps) {
   const href = `/pack/${pack.author}/${pack.name}/` as const;
+  const updated = formatRelativeTime(pack.pushed_at);
   return (
     <Link href={href} className={styles.card}>
       <h3 className={styles.title}>{pack.name} ✦</h3>
@@ -24,14 +26,29 @@ export function HoloCard({ pack }: HoloCardProps) {
         )}
         <span>·</span>
         <span>by @{pack.author}</span>
-        {pack.verified && (
+        {updated && (
+          <>
+            <span>·</span>
+            <span className={styles.updated}>updated {updated}</span>
+          </>
+        )}
+        {pack.tier === 'verified' ? (
           <span className={`${styles.badge} ${styles.badgeVerified}`}>
             verified ✦
+          </span>
+        ) : (
+          <span className={`${styles.badge} ${styles.badgeAutoIndexed}`}>
+            auto-indexed
           </span>
         )}
         {pack.featured && (
           <span className={`${styles.badge} ${styles.badgeFeatured}`}>
             featured
+          </span>
+        )}
+        {pack.archived && (
+          <span className={`${styles.badge} ${styles.badgeArchived}`}>
+            archived
           </span>
         )}
       </div>

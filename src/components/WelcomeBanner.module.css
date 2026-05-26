@@ -1,0 +1,31 @@
+.banner {
+  background: linear-gradient(
+    90deg,
+    #fff066 0%,
+    #ffc04f 30%,
+    #ff85c1 70%,
+    #ff5b9d 100%
+  );
+  border-top: 3px ridge var(--magenta-link);
+  border-bottom: 3px ridge var(--magenta-link);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+  margin-bottom: var(--space-5);
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.banner span {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .banner {
+    font-size: 13px;
+    padding: var(--space-2) var(--space-3);
+  }
+}

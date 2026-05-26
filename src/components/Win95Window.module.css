@@ -1,0 +1,52 @@
+.window {
+  background: var(--white);
+  border: 2px solid var(--magenta-link);
+  box-shadow: 4px 4px 0 var(--magenta-link);
+  margin: 0 0 var(--space-5);
+  position: relative;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--magenta-link);
+  color: var(--white);
+  padding: 6px var(--space-3);
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--magenta-link);
+}
+
+.titleText {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.controls {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.controlButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 18px;
+  background: var(--white);
+  color: var(--magenta-link);
+  border: 1.5px solid var(--magenta-link);
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
+  user-select: none;
+}
+
+.content {
+  padding: var(--space-4);
+}

@@ -1,0 +1,25 @@
+.counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #000000;
+  border: 2px solid var(--purple-deep);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+.label {
+  color: var(--pink-soft);
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.digits {
+  color: var(--crt-green);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 4px var(--crt-green);
+}

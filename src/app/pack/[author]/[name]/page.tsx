@@ -2,6 +2,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPacks, getPackBySlug } from '@/lib/registry';
 import { InstallCommand } from '@/components/InstallCommand';
+import { Win95Window } from '@/components/Win95Window';
+import { WelcomeBanner } from '@/components/WelcomeBanner';
+import { VisitorCounter } from '@/components/VisitorCounter';
 import styles from './page.module.css';
 
 interface PageProps {
@@ -34,6 +37,8 @@ export default async function PackDetailPage({ params }: PageProps) {
 
   return (
     <main className={styles.wrapper}>
+      <WelcomeBanner packName={pack.name} />
+
       <div className={styles.breadcrumb}>
         <Link href="/">home</Link> · pack
       </div>
@@ -41,6 +46,12 @@ export default async function PackDetailPage({ params }: PageProps) {
       <h1 className={styles.title}>{pack.name} ✦</h1>
       <p className={styles.byline}>
         by <a href={`https://github.com/${pack.author}`}>@{pack.author}</a>
+        {typeof pack.stars === 'number' && (
+          <>
+            {'   '}
+            <VisitorCounter count={pack.stars} label="stars" />
+          </>
+        )}
       </p>
 
       <p className={styles.description}>{pack.description}</p>
@@ -61,14 +72,12 @@ export default async function PackDetailPage({ params }: PageProps) {
         )}
       </div>
 
-      <h2 className={styles.blockHeader}>『 ✦ install ✦ 』</h2>
-      <InstallCommand command={pack.install_command} />
+      <Win95Window title="install">
+        <InstallCommand command={pack.install_command} />
+      </Win95Window>
 
       {pack.skills && pack.skills.length > 0 && (
-        <>
-          <h2 className={styles.blockHeader}>
-            『 ✦ skills ({pack.skills.length}) ✦ 』
-          </h2>
+        <Win95Window title={`skills (${pack.skills.length})`}>
           <ul className={styles.skillsList}>
             {pack.skills.map((skill) => (
               <li key={skill.name} className={styles.skillItem}>
@@ -77,32 +86,33 @@ export default async function PackDetailPage({ params }: PageProps) {
               </li>
             ))}
           </ul>
-        </>
+        </Win95Window>
       )}
 
-      <h2 className={styles.blockHeader}>『 ✦ details ✦ 』</h2>
-      <div className={styles.metaTable}>
-        <span className={styles.metaLabel}>version</span>
-        <span className={styles.metaValue}>{pack.version}</span>
+      <Win95Window title="details">
+        <div className={styles.metaTable}>
+          <span className={styles.metaLabel}>version</span>
+          <span className={styles.metaValue}>{pack.version}</span>
 
-        <span className={styles.metaLabel}>license</span>
-        <span className={styles.metaValue}>{pack.license}</span>
+          <span className={styles.metaLabel}>license</span>
+          <span className={styles.metaValue}>{pack.license}</span>
 
-        <span className={styles.metaLabel}>repository</span>
-        <span className={styles.metaValue}>
-          <a href={repoUrl}>{pack.repo}</a>
-        </span>
+          <span className={styles.metaLabel}>repository</span>
+          <span className={styles.metaValue}>
+            <a href={repoUrl}>{pack.repo}</a>
+          </span>
 
-        <span className={styles.metaLabel}>submitted</span>
-        <span className={styles.metaValue}>{pack.submitted_at.slice(0, 10)}</span>
+          <span className={styles.metaLabel}>submitted</span>
+          <span className={styles.metaValue}>{pack.submitted_at.slice(0, 10)}</span>
 
-        {pack.tags && pack.tags.length > 0 && (
-          <>
-            <span className={styles.metaLabel}>tags</span>
-            <span className={styles.metaValue}>{pack.tags.join(', ')}</span>
-          </>
-        )}
-      </div>
+          {pack.tags && pack.tags.length > 0 && (
+            <>
+              <span className={styles.metaLabel}>tags</span>
+              <span className={styles.metaValue}>{pack.tags.join(', ')}</span>
+            </>
+          )}
+        </div>
+      </Win95Window>
     </main>
   );
 }

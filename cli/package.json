@@ -1,6 +1,6 @@
 {
   "name": "sparkleware",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The holographic discovery CLI for Aeon AI agent skill packs ✦",
   "keywords": ["aeon", "skill-pack", "sparkleware", "registry", "cli", "agent"],
   "homepage": "https://sparkleware.fun",
@@ -13,9 +13,7 @@
   "license": "MIT",
   "author": "sparkleware",
   "type": "module",
-  "bin": {
-    "sparkleware": "./dist/cli.js"
-  },
+  "bin": "dist/cli.js",
   "files": [
     "dist",
     "README.md"

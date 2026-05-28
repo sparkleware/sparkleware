@@ -2,9 +2,15 @@
 import pc from 'picocolors';
 import readline from 'node:readline';
 import { spawn } from 'node:child_process';
+import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 
 const API_URL = 'https://sparkleware.fun/api/packs.json';
-const VERSION = '0.2.0';
+const VERSION = '0.3.0';
+
+const CATEGORIES = ['research', 'crypto', 'dev', 'social', 'productivity', 'meta'] as const;
+const NAME_RE = /^[a-z0-9][a-z0-9-_]*$/;
+const HANDLE_RE = /^[a-zA-Z0-9][a-zA-Z0-9-_]*$/;
 
 interface Skill {
   name: string;
@@ -427,6 +433,7 @@ function renderHelpOneShot() {
   console.log();
   const rows: [string, string][] = [
     ['npx sparkleware', 'enter interactive mode (REPL)'],
+    ['npx sparkleware init [name]', 'scaffold a new Aeon-format pack ✦'],
     ['npx sparkleware <pack-name>', 'show pack detail'],
     ['npx sparkleware search <query>', 'search packs'],
     ['npx sparkleware top [category]', 'top 10 by stars'],
@@ -465,6 +472,349 @@ function openInBrowser(url: string) {
     }
   } catch {
     console.log(INDENT + purpleDim('open this URL: ') + url);
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// `init` command — scaffold a new Aeon-format skill pack
+// ──────────────────────────────────────────────────────────────
+
+function askPrompt(rl: readline.Interface, question: string, defaultValue?: string): Promise<string> {
+  return new Promise((resolve) => {
+    const prefix = '  ' + pink('? ') + question;
+    const suffix = defaultValue ? purpleDim(` (${defaultValue})`) : '';
+    rl.question(prefix + suffix + pink(' › '), (answer) => {
+      const trimmed = answer.trim();
+      resolve(trimmed || defaultValue || '');
+    });
+  });
+}
+
+function packTemplate(opts: {
+  name: string;
+  author: string;
+  description: string;
+  category: string;
+  version: string;
+  license: string;
+  skillSlug: string;
+  skillDescription: string;
+}): string {
+  return JSON.stringify(
+    {
+      name: opts.name,
+      version: opts.version,
+      description: opts.description,
+      author: opts.author,
+      license: opts.license,
+      homepage: `https://github.com/${opts.author}/${opts.name}`,
+      skills: [
+        {
+          slug: opts.skillSlug,
+          path: `skills/${opts.skillSlug}`,
+          description: opts.skillDescription,
+          category: opts.category,
+          schedule: '0 9 * * *',
+          default_enabled: false,
+        },
+      ],
+    },
+    null,
+    2,
+  );
+}
+
+function skillMdTemplate(opts: {
+  skillSlug: string;
+  skillDescription: string;
+  category: string;
+}): string {
+  const title = opts.skillSlug
+    .split(/[-_]/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+  return `---
+name: ${title}
+description: ${opts.skillDescription}
+var: ""
+tags: [${opts.category}]
+---
+
+# ${title} ✦
+
+Brief description of what this skill does and why.
+
+## Goal
+
+What does this skill help an Aeon agent accomplish? Describe the outcome.
+
+## Steps
+
+### 1. Setup
+
+Describe any prerequisite — env vars, accounts, configs.
+
+### 2. Execute
+
+Describe the main action this skill performs.
+
+### 3. Output
+
+Describe what gets printed / written / surfaced.
+
+## Notes
+
+- Edge cases handled
+- Failure modes
+- Idempotency considerations
+`;
+}
+
+function readmeTemplate(opts: {
+  name: string;
+  author: string;
+  description: string;
+  skillSlug: string;
+}): string {
+  return `# ${opts.name} ✦
+
+${opts.description}
+
+An [Aeon](https://github.com/aaronjmars/aeon) skill pack — discoverable on [Sparkleware](https://sparkleware.fun).
+
+## Install
+
+\`\`\`bash
+./install-skill-pack ${opts.author}/${opts.name}
+\`\`\`
+
+## Skills
+
+| Skill | Description |
+|---|---|
+| \`${opts.skillSlug}\` | See [\`skills/${opts.skillSlug}/SKILL.md\`](skills/${opts.skillSlug}/SKILL.md) |
+
+## Discovery
+
+This pack is auto-indexed on Sparkleware via the \`aeon-skill-pack\` GitHub topic.
+For verified listing, submit a PR to [sparkleware/sparkleware](https://github.com/sparkleware/sparkleware) using the interactive wizard at [sparkleware.fun/submit](https://sparkleware.fun/submit).
+
+## License
+
+MIT
+`;
+}
+
+const MIT_LICENSE = `MIT License
+
+Copyright (c) ${new Date().getFullYear()} __AUTHOR__
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+`;
+
+const GITIGNORE_TEMPLATE = `node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+dist/
+.cache/
+`;
+
+async function cmdInit(packNameArg?: string) {
+  printBanner();
+  console.log(INDENT + pink('✦ create a new Aeon-format skill pack ✦'));
+  console.log();
+  console.log(
+    INDENT +
+      purpleDim('this will scaffold a directory with skills-pack.json,'),
+  );
+  console.log(
+    INDENT +
+      purpleDim('SKILL.md template, README, LICENSE, and .gitignore.'),
+  );
+  console.log();
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: true,
+  });
+
+  try {
+    let name = packNameArg ?? '';
+    while (!NAME_RE.test(name)) {
+      name = await askPrompt(rl, 'pack name (kebab-case)', name || undefined);
+      if (!NAME_RE.test(name)) {
+        console.log(
+          INDENT + pc.red('  ✦ invalid — use lowercase letters, digits, -, _'),
+        );
+      }
+    }
+
+    let author = '';
+    while (!HANDLE_RE.test(author)) {
+      author = await askPrompt(rl, 'github handle');
+      if (!HANDLE_RE.test(author)) {
+        console.log(INDENT + pc.red('  ✦ invalid github handle'));
+      }
+    }
+
+    let description = '';
+    while (description.length < 10 || description.length > 280) {
+      description = await askPrompt(rl, 'description (10-280 chars)');
+      if (description.length < 10) {
+        console.log(INDENT + pc.red('  ✦ too short — at least 10 chars'));
+      } else if (description.length > 280) {
+        console.log(INDENT + pc.red('  ✦ too long — at most 280 chars'));
+      }
+    }
+
+    let category = '';
+    while (!CATEGORIES.includes(category as typeof CATEGORIES[number])) {
+      category = await askPrompt(
+        rl,
+        'category [' + CATEGORIES.join(' | ') + ']',
+        'meta',
+      );
+      if (!CATEGORIES.includes(category as typeof CATEGORIES[number])) {
+        console.log(INDENT + pc.red('  ✦ invalid category'));
+      }
+    }
+
+    let skillSlug = '';
+    while (!NAME_RE.test(skillSlug)) {
+      skillSlug = await askPrompt(rl, 'first skill slug', name);
+      if (!NAME_RE.test(skillSlug)) {
+        console.log(
+          INDENT + pc.red('  ✦ invalid — use lowercase letters, digits, -, _'),
+        );
+      }
+    }
+
+    const skillDescription = await askPrompt(
+      rl,
+      'first skill description',
+      `Primary skill for ${name}.`,
+    );
+
+    const version = await askPrompt(rl, 'initial version', '0.1.0');
+    const license = await askPrompt(rl, 'license (SPDX id)', 'MIT');
+
+    rl.close();
+
+    // Scaffold
+    const root = resolve(process.cwd(), name);
+    if (existsSync(root)) {
+      console.log();
+      console.log(pc.red(`  ✦ directory already exists: ${root}`));
+      console.log(INDENT + purpleDim('aborting — remove it or pick a different name'));
+      process.exit(1);
+    }
+
+    console.log();
+    console.log(INDENT + pink('✦ scaffolding...'));
+    console.log();
+
+    mkdirSync(root, { recursive: true });
+    mkdirSync(join(root, 'skills', skillSlug), { recursive: true });
+
+    const written: string[] = [];
+
+    const manifest = packTemplate({
+      name,
+      author,
+      description,
+      category,
+      version,
+      license,
+      skillSlug,
+      skillDescription,
+    });
+    writeFileSync(join(root, 'skills-pack.json'), manifest);
+    written.push('skills-pack.json');
+
+    writeFileSync(
+      join(root, 'skills', skillSlug, 'SKILL.md'),
+      skillMdTemplate({ skillSlug, skillDescription, category }),
+    );
+    written.push(`skills/${skillSlug}/SKILL.md`);
+
+    writeFileSync(
+      join(root, 'README.md'),
+      readmeTemplate({ name, author, description, skillSlug }),
+    );
+    written.push('README.md');
+
+    writeFileSync(
+      join(root, 'LICENSE'),
+      MIT_LICENSE.replace('__AUTHOR__', author),
+    );
+    written.push('LICENSE');
+
+    writeFileSync(join(root, '.gitignore'), GITIGNORE_TEMPLATE);
+    written.push('.gitignore');
+
+    written.forEach((f) => {
+      console.log(INDENT + lilac('  ✓ ') + purpleDeep(`${name}/${f}`));
+    });
+
+    console.log();
+    console.log(INDENT + pink('✦ next steps:'));
+    console.log();
+    console.log(INDENT + purpleDim('  1.') + '  ' + magenta(`cd ${name}`));
+    console.log(
+      INDENT +
+        purpleDim('  2.') +
+        '  ' +
+        magenta('git init && git add . && git commit -m "feat: initial pack scaffold"'),
+    );
+    console.log(
+      INDENT +
+        purpleDim('  3.') +
+        '  push to ' +
+        magenta(`github.com/${author}/${name}`),
+    );
+    console.log(
+      INDENT +
+        purpleDim('  4.') +
+        '  add the ' +
+        magenta('aeon-skill-pack') +
+        ' GitHub topic',
+    );
+    console.log(
+      INDENT +
+        purpleDim('  5.') +
+        '  submit on ' +
+        magenta('sparkleware.fun/submit') +
+        purpleDim(' (verified) or wait 24h for auto-discovery'),
+    );
+    console.log();
+    console.log(
+      INDENT + purpleDim('install once published: ') + magenta(`./install-skill-pack ${author}/${name}`),
+    );
+    console.log();
+  } catch (e) {
+    rl.close();
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(pc.red('  ✦ init failed: ' + msg));
+    process.exit(1);
   }
 }
 
@@ -640,6 +990,10 @@ async function runOneShot(args: string[]) {
       const packs = await fetchPacks();
       printBanner();
       renderList(packs);
+      return;
+    }
+    case 'init': {
+      await cmdInit(args[1]);
       return;
     }
     default: {

@@ -25,6 +25,9 @@ export function Header() {
         <Link href="/trending/" className={styles.navLink}>
           trending
         </Link>
+        <Link href="/ecosystem/" className={styles.navLink}>
+          ecosystem
+        </Link>
         <Link href="/stats/" className={styles.navLink}>
           stats
         </Link>

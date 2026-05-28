@@ -1,0 +1,28 @@
+{
+  "name": "sparkleware-browse",
+  "author": "sparkleware",
+  "repo": "sparkleware/sparkleware-browse",
+  "description": "Live discovery skills for Aeon agents — search, randomize, and recommend skill packs from the Sparkleware registry without leaving the agent context.",
+  "category": "meta",
+  "tags": ["discovery", "sparkleware", "meta", "recommendation"],
+  "version": "0.1.0",
+  "verified": true,
+  "skills_count": 3,
+  "skills": [
+    {
+      "name": "sparkleware-search",
+      "description": "Full-text search across the Sparkleware registry by name, description, skills, tags, or category."
+    },
+    {
+      "name": "sparkleware-random",
+      "description": "Serendipity pick — fetches one random pack from the registry for ecosystem awareness."
+    },
+    {
+      "name": "sparkleware-recommend",
+      "description": "Returns the top 5 packs in a given Aeon category, ranked by stars and freshness."
+    }
+  ],
+  "install_command": "./install-skill-pack sparkleware/sparkleware-browse",
+  "submitted_at": "2026-05-29T00:00:00Z",
+  "license": "MIT"
+}

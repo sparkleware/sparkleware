@@ -1,0 +1,235 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.chip {
+  --cat-color: var(--magenta-link);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--purple-deep);
+  cursor: pointer;
+  transition: all 150ms ease;
+  text-transform: lowercase;
+}
+
+.chip:hover {
+  border-color: var(--magenta-link);
+  color: var(--magenta-link);
+}
+
+.chipActive {
+  background: var(--cat-color);
+  color: var(--white);
+  border-color: var(--cat-color);
+  box-shadow: 0 2px 0 var(--purple-deep);
+}
+
+.chipActive .chipCount {
+  color: var(--white);
+  opacity: 0.85;
+}
+
+.chipDot {
+  width: 8px;
+  height: 8px;
+  background: var(--cat-color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.chipCount {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-medium);
+  font-weight: 400;
+}
+
+.mapWrapper {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 209, 240, 0.45),
+    rgba(197, 232, 255, 0.45),
+    rgba(217, 197, 255, 0.45),
+    rgba(255, 227, 245, 0.45)
+  );
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-lg);
+  box-shadow: 6px 6px 0 var(--magenta-link), inset 0 0 60px rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+}
+
+.categoryLabel {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 18px;
+  fill: var(--purple-deep);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.node {
+  transition: transform 200ms ease;
+}
+
+.nodeCircle {
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.nodeCircle:hover {
+  transform: scale(1.1);
+}
+
+.nodeStar {
+  fill: var(--white);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.hoverPanel {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  background: var(--white);
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: 0 8px 24px rgba(204, 0, 102, 0.3);
+  max-width: 560px;
+  margin: 0 auto;
+  font-family: var(--font-ui);
+  pointer-events: none;
+}
+
+.hoverHead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.hoverName {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--magenta-link);
+}
+
+.hoverAuthor {
+  font-size: 12px;
+  color: var(--purple-medium);
+}
+
+.hoverMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.hoverTag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+.hoverSkills,
+.hoverStars,
+.hoverTrust {
+  font-size: 11px;
+  color: var(--purple-medium);
+  font-family: var(--font-mono);
+}
+
+.hoverStars {
+  color: var(--magenta-link);
+  font-weight: 700;
+}
+
+.hoverDesc {
+  font-size: 12px;
+  color: var(--purple-deep);
+  line-height: 1.4;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hoverFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.hoverSource {
+  color: var(--purple-medium);
+  font-family: var(--font-mono);
+  font-style: italic;
+}
+
+.hoverLink {
+  color: var(--magenta-link);
+  font-weight: 700;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.hoverLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .hoverPanel {
+    bottom: var(--space-2);
+    left: var(--space-2);
+    right: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+  .hoverName {
+    font-size: 14px;
+  }
+  .categoryLabel {
+    font-size: 14px;
+  }
+}

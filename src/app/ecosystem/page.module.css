@@ -1,0 +1,119 @@
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.head {
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(28px, 5vw, 40px);
+  color: var(--magenta-link);
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--purple-medium);
+  font-size: 14px;
+  margin: 0 0 var(--space-2);
+}
+
+.subtitleLink {
+  color: var(--magenta-link);
+  text-decoration: none;
+}
+
+.subtitleLink:hover {
+  text-decoration: underline;
+}
+
+.subtitleNote {
+  color: var(--purple-medium);
+  font-size: 12px;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-medium);
+  margin: 0;
+}
+
+.legend {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.legendList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--purple-deep);
+}
+
+.legendList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendList strong {
+  color: var(--magenta-link);
+}
+
+.legendDot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--magenta-link);
+  flex-shrink: 0;
+}
+
+.legendStar {
+  color: var(--magenta-link);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 16px;
+  width: 12px;
+  display: inline-block;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--purple-medium);
+  font-style: italic;
+  margin: var(--space-3) 0 0;
+}
+
+.footer a {
+  color: var(--magenta-link);
+}
+
+.footer code {
+  background: var(--purple-pale);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  color: var(--magenta-link);
+}

@@ -9,13 +9,15 @@
 
 .head {
   text-align: center;
+  margin-top: calc(-1 * var(--space-4));
+  margin-bottom: calc(-1 * var(--space-4));
 }
 
 .banner {
   display: block;
-  width: min(88vw, 640px);
+  width: min(72vw, 440px);
   height: auto;
-  margin: 0 auto var(--space-2);
+  margin: 0 auto;
   filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
 }
 

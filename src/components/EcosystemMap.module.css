@@ -65,16 +65,23 @@
 
 .mapWrapper {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 209, 240, 0.45),
-    rgba(197, 232, 255, 0.45),
-    rgba(217, 197, 255, 0.45),
-    rgba(255, 227, 245, 0.45)
-  );
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 209, 240, 0.7), transparent 55%),
+    radial-gradient(circle at 80% 25%, rgba(197, 232, 255, 0.7), transparent 60%),
+    radial-gradient(circle at 25% 80%, rgba(217, 197, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(255, 227, 245, 0.7), transparent 60%),
+    linear-gradient(
+      135deg,
+      rgba(255, 240, 248, 0.85),
+      rgba(232, 220, 250, 0.85),
+      rgba(214, 236, 250, 0.85)
+    );
   border: 2px solid var(--magenta-link);
   border-radius: var(--radius-lg);
-  box-shadow: 6px 6px 0 var(--magenta-link), inset 0 0 60px rgba(255, 255, 255, 0.4);
+  box-shadow:
+    6px 6px 0 var(--magenta-link),
+    inset 0 0 100px rgba(255, 255, 255, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
   overflow: hidden;
 }
 
@@ -88,9 +95,8 @@
 .categoryLabel {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 18px;
-  fill: var(--purple-deep);
-  letter-spacing: 0.05em;
+  font-size: 16px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   pointer-events: none;
 }

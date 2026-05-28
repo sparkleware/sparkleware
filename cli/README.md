@@ -3,9 +3,14 @@
 The holographic discovery CLI for [Aeon](https://github.com/aaronjmars/aeon) AI agent skill packs.
 
 ```
-✦  S P A R K L E W A R E  ✦
-the holographic registry for Aeon skill packs
-sparkleware.fun
+  ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦
+  ███████╗██████╗  █████╗ ██████╗ ██╗  ██╗██╗     ███████╗██╗    ██╗ █████╗ ██████╗ ███████╗
+  ██╔════╝██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██║     ██╔════╝██║    ██║██╔══██╗██╔══██╗██╔════╝
+  ███████╗██████╔╝███████║██████╔╝█████╔╝ ██║     █████╗  ██║ █╗ ██║███████║██████╔╝█████╗
+  ╚════██║██╔═══╝ ██╔══██║██╔══██╗██╔═██╗ ██║     ██╔══╝  ██║███╗██║██╔══██║██╔══██╗██╔══╝
+  ███████║██║     ██║  ██║██║  ██║██║  ██╗███████╗███████╗╚███╔███╔╝██║  ██║██║  ██║███████╗
+  ╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+  ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦
 ```
 
 ## Install
@@ -16,22 +21,72 @@ No install needed — run via `npx`:
 npx sparkleware
 ```
 
-Or install globally:
+This drops you into an **interactive REPL** with a holographic banner, status box, and slash commands.
+
+For one-shot queries, pass arguments directly:
+
+```bash
+npx sparkleware search arxiv
+npx sparkleware random
+```
+
+Global install (optional):
 
 ```bash
 npm install -g sparkleware
-sparkleware
 ```
 
-## Commands
+## Two Modes
+
+### 🌟 Interactive (REPL)
+
+`npx sparkleware` (no args) opens an interactive prompt:
+
+```
+  ╭──────────────────────────────────────────────╮
+  │ Registry  sparkleware                        │
+  │ Endpoint  sparkleware.fun/api/packs.json     │
+  │ Packs     7 · 7 verified · 0 auto-indexed    │
+  │                                              │
+  │ ● live   Ready — type /help to begin         │
+  ╰──────────────────────────────────────────────╯
+
+  sparkleware v0.2.0
+
+> /search aeon
+> /show arxiv-digest
+> /random
+> /open eth-gas-watch
+> /exit
+```
+
+Slash commands:
 
 | Command | Description |
 |---|---|
-| `npx sparkleware` | List top 20 packs by stars |
-| `npx sparkleware <pack-name>` | Show pack detail (skills, repo, install command) |
-| `npx sparkleware search <query>` | Search packs across name, description, skills, tags |
-| `npx sparkleware top [category]` | Top 10 (optional: filter by category) |
-| `npx sparkleware random` | Serendipity pick — one random pack |
+| `/search <query>` | Search packs (name, description, skills, tags, category) |
+| `/show <pack>` | Show pack detail (skills, repo, install command) |
+| `/top [category]` | Top 10 by stars (optional: filter by category) |
+| `/random` | Serendipity pick — one random pack |
+| `/list` | List all packs by stars |
+| `/open <pack>` | Open pack page in your browser |
+| `/clear` | Clear the screen |
+| `/help` | Show all commands |
+| `/exit` | Quit (also: `Ctrl+C` / `Ctrl+D`) |
+
+Bonus: you can also just type a pack name (e.g. `aeon-pulse`) without `/show`.
+
+### ⚡ One-shot
+
+Pass arguments for quick queries that exit immediately:
+
+| Command | Description |
+|---|---|
+| `npx sparkleware <pack-name>` | Show pack detail |
+| `npx sparkleware search <query>` | Search packs |
+| `npx sparkleware top [category]` | Top 10 |
+| `npx sparkleware random` | Random pick |
+| `npx sparkleware list` | List all packs |
 | `npx sparkleware --version` | Print version |
 | `npx sparkleware --help` | Help message |
 
@@ -39,24 +94,14 @@ sparkleware
 
 `research` · `crypto` · `dev` · `social` · `productivity` · `meta`
 
-## Examples
+## Adaptive Banner
 
-```bash
-# Browse top packs by stars
-npx sparkleware
+The CLI detects terminal width and serves the best-fit banner:
 
-# Find packs related to AI research
-npx sparkleware search arxiv
+- **≥ 96 cols** → Full SPARKLEWARE block art with sparkle bands
+- **< 96 cols** → Compact single-line `✦ S P A R K L E W A R E ✦`
 
-# Show details for a specific pack
-npx sparkleware aeon-pulse
-
-# Browse crypto category leaderboard
-npx sparkleware top crypto
-
-# Get a random pack to discover
-npx sparkleware random
-```
+Set `COLUMNS=120` to force the big banner when piping output.
 
 ## Data source
 

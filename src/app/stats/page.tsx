@@ -66,7 +66,13 @@ export default function StatsPage() {
   return (
     <main className={styles.wrapper}>
       <header className={styles.head}>
-        <h1 className={styles.title}>✦ registry stats ✦</h1>
+        <h1 className={styles.srOnly}>Registry Stats</h1>
+        <img
+          src="/stats-banner.png"
+          alt=""
+          className={styles.banner}
+          aria-hidden="true"
+        />
         <p className={styles.subtitle}>
           live snapshot of the Sparkleware registry · generated {generated}
         </p>

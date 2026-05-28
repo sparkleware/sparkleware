@@ -11,6 +11,26 @@
   text-align: center;
 }
 
+.banner {
+  display: block;
+  width: min(88vw, 720px);
+  height: auto;
+  margin: 0 auto var(--space-2);
+  filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .title {
   font-family: var(--font-display);
   font-weight: 900;

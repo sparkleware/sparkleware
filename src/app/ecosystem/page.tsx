@@ -20,7 +20,13 @@ export default async function EcosystemPage() {
   return (
     <main className={styles.wrapper}>
       <header className={styles.head}>
-        <h1 className={styles.title}>✦ aeon ecosystem ✦</h1>
+        <h1 className={styles.srOnly}>Aeon Ecosystem</h1>
+        <img
+          src="/ecosystem-banner.png"
+          alt=""
+          className={styles.banner}
+          aria-hidden="true"
+        />
         <p className={styles.subtitle}>
           a holographic constellation of every skill pack — sparkleware merged with{' '}
           <a

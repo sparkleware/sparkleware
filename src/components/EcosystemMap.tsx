@@ -57,33 +57,71 @@ function hash(s: string, salt = ''): number {
   return Math.abs(h) / 2147483648;
 }
 
+// Layouts for the "all" overview — small offsets so each cluster fits in
+// its grid cell.
 const CLUSTER_LAYOUT: Record<number, Array<{ dx: number; dy: number }>> = {
   1: [{ dx: 0, dy: 0 }],
   2: [
-    { dx: -22, dy: 0 },
-    { dx: 22, dy: 0 },
+    { dx: -28, dy: 0 },
+    { dx: 28, dy: 0 },
   ],
   3: [
-    { dx: 0, dy: -22 },
-    { dx: -22, dy: 14 },
-    { dx: 22, dy: 14 },
+    { dx: 0, dy: -28 },
+    { dx: -30, dy: 18 },
+    { dx: 30, dy: 18 },
   ],
   4: [
-    { dx: -22, dy: -22 },
-    { dx: 22, dy: -22 },
-    { dx: -22, dy: 22 },
-    { dx: 22, dy: 22 },
+    { dx: -28, dy: -28 },
+    { dx: 28, dy: -28 },
+    { dx: -28, dy: 28 },
+    { dx: 28, dy: 28 },
   ],
   5: [
-    { dx: 0, dy: -30 },
-    { dx: -30, dy: -10 },
-    { dx: 30, dy: -10 },
-    { dx: -18, dy: 26 },
-    { dx: 18, dy: 26 },
+    { dx: 0, dy: -38 },
+    { dx: -36, dy: -10 },
+    { dx: 36, dy: -10 },
+    { dx: -22, dy: 32 },
+    { dx: 22, dy: 32 },
   ],
 };
 
-function layoutNodes(nodes: EcosystemNode[], width: number, height: number): PositionedNode[] {
+// Layouts for the focused (single-category) view — much wider offsets so
+// the bubbles spread across the whole canvas.
+const FOCUS_LAYOUT: Record<number, Array<{ dx: number; dy: number }>> = {
+  1: [{ dx: 0, dy: 0 }],
+  2: [
+    { dx: -120, dy: 0 },
+    { dx: 120, dy: 0 },
+  ],
+  3: [
+    { dx: 0, dy: -110 },
+    { dx: -130, dy: 65 },
+    { dx: 130, dy: 65 },
+  ],
+  4: [
+    { dx: -130, dy: -95 },
+    { dx: 130, dy: -95 },
+    { dx: -130, dy: 95 },
+    { dx: 130, dy: 95 },
+  ],
+  5: [
+    { dx: 0, dy: -140 },
+    { dx: -160, dy: -40 },
+    { dx: 160, dy: -40 },
+    { dx: -100, dy: 120 },
+    { dx: 100, dy: 120 },
+  ],
+};
+
+// Sizing tables for the two views.
+const SIZE_ALL = { base: 14, factor: 2.2, max: 30 };
+const SIZE_FOCUS = { base: 28, factor: 4, max: 56 };
+
+function bubbleRadius(skillCount: number, size: { base: number; factor: number; max: number }) {
+  return size.base + Math.min(size.max - size.base, skillCount * size.factor);
+}
+
+function layoutAll(nodes: EcosystemNode[], width: number, height: number): PositionedNode[] {
   const padding = 90;
   const cols = 3;
   const rows = 2;
@@ -96,39 +134,35 @@ function layoutNodes(nodes: EcosystemNode[], width: number, height: number): Pos
     const col = idx % cols;
     const row = Math.floor(idx / cols);
     const cx = padding + cellW * col + cellW / 2;
-    const cy = padding + cellH * row + cellH / 2 + 14;
+    const cy = padding + cellH * row + cellH / 2 + 18;
 
     const catNodes = nodes.filter((n) => n.category === cat);
     const n = catNodes.length;
     if (n === 0) return;
 
-    // Pre-defined layouts for small clusters keep things tidy.
     if (n <= 5 && CLUSTER_LAYOUT[n]) {
       const offsets = CLUSTER_LAYOUT[n];
       catNodes.forEach((node, i) => {
         const { dx, dy } = offsets[i];
-        const r = 10 + Math.min(14, node.skill_count * 1.8);
         positioned.push({
           ...node,
           x: cx + dx,
           y: cy + dy,
-          r,
+          r: bubbleRadius(node.skill_count, SIZE_ALL),
           cluster: { cx, cy },
         });
       });
     } else {
-      // Larger cluster: arrange in a ring with deterministic jitter.
-      const baseRadius = 38;
+      const baseRadius = 48;
       catNodes.forEach((node, i) => {
         const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
-        const jitter = (hash(node.id) - 0.5) * 6;
+        const jitter = (hash(node.id) - 0.5) * 8;
         const radius = baseRadius + jitter;
-        const r = 10 + Math.min(14, node.skill_count * 1.8);
         positioned.push({
           ...node,
           x: cx + Math.cos(angle) * radius,
           y: cy + Math.sin(angle) * radius,
-          r,
+          r: bubbleRadius(node.skill_count, SIZE_ALL),
           cluster: { cx, cy },
         });
       });
@@ -136,6 +170,59 @@ function layoutNodes(nodes: EcosystemNode[], width: number, height: number): Pos
   });
 
   return positioned;
+}
+
+function layoutFocused(
+  nodes: EcosystemNode[],
+  width: number,
+  height: number,
+  category: Category,
+): PositionedNode[] {
+  const catNodes = nodes.filter((n) => n.category === category);
+  const n = catNodes.length;
+  if (n === 0) return [];
+
+  const cx = width / 2;
+  const cy = height / 2 + 30;
+
+  if (n <= 5 && FOCUS_LAYOUT[n]) {
+    const offsets = FOCUS_LAYOUT[n];
+    return catNodes.map((node, i) => {
+      const { dx, dy } = offsets[i];
+      return {
+        ...node,
+        x: cx + dx,
+        y: cy + dy,
+        r: bubbleRadius(node.skill_count, SIZE_FOCUS),
+        cluster: { cx, cy },
+      };
+    });
+  }
+
+  // Larger cluster: arrange in a ring filling most of the canvas.
+  const baseRadius = 180;
+  return catNodes.map((node, i) => {
+    const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+    const jitter = (hash(node.id) - 0.5) * 16;
+    const radius = baseRadius + jitter;
+    return {
+      ...node,
+      x: cx + Math.cos(angle) * radius,
+      y: cy + Math.sin(angle) * radius,
+      r: bubbleRadius(node.skill_count, SIZE_FOCUS),
+      cluster: { cx, cy },
+    };
+  });
+}
+
+function layoutNodes(
+  nodes: EcosystemNode[],
+  width: number,
+  height: number,
+  focus: Category | null,
+): PositionedNode[] {
+  if (focus) return layoutFocused(nodes, width, height, focus);
+  return layoutAll(nodes, width, height);
 }
 
 // Decorative sparkles spread across the canvas
@@ -172,45 +259,56 @@ export function EcosystemMap({ nodes }: EcosystemMapProps) {
   const width = 1000;
   const height = 640;
 
-  const positioned = useMemo(() => layoutNodes(nodes, width, height), [nodes]);
+  const positioned = useMemo(
+    () => layoutNodes(nodes, width, height, activeCategory),
+    [nodes, activeCategory],
+  );
   const sparkles = useMemo(() => makeSparkles(width, height), []);
 
-  const filtered = useMemo(
-    () => (activeCategory ? positioned.filter((n) => n.category === activeCategory) : positioned),
-    [positioned, activeCategory],
-  );
-
-  const inactive = useMemo(
-    () => (activeCategory ? positioned.filter((n) => n.category !== activeCategory) : []),
-    [positioned, activeCategory],
-  );
+  // In focused mode, layoutFocused already returns only the active category,
+  // so `filtered` is just everything positioned. Unfocused categories are
+  // hidden completely rather than dimmed.
+  const filtered = positioned;
 
   const counts = useMemo(() => {
     const result: Record<string, number> = {};
     for (const cat of CATEGORIES) {
-      result[cat] = positioned.filter((n) => n.category === cat).length;
+      result[cat] = nodes.filter((n) => n.category === cat).length;
     }
     return result;
-  }, [positioned]);
+  }, [nodes]);
 
-  // Cluster centers for backdrop circles + connection lines
+  // Cluster centers for backdrop circles + connection lines. In focused
+  // mode there is exactly one big centred cluster; otherwise the 3x2 grid.
   const clusters = useMemo(() => {
+    if (activeCategory) {
+      return [
+        {
+          cat: activeCategory,
+          cx: width / 2,
+          cy: height / 2 + 30,
+          labelY: 60,
+          haloR: 220,
+        },
+      ];
+    }
+    const padding = 90;
+    const cols = 3;
+    const rows = 2;
+    const cellW = (width - padding * 2) / cols;
+    const cellH = (height - padding * 2) / rows;
     return CATEGORIES.map((cat, idx) => {
-      const padding = 90;
-      const cols = 3;
-      const rows = 2;
-      const cellW = (width - padding * 2) / cols;
-      const cellH = (height - padding * 2) / rows;
       const col = idx % cols;
       const row = Math.floor(idx / cols);
       return {
         cat,
         cx: padding + cellW * col + cellW / 2,
-        cy: padding + cellH * row + cellH / 2 + 14,
+        cy: padding + cellH * row + cellH / 2 + 18,
         labelY: padding + cellH * row + 32,
+        haloR: 92,
       };
     });
-  }, []);
+  }, [activeCategory]);
 
   return (
     <div className={styles.wrapper}>
@@ -303,71 +401,51 @@ export function EcosystemMap({ nodes }: EcosystemMapProps) {
           </g>
 
           {/* Cluster halos */}
-          {clusters.map((c) => {
-            const isActive = !activeCategory || activeCategory === c.cat;
-            const haloR = 78;
-            return (
-              <circle
-                key={'halo-' + c.cat}
-                cx={c.cx}
-                cy={c.cy}
-                r={haloR}
-                fill="url(#clusterHalo)"
-                opacity={isActive ? 0.9 : 0.2}
-              />
-            );
-          })}
+          {clusters.map((c) => (
+            <circle
+              key={'halo-' + c.cat}
+              cx={c.cx}
+              cy={c.cy}
+              r={c.haloR}
+              fill="url(#clusterHalo)"
+              opacity={0.9}
+            />
+          ))}
 
           {/* Constellation lines connecting nodes within same cluster */}
-          {!activeCategory &&
-            clusters.flatMap((c) => {
-              const catNodes = positioned.filter((n) => n.category === c.cat);
-              if (catNodes.length < 2) return [];
-              return catNodes.map((node, idx) => {
-                const next = catNodes[(idx + 1) % catNodes.length];
-                return (
-                  <line
-                    key={`line-${node.id}-${next.id}`}
-                    x1={node.x}
-                    y1={node.y}
-                    x2={next.x}
-                    y2={next.y}
-                    stroke="url(#lineGrad)"
-                    strokeWidth={1}
-                    opacity={0.35}
-                  />
-                );
-              });
-            })}
-
-          {/* Category labels with sparkles */}
-          {clusters.map((c) => {
-            const isDim = activeCategory && activeCategory !== c.cat;
-            return (
-              <text
-                key={'label-' + c.cat}
-                x={c.cx}
-                y={c.labelY}
-                className={styles.categoryLabel}
-                textAnchor="middle"
-                opacity={isDim ? 0.18 : 0.9}
-                style={{ fill: CATEGORY_COLORS[c.cat] }}
-              >
-                ✦ {CATEGORY_LABELS[c.cat]} ✦
-              </text>
-            );
+          {clusters.flatMap((c) => {
+            const catNodes = positioned.filter((n) => n.category === c.cat);
+            if (catNodes.length < 2) return [];
+            return catNodes.map((node, idx) => {
+              const next = catNodes[(idx + 1) % catNodes.length];
+              return (
+                <line
+                  key={`line-${node.id}-${next.id}`}
+                  x1={node.x}
+                  y1={node.y}
+                  x2={next.x}
+                  y2={next.y}
+                  stroke="url(#lineGrad)"
+                  strokeWidth={activeCategory ? 1.5 : 1}
+                  opacity={activeCategory ? 0.5 : 0.35}
+                />
+              );
+            });
           })}
 
-          {/* Inactive nodes (when filtering) */}
-          {inactive.map((node) => (
-            <circle
-              key={'i:' + node.id}
-              cx={node.x}
-              cy={node.y}
-              r={node.r * 0.6}
-              fill={CATEGORY_COLORS[node.category] ?? '#ccc'}
-              opacity={0.18}
-            />
+          {/* Category labels with sparkles — bigger in focus mode */}
+          {clusters.map((c) => (
+            <text
+              key={'label-' + c.cat}
+              x={c.cx}
+              y={c.labelY}
+              className={activeCategory ? styles.categoryLabelLarge : styles.categoryLabel}
+              textAnchor="middle"
+              opacity={0.95}
+              style={{ fill: CATEGORY_COLORS[c.cat] }}
+            >
+              ✦ {CATEGORY_LABELS[c.cat]} ✦
+            </text>
           ))}
 
           {/* Active nodes — holographic bubbles */}

@@ -101,6 +101,15 @@
   pointer-events: none;
 }
 
+.categoryLabelLarge {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
 .node {
   transition: transform 200ms ease;
 }

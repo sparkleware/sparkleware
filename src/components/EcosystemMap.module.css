@@ -107,11 +107,7 @@
 
 .nodeCircle {
   cursor: pointer;
-  transition: all 150ms ease;
-}
-
-.nodeCircle:hover {
-  transform: scale(1.1);
+  transition: stroke-width 150ms ease, filter 150ms ease;
 }
 
 .nodeStar {

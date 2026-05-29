@@ -375,14 +375,15 @@ export function EcosystemMap({ nodes }: EcosystemMapProps) {
             const isHovered = hovered?.id === node.id;
             return (
               <g key={node.id} className={styles.node}>
-                {/* Outer halo */}
+                {/* Outer halo on hover — kept small to avoid overlapping neighbours */}
                 {isHovered && (
                   <circle
                     cx={node.x}
                     cy={node.y}
-                    r={node.r + 16}
+                    r={node.r + 9}
                     fill="url(#hoverGlow)"
-                    opacity={0.9}
+                    opacity={0.85}
+                    pointerEvents="none"
                   />
                 )}
                 {/* Bubble itself */}

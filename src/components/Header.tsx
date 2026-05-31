@@ -28,6 +28,9 @@ export function Header() {
         <Link href="/ecosystem/" className={styles.navLink}>
           ecosystem
         </Link>
+        <Link href="/kits/" className={styles.navLink}>
+          kits
+        </Link>
         <Link href="/stats/" className={styles.navLink}>
           stats
         </Link>

@@ -28,6 +28,11 @@
   letter-spacing: -0.02em;
 }
 
+.badgePreview {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
 .related {
   margin-top: var(--space-7);
   border-top: 2px dashed var(--purple-light);

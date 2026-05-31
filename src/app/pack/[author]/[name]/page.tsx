@@ -143,6 +143,17 @@ export default async function PackDetailPage({ params }: PageProps) {
         </div>
       </Win95Window>
 
+      <Win95Window title="badge for your readme">
+        <img
+          src={`/api/badge/${pack.author}/${pack.name}/`}
+          alt="sparkleware badge"
+          className={styles.badgePreview}
+        />
+        <InstallCommand
+          command={`[![sparkleware](https://sparkleware.fun/api/badge/${pack.author}/${pack.name}/)](https://sparkleware.fun/pack/${pack.author}/${pack.name}/)`}
+        />
+      </Win95Window>
+
       {related.length > 0 && (
         <section className={styles.related}>
           <h2 className={styles.relatedHeading}>『 ✦ packs like this ✦ 』</h2>

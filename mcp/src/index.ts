@@ -103,6 +103,35 @@ server.tool(
 );
 
 server.tool(
+  'recommend',
+  'Recommend packs related to a given pack — same category and shared tags. Useful for "what else is like X".',
+  {
+    author: z.string().describe('Author of the pack to base recommendations on.'),
+    name: z.string().describe('Name of the pack to base recommendations on.'),
+    limit: z.number().optional().describe('Maximum recommendations (default 5).'),
+  },
+  async ({ author, name, limit }) => {
+    const packs = await loadPacks();
+    const target = packs.find((p) => p.author === author && p.name === name);
+    if (!target) return asText({ error: 'pack not found', author, name });
+    const tags = new Set(target.tags ?? []);
+    const related = packs
+      .filter((p) => !(p.author === author && p.name === name))
+      .map((p) => {
+        let score = 0;
+        if (p.category === target.category) score += 3;
+        for (const t of p.tags ?? []) if (tags.has(t)) score += 2;
+        return { p, score };
+      })
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || (b.p.stars ?? 0) - (a.p.stars ?? 0))
+      .slice(0, limit ?? 5)
+      .map((x) => x.p);
+    return asText({ based_on: `${author}/${name}`, count: related.length, packs: related });
+  },
+);
+
+server.tool(
   'list_categories',
   'List all pack categories with how many packs are in each.',
   {},

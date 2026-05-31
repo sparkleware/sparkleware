@@ -1,7 +1,9 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPacks, getPackBySlug } from '@/lib/registry';
+import { getRelatedPacks } from '@/lib/related';
 import { formatRelativeTime } from '@/lib/time';
+import { HoloCard } from '@/components/HoloCard';
 import { InstallCommand } from '@/components/InstallCommand';
 import { Win95Window } from '@/components/Win95Window';
 import { WelcomeBanner } from '@/components/WelcomeBanner';
@@ -36,6 +38,7 @@ export default async function PackDetailPage({ params }: PageProps) {
 
   const repoUrl = `https://github.com/${pack.repo}`;
   const updated = formatRelativeTime(pack.pushed_at);
+  const related = getRelatedPacks(pack, getAllPacks());
 
   return (
     <main className={styles.wrapper}>
@@ -139,6 +142,17 @@ export default async function PackDetailPage({ params }: PageProps) {
           )}
         </div>
       </Win95Window>
+
+      {related.length > 0 && (
+        <section className={styles.related}>
+          <h2 className={styles.relatedHeading}>『 ✦ packs like this ✦ 』</h2>
+          <div className={styles.relatedGrid}>
+            {related.map((p) => (
+              <HoloCard key={`${p.author}/${p.name}`} pack={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }

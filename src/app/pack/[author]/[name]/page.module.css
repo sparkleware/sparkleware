@@ -28,6 +28,27 @@
   letter-spacing: -0.02em;
 }
 
+.related {
+  margin-top: var(--space-7);
+  border-top: 2px dashed var(--purple-light);
+  padding-top: var(--space-5);
+}
+
+.relatedHeading {
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: 20px;
+  text-align: center;
+  margin: 0 0 var(--space-4);
+  letter-spacing: 0.02em;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
 .byline {
   font-size: 14px;
   color: var(--purple-medium);

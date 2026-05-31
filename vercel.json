@@ -11,5 +11,19 @@
       "source": "/@:user/",
       "destination": "/users/:user/"
     }
+  ],
+  "headers": [
+    {
+      "source": "/api/badge/(.*)",
+      "headers": [{ "key": "Content-Type", "value": "image/svg+xml; charset=utf-8" }]
+    },
+    {
+      "source": "/pack/(.*)/opengraph-image(.*)",
+      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+    },
+    {
+      "source": "/pack/(.*)/twitter-image(.*)",
+      "headers": [{ "key": "Content-Type", "value": "image/png" }]
+    }
   ]
 }

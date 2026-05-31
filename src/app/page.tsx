@@ -1,10 +1,13 @@
 import { getAllPacks } from '@/lib/registry';
 import { HoloCard } from '@/components/HoloCard';
+import { PackOfTheDay } from '@/components/PackOfTheDay';
 import { FloatingSparkles } from '@/components/FloatingSparkles';
 import styles from './page.module.css';
 
 export default function HomePage() {
   const packs = getAllPacks();
+  const verified = packs.filter((pack) => pack.tier === 'verified');
+  const potdPool = verified.length > 0 ? verified : packs;
   return (
     <main>
       <section className={styles.hero}>
@@ -20,6 +23,8 @@ export default function HomePage() {
           Discover, browse, and one-click-install community skills.
         </p>
       </section>
+
+      {potdPool.length > 0 && <PackOfTheDay packs={potdPool} />}
 
       <h2 className={styles.sectionTitle}>『 ✦ all packs ✦ 』</h2>
 

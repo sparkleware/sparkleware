@@ -13,6 +13,18 @@
   letter-spacing: 0.02em;
 }
 
+.titleLogo {
+  text-align: center;
+  margin: 0 0 var(--space-2);
+}
+
+.titleLogo img {
+  width: min(78vw, 320px);
+  height: auto;
+  display: inline-block;
+  filter: drop-shadow(0 6px 18px rgba(204, 0, 102, 0.22));
+}
+
 .intro {
   text-align: center;
   font-style: italic;

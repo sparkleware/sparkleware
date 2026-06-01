@@ -13,7 +13,9 @@ export default function KitsPage() {
   const all = getAllPacks();
   return (
     <main className={styles.wrapper}>
-      <h1 className={styles.title}>『 ✦ kits ✦ 』</h1>
+      <h1 className={styles.titleLogo}>
+        <img src="/kits-logo.png" alt="kits ✦" />
+      </h1>
       <p className={styles.intro}>
         Curated bundles of packs — pre-composed agent workflows. Grab a whole kit in one go.
       </p>

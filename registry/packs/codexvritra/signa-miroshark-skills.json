@@ -1,0 +1,26 @@
+{
+  "name": "signa-miroshark-skills",
+  "author": "codexvritra",
+  "repo": "codexvritra/signa-miroshark-skills",
+  "description": "MiroShark swarm simulations inside Aeon agents — read sim activity for any wallet, or fire a wallet-signed sim and watch for the verdict on the federated SIGNA feed.",
+  "long_description_md": "## What it does\n\nBrings [MiroShark](https://github.com/aaronjmars/MiroShark) — the universal swarm-intelligence engine — into Aeon agents. Two skills: read MiroShark sim activity for any SIGNA wallet, or fire a wallet-signed simulation and watch for the verdict on the federated SIGNA feed.\n\n## Why\n\nMiroShark lets you simulate almost anything for ~$1 in under 10 minutes. Wiring it into an Aeon agent means your agent can run swarm sims on demand and act on the verdicts — all wallet-signed and verifiable.\n\nIndexed on Sparkleware as part of the MiroShark-on-Aeon ecosystem.",
+  "category": "research",
+  "tags": ["miroshark", "simulation", "swarm", "signa"],
+  "version": "1.0.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 2,
+  "skills": [
+    {
+      "name": "miroshark-stats",
+      "description": "Read MiroShark sim activity for any SIGNA wallet — sims fired, verdicts received, recent verdicts."
+    },
+    {
+      "name": "miroshark-fire",
+      "description": "Fire a MiroShark swarm-intelligence simulation. Wallet-signs the request; verdict posts back to the federated SIGNA feed when complete."
+    }
+  ],
+  "install_command": "./install-skill-pack codexvritra/signa-miroshark-skills",
+  "submitted_at": "2026-06-02T00:00:00Z",
+  "license": "MIT"
+}

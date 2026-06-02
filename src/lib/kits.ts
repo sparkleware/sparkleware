@@ -28,6 +28,13 @@ export const KITS: Kit[] = [
     tagline: 'Papers, news, and ecosystem signal for builders who read.',
     packs: ['sparkleware/arxiv-digest', 'sparkleware/hn-top', 'sparkleware/aeon-pulse'],
   },
+  {
+    slug: 'miroshark',
+    name: 'MiroShark on Aeon ✦',
+    tagline:
+      'Run swarm-intelligence simulations from inside your agent — MiroShark sims from Signa, plus the miroshark-aeon automation hub.',
+    packs: ['codexvritra/signa-miroshark-skills', 'aaronjmars/miroshark-aeon'],
+  },
 ];
 
 export function getKit(slug: string): Kit | undefined {

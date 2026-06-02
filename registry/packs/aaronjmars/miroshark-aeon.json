@@ -1,0 +1,16 @@
+{
+  "name": "miroshark-aeon",
+  "author": "aaronjmars",
+  "repo": "aaronjmars/miroshark-aeon",
+  "description": "Public Aeon automation for MiroShark — Aaron's large, growing collection of agent skills built around the swarm-intelligence engine.",
+  "long_description_md": "## What it does\n\nThe canonical MiroShark-on-Aeon automation repo from Aaron (creator of both [Aeon](https://github.com/aaronjmars/aeon) and [MiroShark](https://github.com/aaronjmars/MiroShark)). A broad, actively-maintained collection of Aeon agent skills that automate work around the MiroShark engine.\n\n## Why\n\nMiroShark is Aaron's universal swarm-intelligence engine. This repo is where the public Aeon automation for it lives — the hub the rest of the MiroShark-on-Aeon ecosystem orbits.\n\nIndexed on Sparkleware so the MiroShark Aeon skills are discoverable alongside the rest of the registry.",
+  "category": "meta",
+  "tags": ["miroshark", "automation", "swarm", "aeon"],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 84,
+  "install_command": "./install-skill-pack aaronjmars/miroshark-aeon",
+  "submitted_at": "2026-06-02T00:00:00Z",
+  "license": "unknown"
+}

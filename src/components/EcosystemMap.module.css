@@ -95,7 +95,7 @@
 .categoryLabel {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 16px;
+  font-size: 21px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   pointer-events: none;
@@ -123,7 +123,7 @@
   fill: var(--white);
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 12px;
+  font-size: 14px;
   pointer-events: none;
 }
 

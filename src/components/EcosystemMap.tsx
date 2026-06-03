@@ -62,26 +62,26 @@ function hash(s: string, salt = ''): number {
 const CLUSTER_LAYOUT: Record<number, Array<{ dx: number; dy: number }>> = {
   1: [{ dx: 0, dy: 0 }],
   2: [
-    { dx: -28, dy: 0 },
-    { dx: 28, dy: 0 },
+    { dx: -38, dy: 0 },
+    { dx: 38, dy: 0 },
   ],
   3: [
-    { dx: 0, dy: -28 },
-    { dx: -30, dy: 18 },
-    { dx: 30, dy: 18 },
+    { dx: 0, dy: -36 },
+    { dx: -42, dy: 24 },
+    { dx: 42, dy: 24 },
   ],
   4: [
-    { dx: -28, dy: -28 },
-    { dx: 28, dy: -28 },
-    { dx: -28, dy: 28 },
-    { dx: 28, dy: 28 },
+    { dx: -38, dy: -36 },
+    { dx: 38, dy: -36 },
+    { dx: -38, dy: 36 },
+    { dx: 38, dy: 36 },
   ],
   5: [
-    { dx: 0, dy: -38 },
-    { dx: -36, dy: -10 },
-    { dx: 36, dy: -10 },
-    { dx: -22, dy: 32 },
-    { dx: 22, dy: 32 },
+    { dx: 0, dy: -50 },
+    { dx: -50, dy: -14 },
+    { dx: 50, dy: -14 },
+    { dx: -30, dy: 42 },
+    { dx: 30, dy: 42 },
   ],
 };
 
@@ -114,7 +114,7 @@ const FOCUS_LAYOUT: Record<number, Array<{ dx: number; dy: number }>> = {
 };
 
 // Sizing tables for the two views.
-const SIZE_ALL = { base: 14, factor: 2.2, max: 30 };
+const SIZE_ALL = { base: 18, factor: 2.8, max: 38 };
 const SIZE_FOCUS = { base: 28, factor: 4, max: 56 };
 
 function bubbleRadius(skillCount: number, size: { base: number; factor: number; max: number }) {
@@ -153,7 +153,7 @@ function layoutAll(nodes: EcosystemNode[], width: number, height: number): Posit
         });
       });
     } else {
-      const baseRadius = 48;
+      const baseRadius = 54;
       catNodes.forEach((node, i) => {
         const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
         const jitter = (hash(node.id) - 0.5) * 8;
@@ -256,7 +256,7 @@ export function EcosystemMap({ nodes }: EcosystemMapProps) {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [hovered, setHovered] = useState<PositionedNode | null>(null);
 
-  const width = 1000;
+  const width = 1140;
   const height = 640;
 
   const positioned = useMemo(

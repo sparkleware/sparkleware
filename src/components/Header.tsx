@@ -19,6 +19,9 @@ export function Header() {
         <SearchBar />
       </div>
       <nav className={styles.nav}>
+        <Link href="/discover/" className={styles.navLink}>
+          discover
+        </Link>
         <Link href="/browse/" className={styles.navLink}>
           browse
         </Link>

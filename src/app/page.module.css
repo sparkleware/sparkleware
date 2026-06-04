@@ -28,6 +28,31 @@
   margin: 0;
 }
 
+.discoverCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 209, 240, 0.65),
+    rgba(214, 236, 250, 0.65)
+  );
+  color: var(--magenta-link);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 2px 0 var(--purple-deep);
+  transition: transform 120ms ease;
+}
+
+.discoverCta:hover {
+  transform: translateY(-1px);
+}
+
 .sectionTitle {
   font-family: var(--font-accent);
   color: var(--magenta-link);

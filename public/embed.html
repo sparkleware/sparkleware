@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>sparkleware embed ✦</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --magenta: #cc0066;
+        --pink: #ff85c1;
+        --pink-soft: #ffd1f0;
+        --purple-deep: #6a3aa0;
+        --purple-med: #9c7bc4;
+        --purple-light: #e3d3f7;
+        --white: #fff;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body {
+        font-family: ui-rounded, "Segoe UI", system-ui, sans-serif;
+        color: var(--purple-deep);
+        background:
+          radial-gradient(circle at 15% 10%, rgba(255, 209, 240, 0.7), transparent 55%),
+          radial-gradient(circle at 85% 20%, rgba(197, 232, 255, 0.6), transparent 60%),
+          radial-gradient(circle at 50% 100%, rgba(217, 197, 255, 0.6), transparent 60%),
+          linear-gradient(135deg, #fff0f8, #efe6fb);
+        padding: 14px;
+        min-height: 100vh;
+      }
+      a { text-decoration: none; color: inherit; }
+      .hdr {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .brandLogo { width: 30px; height: 30px; }
+      .brandName {
+        font-weight: 800;
+        font-size: 19px;
+        letter-spacing: -0.01em;
+        background: linear-gradient(110deg, #ff5b9d, #9c7bc4, #7fc4ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+      .brandSub { font-size: 12px; color: var(--purple-med); font-weight: 600; }
+      .powered {
+        font-size: 11px;
+        color: var(--purple-med);
+        border: 1.5px solid var(--purple-light);
+        border-radius: 999px;
+        padding: 4px 10px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .powered:hover { border-color: var(--magenta); color: var(--magenta); }
+      .grid { display: grid; gap: 10px; }
+      .card {
+        display: block;
+        background: var(--white);
+        border: 2px solid var(--pink-soft);
+        border-radius: 14px;
+        padding: 12px 14px;
+        box-shadow: 3px 3px 0 rgba(204, 0, 102, 0.12);
+        transition: transform 120ms ease, border-color 120ms ease;
+      }
+      .card:hover { transform: translateY(-2px); border-color: var(--magenta); }
+      .card h3 {
+        margin: 0 0 4px;
+        font-size: 15px;
+        color: var(--magenta);
+        font-weight: 800;
+      }
+      .card p {
+        margin: 0 0 8px;
+        font-size: 12.5px;
+        line-height: 1.4;
+        color: var(--purple-deep);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 11px; }
+      .badge {
+        background: var(--pink-soft);
+        color: var(--magenta);
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-weight: 700;
+      }
+      .muted { color: var(--purple-med); }
+      .install {
+        margin-top: 8px;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 11px;
+        background: #1e1633;
+        color: #ffd9f1;
+        border-radius: 8px;
+        padding: 6px 9px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .install b { color: var(--pink); font-weight: 700; }
+      .state { text-align: center; color: var(--purple-med); padding: 28px 0; font-style: italic; }
+      .snippet {
+        margin-bottom: 14px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1.5px dashed var(--purple-med);
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+      .snippet label { font-size: 12px; font-weight: 700; color: var(--purple-deep); }
+      .snippet code {
+        display: block;
+        margin-top: 6px;
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+        color: var(--purple-deep);
+        background: var(--white);
+        border: 1px solid var(--purple-light);
+        border-radius: 8px;
+        padding: 8px 10px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      .snippet button {
+        margin-top: 8px;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--white);
+        background: var(--magenta);
+        border: none;
+        border-radius: 999px;
+        padding: 6px 16px;
+        cursor: pointer;
+      }
+      .snippet .hint { font-size: 11px; color: var(--purple-med); margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="hdr">
+      <a class="brand" href="https://sparkleware.fun" target="_blank" rel="noopener">
+        <img src="/logo.png" alt="" class="brandLogo" />
+        <span class="brandName">Sparkleware</span>
+        <span class="brandSub">skill packs</span>
+      </a>
+      <a class="powered" id="powered" href="https://sparkleware.fun" target="_blank" rel="noopener">
+        sparkleware.fun ✦
+      </a>
+    </div>
+    <div id="snippet"></div>
+    <div id="root" class="state">loading packs ✦</div>
+
+    <script>
+      (function () {
+        // Relative so it resolves to whatever origin serves this widget
+        // (localhost in dev, sparkleware.fun in prod, even inside an iframe).
+        var API = '/api/packs.json';
+        var SITE = 'https://sparkleware.fun';
+        var p = new URLSearchParams(location.search);
+        var category = (p.get('category') || '').toLowerCase();
+        var author = (p.get('author') || '').toLowerCase();
+        var q = (p.get('q') || '').toLowerCase();
+        var limit = Math.max(1, Math.min(20, parseInt(p.get('limit') || '6', 10) || 6));
+        var topLevel = window.self === window.top;
+
+        var root = document.getElementById('root');
+
+        function esc(s) {
+          return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+          });
+        }
+
+        // When opened directly (not embedded), show the iframe snippet to copy.
+        if (topLevel) {
+          var src = SITE + '/embed.html' + (location.search || '');
+          var code =
+            '<iframe src="' +
+            src +
+            '" width="380" height="520" frameborder="0"\n  title="sparkleware skill packs"></iframe>';
+          var box = document.getElementById('snippet');
+          box.className = 'snippet';
+          box.innerHTML =
+            '<label>✦ embed this on your site</label>' +
+            '<code id="code">' +
+            esc(code) +
+            '</code>' +
+            '<button id="copy">copy iframe ✦</button>' +
+            '<div class="hint">filter with url params: <b>?category=</b>research · <b>?author=</b>sparkleware · <b>?q=</b>gas · <b>?limit=</b>6</div>';
+          document.getElementById('copy').onclick = function () {
+            navigator.clipboard.writeText(code).then(
+              function () {
+                this.textContent = 'copied ✓';
+              }.bind(this),
+            );
+          };
+        }
+
+        fetch(API)
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            return r.json();
+          })
+          .then(function (data) {
+            var packs = (data && data.packs) || [];
+            var matched = packs.filter(function (x) {
+              if (category && (x.category || '').toLowerCase() !== category) return false;
+              if (author && (x.author || '').toLowerCase() !== author) return false;
+              if (q) {
+                var hay = [x.name, x.description, (x.tags || []).join(' ')]
+                  .join(' ')
+                  .toLowerCase();
+                if (hay.indexOf(q) === -1) return false;
+              }
+              return true;
+            });
+            matched = matched.slice(0, limit);
+            if (!matched.length) {
+              root.className = 'state';
+              root.textContent = 'no packs match ✦';
+              return;
+            }
+            root.className = 'grid';
+            root.innerHTML = matched
+              .map(function (x) {
+                var href = SITE + '/pack/' + x.author + '/' + x.name + '/';
+                var cmd = x.install_command || './install-skill-pack ' + x.repo;
+                return (
+                  '<a class="card" href="' +
+                  esc(href) +
+                  '" target="_blank" rel="noopener">' +
+                  '<h3>' +
+                  esc(x.name) +
+                  ' ✦</h3>' +
+                  '<p>' +
+                  esc(x.description) +
+                  '</p>' +
+                  '<div class="meta">' +
+                  '<span class="badge">' +
+                  esc(x.category) +
+                  '</span>' +
+                  '<span class="muted">' +
+                  (x.skills_count || 0) +
+                  ' skills</span>' +
+                  '<span class="muted">· by @' +
+                  esc(x.author) +
+                  '</span>' +
+                  '</div>' +
+                  '<div class="install"><b>$</b> ' +
+                  esc(cmd) +
+                  '</div>' +
+                  '</a>'
+                );
+              })
+              .join('');
+          })
+          .catch(function (e) {
+            root.className = 'state';
+            root.textContent = 'could not load packs ✦';
+            console.error(e);
+          });
+      })();
+    </script>
+  </body>
+</html>

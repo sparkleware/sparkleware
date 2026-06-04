@@ -17,6 +17,8 @@ export function Footer() {
         {' · '}
         <a href="/rss.xml">rss</a>
         {' · '}
+        <a href="/embed.html">embed</a>
+        {' · '}
         MIT · est. 2026
       </p>
     </footer>

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllPacks, getPackBySlug } from '@/lib/registry';
-import { getRelatedPacks } from '@/lib/related';
+import { getSemanticRelatedPacks } from '@/lib/related';
 import { formatRelativeTime } from '@/lib/time';
 import { HoloCard } from '@/components/HoloCard';
 import { InstallCommand } from '@/components/InstallCommand';
@@ -38,7 +38,7 @@ export default async function PackDetailPage({ params }: PageProps) {
 
   const repoUrl = `https://github.com/${pack.repo}`;
   const updated = formatRelativeTime(pack.pushed_at);
-  const related = getRelatedPacks(pack, getAllPacks());
+  const related = getSemanticRelatedPacks(pack, getAllPacks());
 
   return (
     <main className={styles.wrapper}>

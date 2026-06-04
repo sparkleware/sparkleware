@@ -186,7 +186,11 @@
 
         // When opened directly (not embedded), show the iframe snippet to copy.
         if (topLevel) {
-          var src = SITE + '/embed.html' + (location.search || '');
+          // Build via the URL API so any query string is percent-encoded —
+          // a crafted ?"><script> can't break out of the copied iframe src.
+          var url = new URL('/embed.html', SITE);
+          url.search = location.search || '';
+          var src = url.toString();
           var code =
             '<iframe src="' +
             src +

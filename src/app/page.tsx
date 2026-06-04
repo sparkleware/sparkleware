@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getAllPacks } from '@/lib/registry';
 import { HoloCard } from '@/components/HoloCard';
 import { PackOfTheDay } from '@/components/PackOfTheDay';
@@ -22,6 +23,9 @@ export default function HomePage() {
           <br />
           Discover, browse, and one-click-install community skills.
         </p>
+        <Link href="/discover" className={styles.discoverCta}>
+          ✦ describe what your agent should do → semantic search
+        </Link>
       </section>
 
       {potdPool.length > 0 && <PackOfTheDay packs={potdPool} />}

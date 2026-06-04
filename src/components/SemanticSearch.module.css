@@ -1,0 +1,136 @@
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1 1 320px;
+  padding: 14px 18px;
+  border: 2px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--purple-deep);
+  background: var(--white);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.input:focus {
+  border-color: var(--magenta-link);
+}
+
+.input::placeholder {
+  color: var(--purple-medium);
+}
+
+.button {
+  padding: 14px 24px;
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-pill);
+  background: var(--magenta-link);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--purple-deep);
+  transition: transform 120ms ease;
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.example {
+  padding: 6px 14px;
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--purple-medium);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.example:hover {
+  border-color: var(--magenta-link);
+  color: var(--magenta-link);
+}
+
+.hint {
+  text-align: center;
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--purple-medium);
+  font-size: 14px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.matchRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px;
+}
+
+.matchLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--magenta-link);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.matchBar {
+  flex: 1;
+  height: 5px;
+  background: var(--purple-light);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.matchFill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--magenta-link), #ff85c1);
+  border-radius: var(--radius-pill);
+  transition: width 250ms ease;
+}

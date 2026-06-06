@@ -15,7 +15,9 @@ export default function ComposePage() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <FloatingSparkles />
-        <h1 className={styles.title}>『 ✦ compose ✦ 』</h1>
+        <h1 className={styles.title}>
+          <img src="/compose-logo.png" alt="compose ✦" className={styles.titleLogo} />
+        </h1>
         <p className={styles.subtitle}>
           describe what you want your agent to do — sparkleware composes the smallest set of packs
           that <em>builds</em> it, with a single install command.

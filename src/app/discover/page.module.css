@@ -23,9 +23,9 @@
 }
 
 .titleLogo {
-  width: min(82vw, 430px);
+  width: min(88vw, 720px);
   height: auto;
-  filter: drop-shadow(0 8px 22px rgba(204, 0, 102, 0.2));
+  filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
 }
 
 .subtitle {

@@ -13,6 +13,10 @@ export function Footer() {
         {' · '}
         <a href="/about/">about</a>
         {' · '}
+        <a href="/trending/">trending</a>
+        {' · '}
+        <a href="/stats/">stats</a>
+        {' · '}
         <a href="/submit/">submit a pack</a>
         {' · '}
         <a href="/rss.xml">rss</a>

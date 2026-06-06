@@ -31,17 +31,11 @@ export function Header() {
         <Link href="/browse/" className={styles.navLink}>
           browse
         </Link>
-        <Link href="/trending/" className={styles.navLink}>
-          trending
-        </Link>
         <Link href="/ecosystem/" className={styles.navLink}>
           ecosystem
         </Link>
         <Link href="/kits/" className={styles.navLink}>
           kits
-        </Link>
-        <Link href="/stats/" className={styles.navLink}>
-          stats
         </Link>
         <Link href="/submit/" className={`${styles.navLink} ${styles.submitLink}`}>
           submit pack ✦

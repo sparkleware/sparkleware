@@ -1,0 +1,264 @@
+.wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.form {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1 1 320px;
+  padding: 14px 18px;
+  border: 2px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: var(--purple-deep);
+  background: var(--white);
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.input:focus {
+  border-color: var(--magenta-link);
+}
+
+.input::placeholder {
+  color: var(--purple-medium);
+}
+
+.button {
+  padding: 14px 24px;
+  border: 2px solid var(--magenta-link);
+  border-radius: var(--radius-pill);
+  background: var(--magenta-link);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--purple-deep);
+  transition: transform 120ms ease;
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.example {
+  padding: 6px 14px;
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--purple-medium);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.example:hover {
+  border-color: var(--magenta-link);
+  color: var(--magenta-link);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--purple-deep);
+  cursor: pointer;
+  transition: all 150ms ease;
+  text-transform: lowercase;
+}
+
+.chip:hover {
+  border-color: var(--magenta-link);
+  color: var(--magenta-link);
+}
+
+.chipActive {
+  background: var(--magenta-link);
+  color: var(--white);
+  border-color: var(--magenta-link);
+  box-shadow: 0 2px 0 var(--purple-deep);
+}
+
+.chipCore {
+  border-color: var(--pink-hot);
+}
+
+.chipActive.chipCore {
+  background: linear-gradient(120deg, var(--pink-hot), var(--magenta-link));
+}
+
+.chipCount {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.hint {
+  text-align: center;
+  font-family: var(--font-italic);
+  font-style: italic;
+  color: var(--purple-medium);
+  font-size: 14px;
+}
+
+.heading {
+  text-align: center;
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: 16px;
+  margin: var(--space-2) 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-3);
+}
+
+.skill {
+  background: var(--white);
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skillCore {
+  border-color: var(--pink-hot);
+  box-shadow: 0 0 0 1px var(--pink-hot), 0 6px 18px rgba(255, 133, 193, 0.22);
+}
+
+.skillHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skillName {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--magenta-link);
+}
+
+.coreBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(120deg, var(--pink-hot), var(--magenta-link));
+  border-radius: var(--radius-pill);
+  padding: 1px 8px;
+}
+
+.skillCat {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--purple-medium);
+  background: var(--purple-pale);
+  border-radius: var(--radius-pill);
+  padding: 1px 8px;
+}
+
+.skillDesc {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--purple-deep);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.skillInstall {
+  position: relative;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #ffd9f1;
+  background: #1e1633;
+  border-radius: 8px;
+  padding: 6px 9px;
+  overflow-x: auto;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dollar {
+  color: var(--pink-hot);
+  font-weight: 700;
+}
+
+.copyHint {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  color: var(--purple-medium);
+  background: #1e1633;
+  padding-left: 8px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.skillInstall:hover .copyHint {
+  opacity: 1;
+}
+
+.clear {
+  align-self: center;
+  margin-top: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--magenta-link);
+  background: none;
+  border: none;
+  cursor: pointer;
+}

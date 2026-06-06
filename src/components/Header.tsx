@@ -25,6 +25,9 @@ export function Header() {
         <Link href="/compose/" className={styles.navLink}>
           compose
         </Link>
+        <Link href="/atlas/" className={styles.navLink}>
+          atlas
+        </Link>
         <Link href="/browse/" className={styles.navLink}>
           browse
         </Link>

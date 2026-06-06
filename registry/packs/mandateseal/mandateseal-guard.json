@@ -1,0 +1,29 @@
+{
+  "name": "mandateseal-guard",
+  "author": "mandateseal",
+  "repo": "mandateseal/mandateseal-guard",
+  "description": "A guarded variant of Aeon's distribute-tokens skill: every transfer routes through a MandateSeal mandate (per-tx caps, chain/token allow-lists, blocked recipients, human-approval queue) and seals a signed, Base-anchored receipt per decision.",
+  "long_description_md": "## What it does\n\nMandateSeal Guard wraps Aeon's stock `distribute-tokens` skill with an external permission and proof layer so that autonomous, fund-moving actions stay bounded, gated, and provable.\n\nIt inserts a single new **GATE** phase between resolving recipients and executing transfers. For each ready payout row the skill calls the MandateSeal `/api/check` endpoint, which returns one of:\n\n- **APPROVED** — the row proceeds to a Bankr Wallet API transfer.\n- **BLOCKED** — the row is dropped and the matched rule is logged.\n- **NEEDS_APPROVAL** — the row is held until a human resolves it in the MandateSeal dashboard.\n\nEvery decision returns a signed, Base-anchored receipt that is persisted, giving a verifiable audit trail. Bankr execution and idempotency discipline are otherwise identical to the stock skill.\n\nA mandate constrains transfers via per-transaction caps, chain/token allow-lists, blocked-recipient lists, and a human-approval queue.\n\n## Install\n\nThe pack lives at the `aeon/` subpath of the repository. Install with:\n\n```\n./install-skill-pack mandateseal/mandateseal-guard\n```\n\n## Secrets required\n\n`BANKR_API_KEY` and `MANDATESEAL_API_KEY`. The skill ships disabled by default.",
+  "category": "crypto",
+  "tags": [
+    "mandateseal",
+    "guardrails",
+    "bankr",
+    "base",
+    "distribute-tokens",
+    "transfers"
+  ],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    {
+      "name": "distribute-tokens-guarded",
+      "description": "distribute-tokens gated by a MandateSeal mandate (per-tx cap, chain/token allow-list, blocked recipients, human-approval queue) before each Bankr transfer, with a signed receipt per decision."
+    }
+  ],
+  "install_command": "./install-skill-pack mandateseal/mandateseal-guard",
+  "submitted_at": "2026-06-05T00:00:00Z",
+  "license": "MIT"
+}

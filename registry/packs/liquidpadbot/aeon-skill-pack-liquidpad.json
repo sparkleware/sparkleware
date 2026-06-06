@@ -1,0 +1,41 @@
+{
+  "name": "aeon-skill-pack-liquidpad",
+  "author": "liquidpadbot",
+  "repo": "liquidpadbot/aeon-skill-pack-liquidpad",
+  "description": "Aeon skill pack for monitoring LiquidPad on Base — $LPAD buyback-and-burn cycles, new token launches with on-chain provenance, a daily protocol digest, and trading-fee accrual on launched tokens.",
+  "long_description_md": "## What it does\n\n`aeon-skill-pack-liquidpad` gives an Aeon agent read-only visibility into the LiquidPad token-launch protocol on Base. It bundles four scheduled skills that track $LPAD burn cycles, new token launches, protocol-wide stats, and claimable trading fees.\n\n## Skills\n\n- **liquidpad-burn-monitor** — Tracks $LPAD buyback & burn cycles and alerts when a new cycle ships.\n- **liquidpad-stats-digest** — Daily LiquidPad protocol digest: tokens deployed, momentum, and top tokens by 24h volume.\n- **liquidpad-token-alert** — Notifies when a new token launches through LiquidPad and verifies on-chain provenance via `/api/verify`.\n- **liquidpad-fee-tracker** — Tracks claimable trading fees on every LiquidPad-launched token and surfaces the top earners.\n\n## Details\n\n- Homepage: https://www.liquidpad.site\n- License: MIT\n- Each skill ships a scheduled cron default and is disabled by default until enabled.",
+  "category": "crypto",
+  "tags": [
+    "liquidpad",
+    "base",
+    "token-launch",
+    "burn",
+    "fees",
+    "monitoring"
+  ],
+  "version": "0.2.1",
+  "verified": true,
+  "featured": false,
+  "skills_count": 4,
+  "skills": [
+    {
+      "name": "liquidpad-burn-monitor",
+      "description": "Track $LPAD buyback & burn cycles. Alert when a new cycle ships."
+    },
+    {
+      "name": "liquidpad-stats-digest",
+      "description": "Daily LiquidPad protocol digest — tokens deployed, momentum, top by 24h volume."
+    },
+    {
+      "name": "liquidpad-token-alert",
+      "description": "Notify when a new token launches through LiquidPad and verify on-chain provenance via /api/verify."
+    },
+    {
+      "name": "liquidpad-fee-tracker",
+      "description": "Track claimable trading fees on every LiquidPad-launched token. Surface top earners."
+    }
+  ],
+  "install_command": "./install-skill-pack liquidpadbot/aeon-skill-pack-liquidpad",
+  "submitted_at": "2026-06-05T00:00:00Z",
+  "license": "MIT"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "aeon-skills",
+  "author": "AntFleet",
+  "repo": "AntFleet/aeon-skills",
+  "description": "AntFleet skills for Aeon agents that run on-demand two-model-consensus PR reviews, paid in USDC on Base. One variant bills an installed repo's prepaid channel; the other uses x402 pay-per-call for public repos.",
+  "long_description_md": "## What it does\n\nAntFleet's `aeon-skills` pack lets an Aeon agent trigger an on-demand, two-model-consensus pull-request review (Opus 4.7 + GPT-5) and pay for it in USDC on Base. It ships two skills covering two payment rails:\n\n- **pr-review-antfleet** — Triggers a review on a specific `PR=<number>` or `SHA=<hex>` via AntFleet's installation endpoint (`POST /api/v1/installations/{id}/review`). The skill polls the async job until the consensus completes and writes a markdown report to `.outputs/pr-review-antfleet.md`. It debits the same prepaid USDC channel that funds AntFleet's automatic on-PR-open reviews — same price (default $0.50), same receipt flow, no new payment surface. Requires a wallet-bound AntFleet installation and `antfleet[bot]` installed on the repo.\n\n- **pr-review-antfleet-x402** — A pull-mode variant for public repos that needs no AntFleet installation or prepaid channel. It uses the x402 402-sign-retry flow (`POST /api/v1/review/x402`) with EIP-3009 pay-per-call USDC. v1 access is restricted to aeon-ecosystem callers via the `X-Aeon-Context` header. Because the public path has no GitHub App permission, results are written to `.outputs/pr-review-antfleet-x402.md` without posting a PR comment.\n\n## How it works\n\nBoth skills mint a single-use challenge, sign it with the operator's wallet key (`viem`, EIP-191 / EIP-3009), submit the review request, then poll every 10 seconds (up to 10 minutes) until the job reaches `complete` or `failed`. Reviews are idempotent — re-submitting the same `(installation, SHA)` pair or an explicit idempotency key returns the cached finding without re-debiting.\n\n## Requirements\n\n- Node.js 20+ (the pack uses ES modules and depends on `viem`).\n- A funded wallet on Base and, for the channel variant, a bound AntFleet installation.\n- Operator-set env vars (e.g. `ANTFLEET_INSTALLATION_ID`, `ANTFLEET_WALLET_PRIVATE_KEY`, or `AEON_X402_WALLET_PRIVATE_KEY` + `AEON_CONTEXT_TOKEN`).\n\n## Notes\n\nSkills are `default_enabled: false` and must be enabled explicitly. The repo declares MIT in its `package.json` and `skills-pack.json` manifests, though no standalone LICENSE file is present at the repo root.",
+  "category": "dev",
+  "tags": [
+    "code-review",
+    "pr-review",
+    "base",
+    "x402",
+    "antfleet",
+    "usdc"
+  ],
+  "version": "2.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 2,
+  "skills": [
+    {
+      "name": "pr-review-antfleet",
+      "description": "Trigger a two-model-consensus PR review on a PR or SHA, debiting the install's prepaid USDC channel on Base."
+    },
+    {
+      "name": "pr-review-antfleet-x402",
+      "description": "Pull-mode two-model-consensus PR review for public repos via x402 pay-per-call USDC, no AntFleet installation required."
+    }
+  ],
+  "install_command": "./install-skill-pack AntFleet/aeon-skills",
+  "submitted_at": "2026-06-05T00:00:00Z",
+  "license": "MIT"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "aeon-atrium-skills",
+  "author": "Atrium-Hermes",
+  "repo": "Atrium-Hermes/aeon-atrium-skills",
+  "description": "Aeon skill pack for Atrium, an onchain skill marketplace on Base. Lets an agent publish, discover, monetize, and attest to skills, with USDC payouts and DID/IPFS provenance.",
+  "long_description_md": "## What it does\n\nAtrium Skills connects an Aeon agent to **Atrium**, an onchain skill marketplace on Base. It turns an agent's evolving skills into provenance-signed, USDC-earning assets and lets the agent rent skills it needs.\n\nThe pack ships four skills:\n\n- **atrium-publish** — Publishes skills the agent created or evolved to Atrium: DID-signed, pinned to IPFS, and priced in USDC so they earn per call. *(disabled by default; requires `ATRIUM_PRIVATE_KEY` and `PINATA_JWT`)*\n- **atrium-scout** — Scans the Atrium marketplace for skills matching the agent's open loops and goals, then recommends (or invokes) the ones worth renting. *(read-only)*\n- **atrium-earnings** — Tracks creator earnings and auto-withdraws USDC to the agent's own wallet once it clears a threshold (`ATRIUM_WITHDRAW_THRESHOLD_USDC`, default 1), reporting it in the brief. *(runs daily; pass `report-only` to skip withdrawal)*\n- **atrium-attest** — Turns the agent's real 1–5 run-quality scores into onchain Atrium benchmark attestations for skills it published — a reputation signal the marketplace can rank by.\n\n## Notes\n\n- License: MIT. Homepage: https://atriumhermes.tech\n- Several skills perform onchain writes and require `ATRIUM_PRIVATE_KEY`; all are `default_enabled: false` and must be explicitly turned on.\n- Manifest version `0.1.0`.",
+  "category": "crypto",
+  "tags": [
+    "atrium",
+    "base",
+    "usdc",
+    "marketplace",
+    "onchain",
+    "skills"
+  ],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 4,
+  "skills": [
+    {
+      "name": "atrium-publish",
+      "description": "Publish skills the agent created or evolved to Atrium — DID-signed, IPFS-pinned, and priced in USDC so they earn per call."
+    },
+    {
+      "name": "atrium-scout",
+      "description": "Scan the Atrium marketplace for skills matching the agent's open loops and goals, and recommend or invoke the ones worth renting."
+    },
+    {
+      "name": "atrium-earnings",
+      "description": "Track Atrium creator earnings and auto-withdraw USDC to the agent's own wallet once it clears a threshold, reporting it in the brief."
+    },
+    {
+      "name": "atrium-attest",
+      "description": "Turn the agent's real 1-5 run-quality scores into onchain Atrium benchmark attestations for the skills it published."
+    }
+  ],
+  "install_command": "./install-skill-pack Atrium-Hermes/aeon-atrium-skills",
+  "submitted_at": "2026-06-05T00:00:00Z",
+  "license": "MIT"
+}

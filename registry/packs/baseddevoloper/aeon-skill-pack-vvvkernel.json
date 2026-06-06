@@ -1,0 +1,61 @@
+{
+  "name": "aeon-skill-pack-vvvkernel",
+  "author": "baseddevoloper",
+  "repo": "baseddevoloper/aeon-skill-pack-vvvkernel",
+  "description": "Aeon skill pack that routes queries to VVVKernel's Venice AI experts (private inference, x402 payments on Base). Covers onchain intelligence, contract pre-review, growth, narrative/content, image generation, and onchain monitoring.",
+  "long_description_md": "## What it does\n\n`aeon-skill-pack-vvvkernel` is a community skill pack for [Aeon](https://github.com/aaronjmars/aeon) that calls [VVVKernel](https://vvvkernel.com) — a gateway to Venice AI experts running private inference, paid via USDC/x402 on Base (or covered by staked VVV token tiers).\n\nIt ships nine skills spanning on-demand routing and scheduled reports:\n\n- **vvvkernel** — generic router to any Venice AI expert (onchain, audit, growth, brand, narrative, community, tier-design).\n- **vvvkernel-brief** — daily morning brief combining onchain intel, growth pulse, and a narrative action item.\n- **vvvkernel-onchain** — daily Base onchain intelligence report.\n- **vvvkernel-audit** — AI-assisted smart-contract pre-review (explicitly NOT a substitute for a professional audit).\n- **vvvkernel-narrative** — generate tweets, threads, and announcements.\n- **vvvkernel-growth** — weekly growth analysis with metrics, sentiment, and recommendations.\n- **vvvkernel-image** — image generation via Venice AI Flux.1.\n- **vvvkernel-monitor** — continuous (every 4h) onchain anomaly detection on holders, liquidity, and smart-money flow.\n- **vvvkernel-digest** — weekly digest rolling up all other skill outputs into one prioritized summary.\n\nEvery skill checks account balance before running and exits cleanly if VVVKernel is unreachable or the balance is empty.\n\n## Setup\n\nRequires a VVVKernel account with USDC on Base or staked VVV token, plus a `VVVKERNEL_JWT` secret in your Aeon repo. See the repo README for wallet and tier details.\n\n## Notes\n\nThe pack README states it is a community skill pack and not part of the official Aeon catalog. The repository ships no LICENSE file (license is unspecified in-repo, though the upstream Aeon registry lists it as MIT).",
+  "category": "crypto",
+  "tags": [
+    "vvvkernel",
+    "venice-ai",
+    "onchain",
+    "base",
+    "x402",
+    "inference"
+  ],
+  "version": "1.0.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 9,
+  "skills": [
+    {
+      "name": "vvvkernel",
+      "description": "Generic router that sends a query to any VVVKernel Venice AI expert (onchain, audit, growth, brand, narrative, community, tier-design)."
+    },
+    {
+      "name": "vvvkernel-brief",
+      "description": "Daily morning brief via Venice AI combining onchain intel, growth pulse, and a narrative action item."
+    },
+    {
+      "name": "vvvkernel-onchain",
+      "description": "Daily Base onchain intelligence report via the Venice AI Onchain Expert."
+    },
+    {
+      "name": "vvvkernel-audit",
+      "description": "AI-assisted smart-contract pre-review via Venice AI; surfaces patterns and red flags but is not a professional audit."
+    },
+    {
+      "name": "vvvkernel-narrative",
+      "description": "Generate tweets, threads, or announcements for a crypto project via the Venice AI Narrative Expert."
+    },
+    {
+      "name": "vvvkernel-growth",
+      "description": "Weekly growth analysis with metrics, sentiment, and actionable recommendations via the Venice AI Growth Expert."
+    },
+    {
+      "name": "vvvkernel-image",
+      "description": "Generate images via Venice AI Flux.1 through VVVKernel, saving the output URL to memory."
+    },
+    {
+      "name": "vvvkernel-monitor",
+      "description": "Continuous onchain monitoring on Base that detects anomalies in holder count, liquidity, and smart-money movement and notifies on significant changes."
+    },
+    {
+      "name": "vvvkernel-digest",
+      "description": "Weekly digest combining all VVVKernel skill outputs into a single prioritized action summary via Venice AI."
+    }
+  ],
+  "install_command": "./install-skill-pack baseddevoloper/aeon-skill-pack-vvvkernel",
+  "submitted_at": "2026-06-05T00:00:00Z",
+  "license": "unknown"
+}

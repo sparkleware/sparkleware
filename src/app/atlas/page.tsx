@@ -15,7 +15,9 @@ export default function AtlasPage() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <FloatingSparkles />
-        <h1 className={styles.title}>『 ✦ skill atlas ✦ 』</h1>
+        <h1 className={styles.title}>
+          <img src="/atlas-logo.png" alt="skill atlas ✦" className={styles.titleLogo} />
+        </h1>
         <p className={styles.subtitle}>
           every one of Aeon&rsquo;s <strong>193 first-party skills</strong>, searchable by what they{' '}
           <em>do</em> — with the <em>load-bearing 15</em> lit up.

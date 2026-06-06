@@ -18,11 +18,14 @@
 }
 
 .title {
-  font-family: var(--font-accent);
-  color: var(--magenta-link);
-  font-size: clamp(28px, 5vw, 44px);
   margin: 0;
-  letter-spacing: 0.02em;
+  line-height: 0;
+}
+
+.titleLogo {
+  width: min(88vw, 720px);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
 }
 
 .subtitle {

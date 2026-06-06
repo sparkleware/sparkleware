@@ -63,6 +63,23 @@ async function fetchCanonical(): Promise<CanonicalRegistry | null> {
   }
 }
 
+// Sparkleware's ecosystem map groups into these six clusters. Aeon's canonical
+// taxonomy is broader and still growing (messaging, onchain-security, core, …),
+// so any category outside the six falls back to `meta` instead of being dropped
+// from the map.
+const MAP_CATEGORIES = new Set([
+  'research',
+  'crypto',
+  'dev',
+  'social',
+  'productivity',
+  'meta',
+]);
+
+function normalizeCategory(cat: string): string {
+  return MAP_CATEGORIES.has(cat) ? cat : 'meta';
+}
+
 function packToNode(p: EnrichedPack): EcosystemNode {
   return {
     id: `${p.author}/${p.name}`,
@@ -84,7 +101,7 @@ function canonicalToNode(e: CanonicalEntry): EcosystemNode {
     id: e.repo,
     name: e.name,
     author: e.author,
-    category: e.category,
+    category: normalizeCategory(e.category),
     description: e.description,
     skill_count: e.skills.length,
     stars: null,

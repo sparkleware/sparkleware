@@ -9,10 +9,12 @@ import {
   loadoutFromRepos,
   type ComposeResult,
 } from '@/lib/compose';
+import { loadoutCoverage, type CoverageData } from '@/lib/coverage';
 import styles from './Compose.module.css';
 
 interface ComposeProps {
   packs: EnrichedPack[];
+  coverage?: CoverageData | null;
 }
 
 type Status = 'idle' | 'loading' | 'composing' | 'done';
@@ -29,7 +31,7 @@ const EXAMPLES = [
   'check ethereum gas and give me a daily briefing',
 ];
 
-export function Compose({ packs }: ComposeProps) {
+export function Compose({ packs, coverage }: ComposeProps) {
   const [query, setQuery] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [result, setResult] = useState<ComposeResult | null>(null);
@@ -109,6 +111,13 @@ export function Compose({ packs }: ComposeProps) {
   }
 
   const busy = status === 'loading' || status === 'composing';
+  const xray =
+    result && result.loadout.length > 0 && coverage
+      ? loadoutCoverage(
+          result.loadout.map((c) => c.pack.repo),
+          coverage,
+        )
+      : null;
 
   return (
     <div className={styles.wrapper}>
@@ -164,6 +173,42 @@ export function Compose({ packs }: ComposeProps) {
               {copied ? 'copied ✓' : 'copy ✦'}
             </button>
           </div>
+
+          {xray && (
+            <div className={styles.xray}>
+              <div className={styles.xrayHead}>
+                <span className={styles.xrayScore}>
+                  {xray.coveredCount}/{xray.total}
+                </span>
+                <span className={styles.xrayLabel}>
+                  core coverage — your loadout vs aeon&rsquo;s load-bearing 15
+                </span>
+              </div>
+              <div className={styles.xrayGrid}>
+                {xray.cells.map((cell) =>
+                  cell.status === 'missing' ? (
+                    <a
+                      key={cell.slug}
+                      href="/atlas/"
+                      className={`${styles.cell} ${styles.cellMissing}`}
+                      title={`missing — find ${cell.name} in the atlas`}
+                    >
+                      {cell.name}
+                    </a>
+                  ) : (
+                    <span
+                      key={cell.slug}
+                      className={`${styles.cell} ${
+                        cell.status === 'covered' ? styles.cellCovered : styles.cellPartial
+                      }`}
+                    >
+                      {cell.name}
+                    </span>
+                  ),
+                )}
+              </div>
+            </div>
+          )}
 
           <div className={styles.cards}>
             {result.loadout.map(({ pack, clauses }) => (

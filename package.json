@@ -19,7 +19,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "embed:skills": "tsx scripts/embed-skills.ts"
+    "embed:skills": "tsx scripts/embed-skills.ts",
+    "coverage": "tsx scripts/build-core-coverage.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

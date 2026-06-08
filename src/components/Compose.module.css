@@ -184,3 +184,78 @@
   color: var(--purple-medium);
   font-family: var(--font-mono);
 }
+
+/* Loadout X-Ray — core coverage scorecard */
+.xray {
+  border: 1.5px solid var(--purple-light);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.xrayHead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.xrayScore {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  background: linear-gradient(120deg, var(--pink-hot), var(--magenta-link));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.xrayLabel {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--purple-medium);
+}
+
+.xrayGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cell {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cellCovered {
+  background: rgba(120, 210, 170, 0.22);
+  border-color: #4cbf95;
+  color: #1f7a57;
+}
+
+.cellPartial {
+  background: rgba(255, 205, 110, 0.28);
+  border-color: #e0a93a;
+  color: #9a6b15;
+}
+
+.cellMissing {
+  background: rgba(255, 133, 193, 0.14);
+  border-color: var(--magenta-link);
+  color: var(--magenta-link);
+  cursor: pointer;
+}
+
+.cellMissing:hover {
+  background: var(--magenta-link);
+  color: var(--white);
+}

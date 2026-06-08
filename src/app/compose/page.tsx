@@ -1,7 +1,20 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { getAllPacks } from '@/lib/registry';
+import type { CoverageData } from '@/lib/coverage';
 import { Compose } from '@/components/Compose';
 import { FloatingSparkles } from '@/components/FloatingSparkles';
 import styles from './page.module.css';
+
+function getCoverage(): CoverageData | null {
+  try {
+    return JSON.parse(
+      readFileSync(join(process.cwd(), 'public', 'core-coverage.json'), 'utf8'),
+    ) as CoverageData;
+  } catch {
+    return null;
+  }
+}
 
 export const metadata = {
   title: 'Compose',
@@ -11,6 +24,7 @@ export const metadata = {
 
 export default function ComposePage() {
   const packs = getAllPacks();
+  const coverage = getCoverage();
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
@@ -27,7 +41,7 @@ export default function ComposePage() {
         </p>
       </section>
 
-      <Compose packs={packs} />
+      <Compose packs={packs} coverage={coverage} />
     </main>
   );
 }

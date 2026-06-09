@@ -1,9 +1,5 @@
 .footer {
-  padding: var(--space-6) var(--space-5) var(--space-5);
-  text-align: center;
-  font-size: 12px;
-  color: var(--purple-medium);
-  font-style: italic;
+  padding: var(--space-7) var(--space-5) var(--space-5);
   border-top: 1px solid var(--purple-light);
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(8px);
@@ -12,50 +8,111 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-5);
+  color: var(--purple-medium);
 }
 
-.footer a {
-  color: var(--magenta-link);
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
 }
 
-.line {
-  margin: 0;
-}
-
-.ecosystemBadge {
+.brandRow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  background: var(--holo-gradient);
-  border: 2px solid var(--magenta-link);
-  border-radius: var(--radius-pill);
+  gap: var(--space-2);
   text-decoration: none;
-  font-style: normal;
-  font-family: var(--font-ui);
-  font-size: 13px;
-  color: var(--purple-deep);
-  box-shadow: 0 2px 0 var(--magenta-link);
-  transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
-.ecosystemBadge:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 0 var(--magenta-link);
-  color: var(--purple-deep);
+.brandLogo {
+  width: 28px;
+  height: 28px;
 }
 
-.ecosystemLabel {
-  color: var(--purple-medium);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.ecosystemName {
+.brandName {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 16px;
-  color: var(--magenta-link);
+  font-size: 20px;
+  background: var(--holo-text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--purple-medium);
+  max-width: 380px;
+}
+
+.tagline a {
+  color: var(--magenta-link);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: var(--space-5) var(--space-7);
+  justify-content: center;
+  text-align: left;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.colHead {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--magenta-link);
+  margin-bottom: 2px;
+}
+
+.col a {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-style: normal;
+  color: var(--purple-deep);
+  text-decoration: none;
+  transition: color 120ms ease;
+  width: fit-content;
+}
+
+.col a:hover {
+  color: var(--magenta-link);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-style: normal;
+  color: var(--purple-medium);
+  border-top: 1px solid var(--purple-light);
+  padding-top: var(--space-4);
+  width: 100%;
+  max-width: 760px;
+}
+
+@media (max-width: 640px) {
+  .cols {
+    grid-template-columns: repeat(2, auto);
+    gap: var(--space-4) var(--space-6);
+    justify-content: space-evenly;
+    width: 100%;
+  }
 }

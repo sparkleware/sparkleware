@@ -78,6 +78,98 @@
   box-shadow: 0 4px 12px rgba(255, 133, 193, 0.4);
 }
 
+/* tools dropdown */
+.tools {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.toolsTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.toolsActive {
+  color: var(--magenta-link);
+}
+
+.caret {
+  font-size: 10px;
+  transition: transform 150ms ease;
+}
+
+.toolsTrigger[aria-expanded='true'] .caret {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--purple-light);
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 8px 28px rgba(170, 120, 220, 0.25);
+  opacity: 0;
+  transform: translate(-50%, -6px);
+  pointer-events: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+  z-index: 20;
+}
+
+.menuOpen {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 120ms ease;
+}
+
+.menuItem:hover {
+  background: var(--holo-text-gradient);
+}
+
+.menuLabel {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--purple-deep);
+}
+
+.menuDesc {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-medium);
+}
+
+.menuItem:hover .menuLabel {
+  color: var(--white);
+}
+
+.menuItem:hover .menuDesc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 @media (max-width: 640px) {
   .header {
     padding: var(--space-3);
@@ -91,5 +183,14 @@
   }
   .brandName {
     font-size: 16px;
+  }
+  .menu {
+    left: auto;
+    right: 0;
+    transform: translateY(-6px);
+    min-width: 200px;
+  }
+  .menuOpen {
+    transform: translateY(0);
   }
 }

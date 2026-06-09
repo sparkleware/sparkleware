@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SearchBar } from './SearchBar';
+import { NavTools } from './NavTools';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -22,12 +23,7 @@ export function Header() {
         <Link href="/discover/" className={styles.navLink}>
           discover
         </Link>
-        <Link href="/compose/" className={styles.navLink}>
-          compose
-        </Link>
-        <Link href="/atlas/" className={styles.navLink}>
-          atlas
-        </Link>
+        <NavTools />
         <Link href="/browse/" className={styles.navLink}>
           browse
         </Link>

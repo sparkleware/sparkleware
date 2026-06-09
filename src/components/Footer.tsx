@@ -23,6 +23,8 @@ export function Footer() {
         {' · '}
         <a href="/embed.html">embed</a>
         {' · '}
+        <a href="/rails/">x402 rails</a>
+        {' · '}
         MIT · est. 2026
       </p>
     </footer>

@@ -1,0 +1,94 @@
+.main {
+  padding-bottom: var(--space-7);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-7) var(--space-5) var(--space-5);
+  gap: var(--space-3);
+}
+
+.hero > *:not(:first-child) {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-family: var(--font-accent);
+  color: var(--magenta-link);
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 19px);
+  color: var(--purple-deep);
+  max-width: 640px;
+  margin: 0;
+}
+
+.subtitle em {
+  color: var(--magenta-link);
+  font-style: italic;
+}
+
+.note {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--purple-medium);
+  margin: 0;
+}
+
+.note code {
+  background: rgba(255, 209, 240, 0.4);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  padding: 0 var(--space-5);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.railRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.signal {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  background: linear-gradient(120deg, var(--pink-hot), var(--magenta-link));
+  border-radius: var(--radius-pill);
+  padding: 2px 9px;
+}
+
+.empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--purple-medium);
+  padding: var(--space-7);
+}

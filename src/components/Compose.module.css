@@ -151,6 +151,98 @@
   cursor: pointer;
 }
 
+/* VISION.md export — loop-ready agent brief */
+.visionBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border: 1.5px solid var(--magenta-link);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  background: linear-gradient(120deg, rgba(255, 209, 240, 0.4), rgba(214, 196, 255, 0.4));
+}
+
+.visionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.visionTitle {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  color: var(--magenta-link);
+}
+
+.visionSub {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--purple-medium);
+}
+
+.visionSub em {
+  font-style: italic;
+  color: var(--magenta-link);
+}
+
+.visionBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.visionBtn {
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--magenta-link);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 120ms ease;
+}
+
+.visionBtn:hover {
+  transform: translateY(-1px);
+}
+
+.visionPreview {
+  margin-top: -4px;
+}
+
+.visionPreview summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--purple-medium);
+  width: fit-content;
+}
+
+.visionPreview summary:hover {
+  color: var(--magenta-link);
+}
+
+.visionPre {
+  max-height: 380px;
+  overflow: auto;
+  margin: 8px 0 0;
+  padding: 14px 16px;
+  background: #1e1633;
+  color: #ffd9f1;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .cards {
   display: flex;
   flex-direction: column;

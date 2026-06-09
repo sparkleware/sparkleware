@@ -1,0 +1,27 @@
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--purple-light);
+  color: var(--purple-deep);
+  background: rgba(255, 255, 255, 0.4);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease,
+    color 150ms ease, border-color 150ms ease;
+}
+
+.btn:hover {
+  color: var(--white);
+  border-color: var(--magenta-link);
+  background: var(--holo-text-gradient);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 133, 193, 0.35);
+}

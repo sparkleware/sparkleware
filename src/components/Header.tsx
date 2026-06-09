@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SearchBar } from './SearchBar';
 import { NavTools } from './NavTools';
+import { SocialLinks } from './SocialLinks';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -33,6 +34,7 @@ export function Header() {
         <Link href="/kits/" className={styles.navLink}>
           kits
         </Link>
+        <SocialLinks />
         <Link href="/submit/" className={`${styles.navLink} ${styles.submitLink}`}>
           submit pack ✦
         </Link>

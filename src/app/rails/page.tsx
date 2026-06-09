@@ -16,7 +16,9 @@ export default function RailsPage() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <FloatingSparkles />
-        <h1 className={styles.title}>『 ✦ x402 rails ✦ 』</h1>
+        <h1 className={styles.title}>
+          <img src="/rails-logo.png" alt="x402 rails ✦" className={styles.titleLogo} />
+        </h1>
         <p className={styles.subtitle}>
           the onchain-paid corner of the Aeon ecosystem — skill packs that declare an{' '}
           <em>x402 / USDC</em> payment rail on Base, in one place.

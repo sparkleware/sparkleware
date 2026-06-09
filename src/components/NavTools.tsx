@@ -35,12 +35,7 @@ export function NavTools() {
   }, [open]);
 
   return (
-    <div
-      ref={ref}
-      className={styles.tools}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
+    <div ref={ref} className={styles.tools}>
       <button
         type="button"
         className={`${styles.navLink} ${styles.toolsTrigger} ${active ? styles.toolsActive : ''}`}

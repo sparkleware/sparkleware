@@ -10,7 +10,7 @@ import {
   type ComposeResult,
 } from '@/lib/compose';
 import { loadoutCoverage, type CoverageData } from '@/lib/coverage';
-import { visionFromResult } from '@/lib/vision';
+import { strategyFromResult } from '@/lib/strategy';
 import styles from './Compose.module.css';
 
 interface ComposeProps {
@@ -38,7 +38,7 @@ export function Compose({ packs, coverage }: ComposeProps) {
   const [result, setResult] = useState<ComposeResult | null>(null);
   const [shared, setShared] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [visionCopied, setVisionCopied] = useState(false);
+  const [strategyCopied, setStrategyCopied] = useState(false);
   const extractorRef = useRef<Extractor | null>(null);
   const embeddingsRef = useRef<{ repo: string; vector: number[] }[] | null>(null);
   const byRepo = useRef(new Map(packs.map((p) => [p.repo, p])));
@@ -79,7 +79,7 @@ export function Compose({ packs, coverage }: ComposeProps) {
     setQuery(goal);
     setShared(false);
     setCopied(false);
-    setVisionCopied(false);
+    setStrategyCopied(false);
     setStatus(extractorRef.current ? 'composing' : 'loading');
     try {
       const extractor = await loadExtractor();
@@ -113,18 +113,18 @@ export function Compose({ packs, coverage }: ComposeProps) {
     navigator.clipboard.writeText(result.installBlock).then(() => setCopied(true));
   }
 
-  function copyVision() {
-    if (!visionMd) return;
-    navigator.clipboard.writeText(visionMd).then(() => setVisionCopied(true));
+  function copyStrategy() {
+    if (!strategyMd) return;
+    navigator.clipboard.writeText(strategyMd).then(() => setStrategyCopied(true));
   }
 
-  function downloadVision() {
-    if (!visionMd) return;
-    const blob = new Blob([visionMd], { type: 'text/markdown;charset=utf-8' });
+  function downloadStrategy() {
+    if (!strategyMd) return;
+    const blob = new Blob([strategyMd], { type: 'text/markdown;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'VISION.md';
+    a.download = 'STRATEGY.md';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -139,9 +139,9 @@ export function Compose({ packs, coverage }: ComposeProps) {
           coverage,
         )
       : null;
-  const visionMd =
+  const strategyMd =
     result && result.loadout.length > 0
-      ? visionFromResult(query, result, coverage ?? null)
+      ? strategyFromResult(query, result, coverage ?? null)
       : '';
 
   return (
@@ -199,26 +199,26 @@ export function Compose({ packs, coverage }: ComposeProps) {
             </button>
           </div>
 
-          <div className={styles.visionBox}>
-            <div className={styles.visionText}>
-              <strong className={styles.visionTitle}>VISION.md ✦</strong>
-              <span className={styles.visionSub}>
+          <div className={styles.strategyBox}>
+            <div className={styles.strategyText}>
+              <strong className={styles.strategyTitle}>STRATEGY.md ✦</strong>
+              <span className={styles.strategySub}>
                 a loop-ready agent brief — drop it in your agent and <em>loop it</em>
               </span>
             </div>
-            <div className={styles.visionBtns}>
-              <button type="button" className={styles.visionBtn} onClick={copyVision}>
-                {visionCopied ? 'copied ✓' : 'copy ✦'}
+            <div className={styles.strategyBtns}>
+              <button type="button" className={styles.strategyBtn} onClick={copyStrategy}>
+                {strategyCopied ? 'copied ✓' : 'copy ✦'}
               </button>
-              <button type="button" className={styles.visionBtn} onClick={downloadVision}>
+              <button type="button" className={styles.strategyBtn} onClick={downloadStrategy}>
                 download .md
               </button>
             </div>
           </div>
 
-          <details className={styles.visionPreview}>
-            <summary>preview VISION.md ✦</summary>
-            <pre className={styles.visionPre}>{visionMd}</pre>
+          <details className={styles.strategyPreview}>
+            <summary>preview STRATEGY.md ✦</summary>
+            <pre className={styles.strategyPre}>{strategyMd}</pre>
           </details>
 
           {xray && (

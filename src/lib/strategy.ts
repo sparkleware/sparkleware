@@ -1,8 +1,9 @@
 /**
- * VISION.md export — turn a Compose loadout into a loop-ready agent brief.
+ * STRATEGY.md export — turn a Compose loadout into a loop-ready agent brief.
  *
- * The "create Vision.md, loop it" workflow: drop this file into an agent runtime
- * (Aeon, or Claude Code /loop) and the agent reads it each iteration, works the
+ * The "create a STRATEGY.md and loop it" workflow — the standard the Aeon
+ * ecosystem is adopting: drop this file into an agent runtime (Aeon, or
+ * Claude Code /loop) and the agent reads it each iteration, works the
  * checklist, self-assesses, and halts on the explicit Done-When test.
  *
  * Design (from a 4-way template panel, synthesized): the checklist IS the
@@ -10,7 +11,7 @@
  * descriptions so the agent can't claim a tool it lacks; Gaps quarantine what
  * the loadout can't do so the loop never spins toward an unreachable outcome.
  *
- * renderVision is pure + total: same input → byte-identical output, no LLM at
+ * renderStrategy is pure + total: same input → byte-identical output, no LLM at
  * runtime. Every interpolated value is a verbatim slice of the input or an
  * integer from counting — nothing is paraphrased.
  */
@@ -19,7 +20,7 @@ import type { ComposeResult } from './compose';
 import type { CoverageData, CoreSkill } from './coverage';
 import { loadoutCoverage } from './coverage';
 
-export interface VisionPack {
+export interface StrategyPack {
   repo: string;
   name: string;
   covers: string[];
@@ -27,9 +28,9 @@ export interface VisionPack {
   skills: { name: string; description: string }[];
 }
 
-export interface VisionInput {
+export interface StrategyInput {
   goal: string;
-  loadout: VisionPack[];
+  loadout: StrategyPack[];
   coreCoverage: {
     coveredCount: number;
     total: number;
@@ -48,17 +49,17 @@ function titleCase(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
-export function renderVision(input: VisionInput): string {
+export function renderStrategy(input: StrategyInput): string {
   const { goal, loadout, coreCoverage, uncovered } = input;
 
   if (loadout.length === 0) {
     return (
       [
-        `# VISION — ${goal}`,
+        `# STRATEGY — ${goal}`,
         '',
         '> No packs matched this goal — the loadout is empty. Nothing to loop on yet.',
         '>',
-        '> Refine the goal in Sparkleware /compose, then re-export this VISION.',
+        '> Refine the goal in Sparkleware /compose, then re-export this STRATEGY.',
       ].join('\n') + '\n'
     );
   }
@@ -74,7 +75,7 @@ export function renderVision(input: VisionInput): string {
   // 1 — Title + North Star banner
   sections.push(
     [
-      `# VISION — ${goal}`,
+      `# STRATEGY — ${goal}`,
       '',
       `> **North Star (your goal, unedited):** ${goal}`,
       `> Sparkleware /compose · ${loadout.length} packs · ${skillCount} skills · core-15 ${coreCoverage.coveredCount}/${coreCoverage.total} · deterministic export (no LLM at runtime)`,
@@ -160,7 +161,7 @@ export function renderVision(input: VisionInput): string {
     const lines: string[] = [
       '## Gaps — not yours to complete',
       '',
-      'Surfaced for honesty. Do NOT check these off and do NOT attempt them with this loadout — no installed skill covers them. To close a gap, install a pack that covers it (Sparkleware Skill Atlas) and re-export this VISION.',
+      'Surfaced for honesty. Do NOT check these off and do NOT attempt them with this loadout — no installed skill covers them. To close a gap, install a pack that covers it (Sparkleware Skill Atlas) and re-export this STRATEGY.',
       '',
       '**Uncovered goal-clauses**',
     ];
@@ -217,7 +218,7 @@ export function renderVision(input: VisionInput): string {
       '',
       '| Iter | Done / total | Advanced | Blocked | Notes |',
       '|------|--------------|----------|---------|-------|',
-      `| 0 | 0 / ${taskCount} | — | — | VISION generated from loadout (${loadout.length} packs, ${skillCount} skills). Begin at T1. |`,
+      `| 0 | 0 / ${taskCount} | — | — | STRATEGY generated from loadout (${loadout.length} packs, ${skillCount} skills). Begin at T1. |`,
     ].join('\n'),
   );
 
@@ -237,13 +238,13 @@ export function renderVision(input: VisionInput): string {
   return sections.join(SEP) + '\n';
 }
 
-/** Adapt live Compose + coverage state into renderVision's input shape. */
-export function visionFromResult(
+/** Adapt live Compose + coverage state into renderStrategy's input shape. */
+export function strategyFromResult(
   goal: string,
   result: ComposeResult,
   coverage: CoverageData | null,
 ): string {
-  const loadout: VisionPack[] = result.loadout.map((c) => ({
+  const loadout: StrategyPack[] = result.loadout.map((c) => ({
     repo: c.pack.repo,
     name: c.pack.name,
     covers: c.clauses,
@@ -275,7 +276,7 @@ export function visionFromResult(
     core = coverage.core;
   }
 
-  return renderVision({
+  return renderStrategy({
     goal: goal.trim() || 'your Aeon agent',
     loadout,
     coreCoverage,

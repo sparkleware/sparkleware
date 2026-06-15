@@ -6,7 +6,7 @@
     "description": "Luca's financial intelligence skills for Aeon agents. Wallet scanning, treasury monitoring, and financial reports — powered by x402Books AI on Base.",
     "stars": 1,
     "pushed_at": "2026-05-24T10:56:12Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "openclaw-agent-skills",
@@ -15,7 +15,7 @@
     "description": "openclaw-agent-skills",
     "stars": 1,
     "pushed_at": "2026-03-11T02:26:58Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "aeon-skill-pack-mneme",
@@ -24,7 +24,7 @@
     "description": "Mneme as Aeon's persistent memory layer — vector search, graph memory, live Base chain streams, and async LLM reflection. 8 drop-in skills, one MNEME_API_KEY, zero infra.",
     "stars": 0,
     "pushed_at": "2026-06-08T05:49:45Z",
-    "fetched_at": "2026-06-14T12:29:21.538Z"
+    "fetched_at": "2026-06-15T19:59:37.549Z"
   },
   {
     "name": "aeon-skills",
@@ -33,7 +33,7 @@
     "description": "LoneStarOracle AEON skills — weather, crypto, macro, gov contracts, oil leases, audits & Floyd",
     "stars": 0,
     "pushed_at": "2026-05-19T21:08:53Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "aeon-skills",
@@ -42,7 +42,16 @@
     "description": "Collection of Powerloom datamarket skills that can be run on the Aeon framework",
     "stars": 0,
     "pushed_at": "2026-06-04T13:43:34Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
+  },
+  {
+    "name": "aeon-skill-schema",
+    "author": "AI-Risk-Management",
+    "repo": "AI-Risk-Management/aeon-skill-schema",
+    "description": "Vendor-neutral, ed25519-signed AI skill schema. The wire format for AeonBrain",
+    "stars": 0,
+    "pushed_at": "2026-06-14T13:44:01Z",
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "clerk-aeon-skill",
@@ -51,16 +60,7 @@
     "description": "AEON skill pack for Clerk — federal court records via x402 ($0.001 USDC on Base). pip install clerk-api.",
     "stars": 0,
     "pushed_at": "2026-05-28T16:22:30Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
-  },
-  {
-    "name": "amper-aeon-skill",
-    "author": "oxkaiba",
-    "repo": "oxkaiba/amper-aeon-skill",
-    "description": "Aeon skill for autonomous DeFi execution via the Amper API. 80+ tools: swaps, lending, perps, options, and cross-chain bridging.",
-    "stars": 0,
-    "pushed_at": "2026-05-17T12:24:04Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "solvr-aeon-skill",
@@ -69,7 +69,16 @@
     "description": "AEON skill pack for Solvr — AI-assisted formal verification work-order, grounded in live onchain intel. Inspired by Vitalik's FV essay.",
     "stars": 0,
     "pushed_at": "2026-05-20T04:49:57Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
+  },
+  {
+    "name": "amper-aeon-skill",
+    "author": "oxkaiba",
+    "repo": "oxkaiba/amper-aeon-skill",
+    "description": "Aeon skill for autonomous DeFi execution via the Amper API. 80+ tools: swaps, lending, perps, options, and cross-chain bridging.",
+    "stars": 0,
+    "pushed_at": "2026-05-17T12:24:04Z",
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "signa-aeon-skills",
@@ -78,7 +87,7 @@
     "description": "SIGNA skill pack for Aeon — wallet-signed cross-platform agent messaging from inside any Aeon agent",
     "stars": 0,
     "pushed_at": "2026-06-07T12:50:37Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "aeon-skill-pack-mythosforge",
@@ -87,7 +96,7 @@
     "description": "Read-only MythosForge ops-monitoring skills for the Aeon framework",
     "stars": 0,
     "pushed_at": "2026-05-26T14:07:35Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "x_aeon_agents_skills",
@@ -96,7 +105,7 @@
     "description": "AI agents skills to be used for X-Aeon projects",
     "stars": 0,
     "pushed_at": "2026-04-02T18:29:47Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   },
   {
     "name": "careful-finance-aeon-skill-pack",
@@ -105,6 +114,6 @@
     "description": "Careful Finance market-intelligence skill pack for Aeon",
     "stars": 0,
     "pushed_at": "2026-06-08T09:17:27Z",
-    "fetched_at": "2026-06-14T12:29:22.096Z"
+    "fetched_at": "2026-06-15T19:59:38.192Z"
   }
 ]

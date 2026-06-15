@@ -1,17 +1,18 @@
 /**
- * STRATEGY.md export — turn a Compose loadout into a loop-ready agent brief.
+ * LOADOUT.md export — turn a Compose loadout into a loop-ready execution brief.
  *
- * The "create a STRATEGY.md and loop it" workflow — the standard the Aeon
- * ecosystem is adopting: drop this file into an agent runtime (Aeon, or
- * Claude Code /loop) and the agent reads it each iteration, works the
- * checklist, self-assesses, and halts on the explicit Done-When test.
+ * The loadout layer of the Aeon stack: STRATEGY.md is direction, SOUL.md is
+ * identity, LOADOUT.md is capability — which skill packs to install and how to
+ * run them. Drop it into an agent runtime (Aeon, or Claude Code /loop) and the
+ * agent reads it each iteration, works the checklist, self-assesses, and halts
+ * on the explicit Done-When test.
  *
  * Design (from a 4-way template panel, synthesized): the checklist IS the
  * progress tracker AND the stop condition; Capabilities are verbatim skill
  * descriptions so the agent can't claim a tool it lacks; Gaps quarantine what
  * the loadout can't do so the loop never spins toward an unreachable outcome.
  *
- * renderStrategy is pure + total: same input → byte-identical output, no LLM at
+ * renderLoadout is pure + total: same input → byte-identical output, no LLM at
  * runtime. Every interpolated value is a verbatim slice of the input or an
  * integer from counting — nothing is paraphrased.
  */
@@ -20,7 +21,7 @@ import type { ComposeResult } from './compose';
 import type { CoverageData, CoreSkill } from './coverage';
 import { loadoutCoverage } from './coverage';
 
-export interface StrategyPack {
+export interface LoadoutPack {
   repo: string;
   name: string;
   covers: string[];
@@ -28,9 +29,9 @@ export interface StrategyPack {
   skills: { name: string; description: string }[];
 }
 
-export interface StrategyInput {
+export interface LoadoutInput {
   goal: string;
-  loadout: StrategyPack[];
+  loadout: LoadoutPack[];
   coreCoverage: {
     coveredCount: number;
     total: number;
@@ -49,17 +50,17 @@ function titleCase(slug: string): string {
   return slug.replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
-export function renderStrategy(input: StrategyInput): string {
+export function renderLoadout(input: LoadoutInput): string {
   const { goal, loadout, coreCoverage, uncovered } = input;
 
   if (loadout.length === 0) {
     return (
       [
-        `# STRATEGY — ${goal}`,
+        `# LOADOUT — ${goal}`,
         '',
         '> No packs matched this goal — the loadout is empty. Nothing to loop on yet.',
         '>',
-        '> Refine the goal in Sparkleware /compose, then re-export this STRATEGY.',
+        '> Refine the goal in Sparkleware /compose, then re-export this LOADOUT.md.',
       ].join('\n') + '\n'
     );
   }
@@ -72,14 +73,15 @@ export function renderStrategy(input: StrategyInput): string {
 
   const sections: string[] = [];
 
-  // 1 — Title + North Star banner
+  // 1 — Title + banner (positions this as the loadout layer of the Aeon stack)
   sections.push(
     [
-      `# STRATEGY — ${goal}`,
+      `# LOADOUT — ${goal}`,
       '',
-      `> **North Star (your goal, unedited):** ${goal}`,
+      `> **Goal (unedited):** ${goal}`,
       `> Sparkleware /compose · ${loadout.length} packs · ${skillCount} skills · core-15 ${coreCoverage.coveredCount}/${coreCoverage.total} · deterministic export (no LLM at runtime)`,
-      '> This file is your memory between iterations. If it is not written here, it did not happen.',
+      '> The loadout layer — which packs to install + how to run them. Pairs with your STRATEGY.md (direction) + SOUL.md (identity).',
+      '> This file is your loop memory. If it is not written here, it did not happen.',
     ].join('\n'),
   );
 
@@ -161,7 +163,7 @@ export function renderStrategy(input: StrategyInput): string {
     const lines: string[] = [
       '## Gaps — not yours to complete',
       '',
-      'Surfaced for honesty. Do NOT check these off and do NOT attempt them with this loadout — no installed skill covers them. To close a gap, install a pack that covers it (Sparkleware Skill Atlas) and re-export this STRATEGY.',
+      'Surfaced for honesty. Do NOT check these off and do NOT attempt them with this loadout — no installed skill covers them. To close a gap, install a pack that covers it (Sparkleware Skill Atlas) and re-export this LOADOUT.md.',
       '',
       '**Uncovered goal-clauses**',
     ];
@@ -218,7 +220,7 @@ export function renderStrategy(input: StrategyInput): string {
       '',
       '| Iter | Done / total | Advanced | Blocked | Notes |',
       '|------|--------------|----------|---------|-------|',
-      `| 0 | 0 / ${taskCount} | — | — | STRATEGY generated from loadout (${loadout.length} packs, ${skillCount} skills). Begin at T1. |`,
+      `| 0 | 0 / ${taskCount} | — | — | LOADOUT.md generated from loadout (${loadout.length} packs, ${skillCount} skills). Begin at T1. |`,
     ].join('\n'),
   );
 
@@ -238,13 +240,13 @@ export function renderStrategy(input: StrategyInput): string {
   return sections.join(SEP) + '\n';
 }
 
-/** Adapt live Compose + coverage state into renderStrategy's input shape. */
-export function strategyFromResult(
+/** Adapt live Compose + coverage state into renderLoadout's input shape. */
+export function loadoutFromResult(
   goal: string,
   result: ComposeResult,
   coverage: CoverageData | null,
 ): string {
-  const loadout: StrategyPack[] = result.loadout.map((c) => ({
+  const loadout: LoadoutPack[] = result.loadout.map((c) => ({
     repo: c.pack.repo,
     name: c.pack.name,
     covers: c.clauses,
@@ -276,7 +278,7 @@ export function strategyFromResult(
     core = coverage.core;
   }
 
-  return renderStrategy({
+  return renderLoadout({
     goal: goal.trim() || 'your Aeon agent',
     loadout,
     coreCoverage,

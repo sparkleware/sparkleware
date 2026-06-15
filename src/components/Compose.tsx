@@ -10,7 +10,7 @@ import {
   type ComposeResult,
 } from '@/lib/compose';
 import { loadoutCoverage, type CoverageData } from '@/lib/coverage';
-import { strategyFromResult } from '@/lib/strategy';
+import { loadoutFromResult } from '@/lib/loadout';
 import styles from './Compose.module.css';
 
 interface ComposeProps {
@@ -38,7 +38,7 @@ export function Compose({ packs, coverage }: ComposeProps) {
   const [result, setResult] = useState<ComposeResult | null>(null);
   const [shared, setShared] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [strategyCopied, setStrategyCopied] = useState(false);
+  const [loadoutCopied, setLoadoutCopied] = useState(false);
   const extractorRef = useRef<Extractor | null>(null);
   const embeddingsRef = useRef<{ repo: string; vector: number[] }[] | null>(null);
   const byRepo = useRef(new Map(packs.map((p) => [p.repo, p])));
@@ -79,7 +79,7 @@ export function Compose({ packs, coverage }: ComposeProps) {
     setQuery(goal);
     setShared(false);
     setCopied(false);
-    setStrategyCopied(false);
+    setLoadoutCopied(false);
     setStatus(extractorRef.current ? 'composing' : 'loading');
     try {
       const extractor = await loadExtractor();
@@ -113,18 +113,18 @@ export function Compose({ packs, coverage }: ComposeProps) {
     navigator.clipboard.writeText(result.installBlock).then(() => setCopied(true));
   }
 
-  function copyStrategy() {
-    if (!strategyMd) return;
-    navigator.clipboard.writeText(strategyMd).then(() => setStrategyCopied(true));
+  function copyLoadout() {
+    if (!loadoutMd) return;
+    navigator.clipboard.writeText(loadoutMd).then(() => setLoadoutCopied(true));
   }
 
-  function downloadStrategy() {
-    if (!strategyMd) return;
-    const blob = new Blob([strategyMd], { type: 'text/markdown;charset=utf-8' });
+  function downloadLoadout() {
+    if (!loadoutMd) return;
+    const blob = new Blob([loadoutMd], { type: 'text/markdown;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'STRATEGY.md';
+    a.download = 'LOADOUT.md';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -139,9 +139,9 @@ export function Compose({ packs, coverage }: ComposeProps) {
           coverage,
         )
       : null;
-  const strategyMd =
+  const loadoutMd =
     result && result.loadout.length > 0
-      ? strategyFromResult(query, result, coverage ?? null)
+      ? loadoutFromResult(query, result, coverage ?? null)
       : '';
 
   return (
@@ -199,26 +199,26 @@ export function Compose({ packs, coverage }: ComposeProps) {
             </button>
           </div>
 
-          <div className={styles.strategyBox}>
-            <div className={styles.strategyText}>
-              <strong className={styles.strategyTitle}>STRATEGY.md ✦</strong>
-              <span className={styles.strategySub}>
+          <div className={styles.loadoutBox}>
+            <div className={styles.loadoutText}>
+              <strong className={styles.loadoutTitle}>LOADOUT.md ✦</strong>
+              <span className={styles.loadoutSub}>
                 a loop-ready agent brief — drop it in your agent and <em>loop it</em>
               </span>
             </div>
-            <div className={styles.strategyBtns}>
-              <button type="button" className={styles.strategyBtn} onClick={copyStrategy}>
-                {strategyCopied ? 'copied ✓' : 'copy ✦'}
+            <div className={styles.loadoutBtns}>
+              <button type="button" className={styles.loadoutBtn} onClick={copyLoadout}>
+                {loadoutCopied ? 'copied ✓' : 'copy ✦'}
               </button>
-              <button type="button" className={styles.strategyBtn} onClick={downloadStrategy}>
+              <button type="button" className={styles.loadoutBtn} onClick={downloadLoadout}>
                 download .md
               </button>
             </div>
           </div>
 
-          <details className={styles.strategyPreview}>
-            <summary>preview STRATEGY.md ✦</summary>
-            <pre className={styles.strategyPre}>{strategyMd}</pre>
+          <details className={styles.loadoutPreview}>
+            <summary>preview LOADOUT.md ✦</summary>
+            <pre className={styles.loadoutPre}>{loadoutMd}</pre>
           </details>
 
           {xray && (

@@ -151,8 +151,8 @@
   cursor: pointer;
 }
 
-/* STRATEGY.md export — loop-ready agent brief */
-.strategyBox {
+/* LOADOUT.md export — loop-ready agent brief */
+.loadoutBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -164,36 +164,36 @@
   background: linear-gradient(120deg, rgba(255, 209, 240, 0.4), rgba(214, 196, 255, 0.4));
 }
 
-.strategyText {
+.loadoutText {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.strategyTitle {
+.loadoutTitle {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: 15px;
   color: var(--magenta-link);
 }
 
-.strategySub {
+.loadoutSub {
   font-family: var(--font-ui);
   font-size: 12px;
   color: var(--purple-medium);
 }
 
-.strategySub em {
+.loadoutSub em {
   font-style: italic;
   color: var(--magenta-link);
 }
 
-.strategyBtns {
+.loadoutBtns {
   display: flex;
   gap: 8px;
 }
 
-.strategyBtn {
+.loadoutBtn {
   flex-shrink: 0;
   font-family: var(--font-ui);
   font-size: 12px;
@@ -208,15 +208,15 @@
   transition: transform 120ms ease;
 }
 
-.strategyBtn:hover {
+.loadoutBtn:hover {
   transform: translateY(-1px);
 }
 
-.strategyPreview {
+.loadoutPreview {
   margin-top: -4px;
 }
 
-.strategyPreview summary {
+.loadoutPreview summary {
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 11.5px;
@@ -224,11 +224,11 @@
   width: fit-content;
 }
 
-.strategyPreview summary:hover {
+.loadoutPreview summary:hover {
   color: var(--magenta-link);
 }
 
-.strategyPre {
+.loadoutPre {
   max-height: 380px;
   overflow: auto;
   margin: 8px 0 0;

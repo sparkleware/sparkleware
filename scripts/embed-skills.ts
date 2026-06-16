@@ -1,17 +1,18 @@
 /**
  * Build-time mirror + embeddings for Aeon's first-party skill catalog (Skill Atlas).
  *
- * Fetches aaronjmars/aeon skills.json (193 skills), normalizes to AeonSkill[]
- * (flagging the load-bearing 15), caches it for the /atlas page, and embeds each
- * skill with the same MiniLM model packs use — so skill-level semantic search
- * shares one vector space.
+ * Fetches aaronjmars/aeon skills.json, normalizes to AeonSkill[] (flagging the
+ * load-bearing core set — the `core` category, the source of truth, so it tracks
+ * Aaron's restructures automatically), caches it for the /atlas page, and embeds
+ * each skill with the same MiniLM model packs use — so skill-level semantic
+ * search shares one vector space.
  *
  * Run: pnpm embed:skills
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { pipeline } from '@xenova/transformers';
-import { CORE_SLUGS, type AeonSkill } from '../src/lib/skills';
+import { type AeonSkill } from '../src/lib/skills';
 
 const SKILLS_URL = 'https://raw.githubusercontent.com/aaronjmars/aeon/main/skills.json';
 const MODEL = 'Xenova/all-MiniLM-L6-v2';
@@ -37,7 +38,7 @@ async function main() {
     description: s.description,
     category: s.category,
     install: s.install || `./add-skill aaronjmars/aeon ${s.slug}`,
-    core: CORE_SLUGS.has(s.slug),
+    core: s.category === 'core',
   }));
 
   mkdirSync(join(process.cwd(), 'registry', '.cache'), { recursive: true });

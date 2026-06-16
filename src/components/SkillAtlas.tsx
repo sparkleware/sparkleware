@@ -139,7 +139,7 @@ export function SkillAtlas({ skills }: SkillAtlasProps) {
           className={styles.input}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="search 193 skills by capability…"
+          placeholder={`search ${skills.length} skills by capability…`}
           aria-label="Search Aeon skills by capability"
         />
         <button className={styles.button} type="submit" disabled={busy}>
@@ -175,7 +175,7 @@ export function SkillAtlas({ skills }: SkillAtlasProps) {
 
       {status === 'loading' && (
         <p className={styles.hint}>
-          loading a tiny model in your browser (just once) — searches all 193 skills offline ✦
+          loading a tiny model in your browser (just once) — searches all {skills.length} skills offline ✦
         </p>
       )}
 

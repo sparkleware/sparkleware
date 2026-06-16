@@ -8,7 +8,7 @@ import styles from './Header.module.css';
 
 const TOOLS: { href: Route; label: string; desc: string }[] = [
   { href: '/compose/', label: 'compose', desc: 'describe your agent → a loadout' },
-  { href: '/atlas/', label: 'skill atlas', desc: 'search all 193 Aeon skills' },
+  { href: '/atlas/', label: 'skill atlas', desc: 'search every Aeon skill' },
   { href: '/rails/', label: 'x402 rails', desc: 'the onchain-paid corner' },
 ];
 

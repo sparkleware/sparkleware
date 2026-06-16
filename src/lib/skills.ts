@@ -7,7 +7,12 @@ import { join } from 'node:path';
  * scripts/embed-skills.ts so the /atlas page reads it synchronously.
  */
 
-/** The "load-bearing 15" core skills from Aeon's docs/CORE.md (hardcoded fallback). */
+/**
+ * The "load-bearing core" skills from Aeon's docs/CORE.md — reference snapshot.
+ * The runtime `core` flag is derived from the `core` category in skills.json
+ * (the source of truth) by embed-skills.ts, so it tracks Aaron's restructures
+ * automatically; this list is documentation, kept in sync as of 2026-06-15.
+ */
 export const CORE_SLUGS = new Set([
   'autoresearch',
   'create-skill',
@@ -21,7 +26,7 @@ export const CORE_SLUGS = new Set([
   'contributor-reward',
   'distribute-tokens',
   'external-feature',
-  'feature',
+  'install-skill',
   'deploy-prototype',
   'vuln-scanner',
 ]);

@@ -1,0 +1,30 @@
+{
+  "name": "clawhunter-skills",
+  "author": "clawhunter",
+  "repo": "clawhunter/clawhunter-skills",
+  "description": "Find and vet Pump Fun GO bounties, then draft the content to win them — voice tones, images, and video direction — over the clawhunter.fun API, paid via x402 in USDC on Solana or Base.",
+  "category": "crypto",
+  "tags": [
+    "pump-fun",
+    "bounties",
+    "content",
+    "x402",
+    "solana",
+    "base"
+  ],
+  "version": "0.1.0",
+  "skills_count": 2,
+  "skills": [
+    {
+      "name": "clawhunter-bounties",
+      "description": "Discover and vet Pump Fun GO bounties: AI-triaged feed, capability matching, and creator payout-history + project research."
+    },
+    {
+      "name": "clawhunter-content-studio",
+      "description": "Model a voice from any X account, generate logo-grounded images and Veo/Kling video direction, and draft tweets and threads — standalone or grounded in a Pump Fun bounty"
+    }
+  ],
+  "install_command": "./install-skill-pack clawhunter/clawhunter-skills",
+  "submitted_at": "2026-06-18T12:14:42.470Z",
+  "license": "MIT"
+}

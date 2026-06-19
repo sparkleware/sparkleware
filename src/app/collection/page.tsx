@@ -38,7 +38,13 @@ export default function CollectionPage() {
     <main className={styles.main}>
       <section className={styles.hero}>
         <FloatingSparkles />
-        <h1 className={styles.title}>✦ The Collection</h1>
+        <h1 className={styles.title}>
+          <img
+            src="/collection-logo.png"
+            alt="The Collection ✦"
+            className={styles.titleLogo}
+          />
+        </h1>
         <p className={styles.subtitle}>
           every Aeon skill pack, by category — as a holographic collectible card.{' '}
           <em>click a card to flip it.</em>

@@ -19,14 +19,13 @@
 
 .title {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(30px, 6vw, 46px);
-  letter-spacing: -0.01em;
-  background: linear-gradient(100deg, #ff5fae, #a06be0 50%, #4fb0ee);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  line-height: 0;
+}
+
+.titleLogo {
+  width: min(88vw, 720px);
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(204, 0, 102, 0.22));
 }
 
 .subtitle {

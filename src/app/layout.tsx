@@ -1,8 +1,17 @@
 import type { Metadata } from 'next';
+import { Fraunces } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import '@/styles/global.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+
+// Editorial serif for the collection cards (Iridescent Atelier). Self-hosted at build.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-serif',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sparkleware.fun'),
@@ -43,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fraunces.variable}>
       <body>
         <Header />
         {children}

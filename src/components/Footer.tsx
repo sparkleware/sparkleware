@@ -33,6 +33,7 @@ export function Footer() {
         </div>
         <div className={styles.col}>
           <span className={styles.colHead}>tools</span>
+          <Link href="/collection/">collection</Link>
           <Link href="/compose/">compose</Link>
           <Link href="/atlas/">skill atlas</Link>
           <Link href="/rails/">x402 rails</Link>

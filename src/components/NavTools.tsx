@@ -7,6 +7,7 @@ import type { Route } from 'next';
 import styles from './Header.module.css';
 
 const TOOLS: { href: Route; label: string; desc: string }[] = [
+  { href: '/collection/', label: 'collection', desc: 'packs as holographic cards' },
   { href: '/compose/', label: 'compose', desc: 'describe your agent → a loadout' },
   { href: '/atlas/', label: 'skill atlas', desc: 'search every Aeon skill' },
   { href: '/rails/', label: 'x402 rails', desc: 'the onchain-paid corner' },

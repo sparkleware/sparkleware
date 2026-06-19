@@ -1,0 +1,90 @@
+.main {
+  padding-bottom: var(--space-7);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-7) var(--space-5) var(--space-4);
+  gap: var(--space-2);
+}
+
+.hero > *:not(:first-child) {
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(30px, 6vw, 46px);
+  letter-spacing: -0.01em;
+  background: linear-gradient(100deg, #ff5fae, #a06be0 50%, #4fb0ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--purple-deep);
+  max-width: 600px;
+  margin: 0;
+}
+
+.subtitle em {
+  color: var(--magenta-link);
+}
+
+.shelf {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+}
+
+.shelfHead {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.shelfName {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.shelfCount {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-medium);
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, currentColor, transparent);
+  opacity: 0.3;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .row {
+    gap: var(--space-3);
+    justify-content: center;
+  }
+}

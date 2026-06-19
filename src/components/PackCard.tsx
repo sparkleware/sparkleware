@@ -3,6 +3,7 @@
 import { useState, type CSSProperties } from 'react';
 import type { EnrichedPack } from '@/lib/types';
 import { rarityOf } from '@/lib/rarity';
+import { useLoadout } from './LoadoutProvider';
 import styles from './PackCard.module.css';
 
 /** Per-category accent (the kicker tick + label color). */
@@ -20,6 +21,8 @@ const EMBLEM_CATS = new Set(Object.keys(ACCENT));
 export function PackCard({ pack }: { pack: EnrichedPack }) {
   const [flipped, setFlipped] = useState(false);
   const [copied, setCopied] = useState(false);
+  const { has, toggle } = useLoadout();
+  const inDeck = has(pack.repo);
 
   const cat = EMBLEM_CATS.has(pack.category) ? pack.category : 'meta';
   const accent = ACCENT[cat];
@@ -110,10 +113,32 @@ export function PackCard({ pack }: { pack: EnrichedPack }) {
               {skills.length > 3 && <div className={styles.more}>+{skills.length - 3} more</div>}
             </div>
           )}
-          <button type="button" className={styles.install} onClick={copyInstall}>
+          <button
+            type="button"
+            className={styles.install}
+            onClick={copyInstall}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
             <code>{copied ? 'copied ✓' : pack.install_command}</code>
           </button>
-          <a className={styles.view} href={`/pack/${pack.repo}/`} onClick={(e) => e.stopPropagation()}>
+          <button
+            type="button"
+            className={styles.add}
+            data-in={inDeck ? 'true' : undefined}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggle(pack.repo);
+            }}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
+            {inDeck ? '✓ in loadout' : '＋ add to loadout'}
+          </button>
+          <a
+            className={styles.view}
+            href={`/pack/${pack.repo}/`}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
             view pack →
           </a>
         </div>

@@ -4,6 +4,8 @@ import { Analytics } from '@vercel/analytics/next';
 import '@/styles/global.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { LoadoutProvider } from '@/components/LoadoutProvider';
+import { LoadoutTray } from '@/components/LoadoutTray';
 
 // Editorial serif for the collection cards (Iridescent Atelier). Self-hosted at build.
 const fraunces = Fraunces({
@@ -54,9 +56,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={fraunces.variable}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <LoadoutProvider>
+          <Header />
+          {children}
+          <Footer />
+          <LoadoutTray />
+        </LoadoutProvider>
         <Analytics />
       </body>
     </html>

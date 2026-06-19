@@ -1,0 +1,100 @@
+.tray {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px 10px 14px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(120deg, #ff8fc8, #b69bff 50%, #8fd0ff) border-box;
+  box-shadow: 0 14px 34px -10px rgba(120, 60, 180, 0.55), 0 2px 8px rgba(120, 60, 180, 0.3);
+  animation: trayIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes trayIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+  }
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  background: linear-gradient(120deg, #ff5fae, #a06be0 60%, #4fb0ee);
+}
+
+.label {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple-deep, #3a1d5e);
+}
+
+.build {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(120deg, #ff5fae, #a06be0 60%, #4fb0ee);
+  box-shadow: 0 4px 12px -4px rgba(160, 60, 180, 0.6);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.build:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -4px rgba(160, 60, 180, 0.7);
+}
+
+.clear {
+  padding: 6px 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--purple-medium, #7a5aa8);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.clear:hover {
+  color: var(--magenta-link, #cc0066);
+}
+
+@media (max-width: 480px) {
+  .tray {
+    bottom: 14px;
+    gap: 9px;
+    padding: 9px 10px 9px 12px;
+  }
+  .label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tray {
+    animation: none;
+  }
+  .build {
+    transition: none;
+  }
+  .build:hover {
+    transform: none;
+  }
+}

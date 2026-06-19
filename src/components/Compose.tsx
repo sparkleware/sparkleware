@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { EnrichedPack } from '@/lib/types';
 import { HoloCard } from './HoloCard';
 import {
@@ -11,6 +11,7 @@ import {
 } from '@/lib/compose';
 import { loadoutCoverage, type CoverageData } from '@/lib/coverage';
 import { loadoutFromResult } from '@/lib/loadout';
+import { AgentCardShare } from './AgentCardShare';
 import styles from './Compose.module.css';
 
 interface ComposeProps {
@@ -44,16 +45,22 @@ export function Compose({ packs, coverage }: ComposeProps) {
   const byRepo = useRef(new Map(packs.map((p) => [p.repo, p])));
 
   // A shared permalink (#packs=a/b,c/d) renders its loadout with no model needed.
+  // Re-applies on hashchange so the loadout tray's "build loadout →" works even
+  // when already on /compose (same-route hash nav doesn't remount the component).
   useEffect(() => {
-    const hash = new URLSearchParams(window.location.hash.slice(1));
-    const repos = hash.get('packs');
-    if (repos) {
+    function applyHash() {
+      const hash = new URLSearchParams(window.location.hash.slice(1));
+      const repos = hash.get('packs');
+      if (!repos) return;
       setResult(loadoutFromRepos(repos.split(','), byRepo.current));
       setShared(true);
       const q = hash.get('q');
       if (q) setQuery(decodeURIComponent(q));
       setStatus('done');
     }
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
   }, []);
 
   async function loadExtractor(): Promise<Extractor> {
@@ -143,6 +150,8 @@ export function Compose({ packs, coverage }: ComposeProps) {
     result && result.loadout.length > 0
       ? loadoutFromResult(query, result, coverage ?? null)
       : '';
+  // stable identity so the agent-card canvas only redraws when the loadout changes
+  const sharePacks = useMemo(() => (result ? result.loadout.map((c) => c.pack) : []), [result]);
 
   return (
     <div className={styles.wrapper}>
@@ -191,6 +200,8 @@ export function Compose({ packs, coverage }: ComposeProps) {
             </h2>
             {shared && <span className={styles.sharedTag}>shared</span>}
           </div>
+
+          <AgentCardShare packs={sharePacks} query={query} />
 
           <div className={styles.installBox}>
             <code className={styles.installCode}>{result.installBlock}</code>

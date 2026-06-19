@@ -358,6 +358,29 @@
   text-overflow: ellipsis;
   display: block;
 }
+.add {
+  margin: 0 0 9px;
+  padding: 7px 10px;
+  width: 100%;
+  cursor: pointer;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  background: transparent;
+  text-align: center;
+  font: 700 10px/1 var(--font-display, 'Trebuchet MS'), sans-serif;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.add:hover {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.add[data-in='true'] {
+  background: linear-gradient(120deg, var(--accent), #ff85c1);
+  border-color: transparent;
+  color: #fff;
+}
+
 .view {
   font: 700 11px/1 var(--font-display, 'Trebuchet MS'), sans-serif;
   color: var(--accent);

@@ -1,0 +1,101 @@
+.share {
+  display: flex;
+  gap: var(--space-4, 20px);
+  align-items: center;
+  padding: var(--space-4, 20px);
+  border-radius: 18px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)) padding-box,
+    linear-gradient(120deg, #ff8fc8, #b69bff 50%, #8fd0ff) border-box;
+}
+
+.preview {
+  flex: 0 0 auto;
+}
+.canvas {
+  display: block;
+  width: 188px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px -10px rgba(120, 60, 180, 0.55);
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.title {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--purple-deep, #3a1d5e);
+}
+.sub {
+  font-family: var(--font-italic, Georgia), serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--purple-medium, #7a5aa8);
+  line-height: 1.4;
+}
+.btns {
+  display: flex;
+  gap: 9px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.btnPrimary,
+.btnGhost {
+  padding: 9px 16px;
+  cursor: pointer;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btnPrimary {
+  border: none;
+  color: #fff;
+  background: linear-gradient(120deg, #ff5fae, #a06be0 60%, #4fb0ee);
+  box-shadow: 0 6px 16px -6px rgba(160, 60, 180, 0.6);
+}
+.btnPrimary:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+.btnGhost {
+  border: 1.5px solid var(--purple-light, #c9b3e8);
+  background: transparent;
+  color: var(--purple-deep, #3a1d5e);
+}
+.btnPrimary:disabled,
+.btnGhost:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .share {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .preview {
+    align-self: center;
+  }
+  .btns {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btnPrimary,
+  .btnGhost {
+    transition: none;
+  }
+  .btnPrimary:hover:not(:disabled) {
+    transform: none;
+  }
+}

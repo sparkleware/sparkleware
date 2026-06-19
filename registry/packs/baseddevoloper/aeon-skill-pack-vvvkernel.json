@@ -57,5 +57,11 @@
   ],
   "install_command": "./install-skill-pack baseddevoloper/aeon-skill-pack-vvvkernel",
   "submitted_at": "2026-06-05T00:00:00Z",
-  "license": "unknown"
+  "license": "unknown",
+  "x402": {
+    "unit": "usage-based",
+    "asset": "USDC",
+    "chain": "Base",
+    "models": ["pay-per-call", "staked-tier"]
+  }
 }

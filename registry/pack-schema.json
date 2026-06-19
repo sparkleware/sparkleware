@@ -120,6 +120,40 @@
       "minLength": 1,
       "maxLength": 64,
       "description": "SPDX identifier (e.g. `MIT`, `Apache-2.0`)."
+    },
+    "x402": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Onchain payment-rail metadata for paid (x402 / USDC) skills. Surfaced on /rails and /api/rails.json.",
+      "properties": {
+        "price": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Human-readable price per call, e.g. \"$0.50\". Omit when usage-based / variable."
+        },
+        "unit": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "What the price buys, e.g. \"per review\" or \"usage-based\"."
+        },
+        "asset": {
+          "type": "string",
+          "maxLength": 16,
+          "description": "Settlement asset, e.g. \"USDC\"."
+        },
+        "chain": {
+          "type": "string",
+          "maxLength": 24,
+          "description": "Settlement chain, e.g. \"Base\"."
+        },
+        "models": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 32 },
+          "maxItems": 6,
+          "uniqueItems": true,
+          "description": "Payment models, e.g. [\"pay-per-call\", \"prepaid-channel\"]."
+        }
+      }
     }
   }
 }

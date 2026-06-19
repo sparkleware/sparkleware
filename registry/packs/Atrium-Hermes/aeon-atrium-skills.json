@@ -37,5 +37,11 @@
   ],
   "install_command": "./install-skill-pack Atrium-Hermes/aeon-atrium-skills",
   "submitted_at": "2026-06-05T00:00:00Z",
-  "license": "MIT"
+  "license": "MIT",
+  "x402": {
+    "unit": "usage-based",
+    "asset": "USDC",
+    "chain": "Base",
+    "models": ["pay-per-call", "marketplace"]
+  }
 }

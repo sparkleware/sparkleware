@@ -9,6 +9,7 @@ export function GET() {
   const packs = getRailPacks(getAllPacks()).map(({ pack, signals }) => ({
     ...toPublicPack(pack),
     rail_signals: signals,
+    x402: pack.x402 ?? null,
   }));
   const skills = getRailSkills(getAeonSkills()).map(({ skill, signals }) => ({
     slug: skill.slug,

@@ -7,6 +7,20 @@ export interface PackSkill {
   description: string;
 }
 
+/** Onchain payment-rail metadata for paid (x402 / USDC) packs. */
+export interface X402Meta {
+  /** Human price per call, e.g. "$0.50". Omitted when usage-based / variable. */
+  price?: string;
+  /** What the price buys, e.g. "per review" or "usage-based". */
+  unit?: string;
+  /** Settlement asset, e.g. "USDC". */
+  asset?: string;
+  /** Settlement chain, e.g. "Base". */
+  chain?: string;
+  /** Payment models, e.g. ["pay-per-call", "prepaid-channel"]. */
+  models?: string[];
+}
+
 export interface Pack {
   name: string;
   author: string;
@@ -23,6 +37,7 @@ export interface Pack {
   install_command: string;
   submitted_at: string;
   license: string;
+  x402?: X402Meta;
 }
 
 /**

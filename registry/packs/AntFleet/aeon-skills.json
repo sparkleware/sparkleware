@@ -29,5 +29,12 @@
   ],
   "install_command": "./install-skill-pack AntFleet/aeon-skills",
   "submitted_at": "2026-06-05T00:00:00Z",
-  "license": "MIT"
+  "license": "MIT",
+  "x402": {
+    "price": "~$0.50",
+    "unit": "per review",
+    "asset": "USDC",
+    "chain": "Base",
+    "models": ["pay-per-call", "prepaid-channel"]
+  }
 }

@@ -49,6 +49,34 @@ export default function RailsPage() {
         </p>
       </section>
 
+      <section className={styles.phylax}>
+        <div className={styles.phylaxInner}>
+          <span className={styles.phylaxShield} aria-hidden="true">
+            🛡️
+          </span>
+          <div className={styles.phylaxBody}>
+            <h2 className={styles.phylaxTitle}>audit before you pay ✦</h2>
+            <p className={styles.phylaxText}>
+              x402 skills move real USDC. Aeon now ships <strong>phylax-audit</strong> by Phylax — a
+              pre-install pass that checks the x402 payment schema, unbounded pricing, and onchain
+              contracts, returning an <em>ALLOW / WARN / DENY</em> verdict before a skill ever touches
+              your wallet.
+            </p>
+            <div className={styles.phylaxActions}>
+              <code className={styles.phylaxCmd}>./add-skill aaronjmars/aeon phylax-audit</code>
+              <a
+                className={styles.phylaxLink}
+                href="https://github.com/usephylax/phylax-skill-audit"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                phylax ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {railSkills.length > 0 && (
         <section className={styles.skillsSection}>
           <h2 className={styles.sectionTitle}>『 ✦ first-party x402 skills ✦ 』</h2>

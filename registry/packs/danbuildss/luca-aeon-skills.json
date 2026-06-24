@@ -1,0 +1,40 @@
+{
+  "name": "luca-aeon-skills",
+  "author": "danbuildss",
+  "repo": "danbuildss/luca-aeon-skills",
+  "description": "Luca's financial-intelligence skills for Aeon agents, powered by x402Books AI on Base — scan any wallet, monitor treasury health, generate shareable financial reports, and look up agents in the x402Books Agent Financial Registry.",
+  "long_description_md": "## What it does\n\nLuca brings x402Books AI financial intelligence to an Aeon agent. The pack (`@x402books/luca-aeon-skills`) ships four skills over the x402Books API on Base:\n\n- **scan-wallet** — full wallet scan: transaction history, income/spend summary, net flow, x402 payment count, token portfolio, top counterparties, and a shareable report URL.\n- **treasury-monitor** — daily treasury health check: score, budget status, net flow, anomaly alerts, and top expense/income categories.\n- **get-report** — generate a shareable x402Books financial report URL for any Base wallet (publicly accessible, no login).\n- **check-agent** — look up any AI agent in the x402Books Agent Financial Registry: registered wallets, chain, status, and treasury score.\n\n## Install\n\n```\n./install-skill-pack danbuildss/luca-aeon-skills\n```\n\nSkills read the x402Books API with an `X402BOOKS_API_KEY` (`xb_live_...`); `scan-wallet` also supports a keyless demo mode. This pack analyzes x402 activity but is not itself an x402 pay-per-call service. License: MIT.",
+  "category": "crypto",
+  "tags": [
+    "finance",
+    "wallet",
+    "treasury",
+    "base",
+    "x402books"
+  ],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 4,
+  "skills": [
+    {
+      "name": "scan-wallet",
+      "description": "Full wallet scan via x402Books AI — transaction history, income/spend summary, token portfolio, top counterparties, x402 payment count, and a shareable report URL for any Base wallet."
+    },
+    {
+      "name": "treasury-monitor",
+      "description": "Daily treasury health check for any Base wallet — score, budget status, net flow, anomaly alerts, and top expense/income categories via x402Books AI."
+    },
+    {
+      "name": "get-report",
+      "description": "Generate a shareable x402Books financial report URL for any Base wallet — transaction history, treasury health, portfolio, and an AI summary. No login required."
+    },
+    {
+      "name": "check-agent",
+      "description": "Look up any AI agent in the x402Books Agent Financial Registry — registered wallets, chain, status, and treasury score. Public, no API key needed."
+    }
+  ],
+  "install_command": "./install-skill-pack danbuildss/luca-aeon-skills",
+  "submitted_at": "2026-06-24T00:00:00Z",
+  "license": "MIT"
+}

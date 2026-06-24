@@ -1,0 +1,28 @@
+{
+  "name": "careful-finance-aeon-skill-pack",
+  "author": "UIZorrot",
+  "repo": "UIZorrot/careful-finance-aeon-skill-pack",
+  "description": "Careful Finance market-intelligence skill pack for Aeon — scans DeFi yield and perpetual-futures feeds, then publishes or summarizes a conservative, risk-aware market snapshot on a schedule.",
+  "long_description_md": "## What it does\n\nCareful Finance brings a conservative market-intelligence scanner to an Aeon agent. It ships one scheduled skill:\n\n- **careful-finance** — scans DeFi yield and perpetual-futures opportunity feeds, then publishes or summarizes a Careful Finance market snapshot, surfacing yield and perp-arbitrage opportunities with a careful, risk-aware framing.\n\n## Install\n\n```\n./install-skill-pack UIZorrot/careful-finance-aeon-skill-pack\n```\n\nRuns hourly (`3 * * * *`), `default_enabled: false`. Optional data integrations via Barker / Astro Pulse feeds. Homepage: careful-finance.txzy.net. License: MIT.",
+  "category": "crypto",
+  "tags": [
+    "defi",
+    "yield",
+    "perps",
+    "market-intel",
+    "base"
+  ],
+  "version": "0.1.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    {
+      "name": "careful-finance",
+      "description": "Scan DeFi yield and perpetual-futures feeds, then publish or summarize a conservative Careful Finance market-intelligence snapshot."
+    }
+  ],
+  "install_command": "./install-skill-pack UIZorrot/careful-finance-aeon-skill-pack",
+  "submitted_at": "2026-06-24T00:00:00Z",
+  "license": "MIT"
+}

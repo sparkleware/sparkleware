@@ -1,0 +1,28 @@
+{
+  "name": "gitbounty-skill-pack",
+  "author": "gitlawbounty",
+  "repo": "gitlawbounty/gitbounty-skill-pack",
+  "description": "Aeon skill for hunting bounties on the gitlawb network via gitbounty — discovers open bounties through the gitbounty firehose, scouts the best fit with the gitbounty LLM scout, and drafts a read-only PR plan with a confidence score.",
+  "long_description_md": "## What it does\n\nGitBounty Skill Pack lets an Aeon agent hunt bounties on the **gitlawb** network, powered by gitbounty. It ships one scheduled skill:\n\n- **bounty-hunter** — discovers open bounties via the gitbounty firehose, scouts the best fit with the gitbounty LLM scout, and drafts a solution / PR plan with a confidence score. Read-only: it plans, it doesn't push.\n\n## Install\n\n```\n./install-skill-pack gitlawbounty/gitbounty-skill-pack\n```\n\nRuns on a daily schedule (`0 12 * * *`), `default_enabled: false`. License: MIT.",
+  "category": "dev",
+  "tags": [
+    "bounty",
+    "gitlawb",
+    "gitbounty",
+    "automation",
+    "dev"
+  ],
+  "version": "1.0.0",
+  "verified": true,
+  "featured": false,
+  "skills_count": 1,
+  "skills": [
+    {
+      "name": "bounty-hunter",
+      "description": "Discovers open bounties via the gitbounty firehose, scouts the best fit with the gitbounty LLM scout, and drafts a read-only PR plan with a confidence score."
+    }
+  ],
+  "install_command": "./install-skill-pack gitlawbounty/gitbounty-skill-pack",
+  "submitted_at": "2026-06-24T00:00:00Z",
+  "license": "MIT"
+}

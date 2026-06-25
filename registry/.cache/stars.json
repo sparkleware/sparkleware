@@ -3,96 +3,114 @@
     "stars": 1,
     "pushed_at": "2026-05-26T02:04:46Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:09.421Z"
+    "fetched_at": "2026-06-25T09:34:24.811Z"
   },
   "sparkleware/aeon-pulse": {
     "stars": 1,
     "pushed_at": "2026-05-26T02:22:06Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:08.880Z"
+    "fetched_at": "2026-06-25T09:34:24.285Z"
   },
   "sparkleware/registry-watch": {
     "stars": 1,
     "pushed_at": "2026-05-26T02:16:51Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:10.650Z"
+    "fetched_at": "2026-06-25T09:34:26.410Z"
   },
   "sparkleware/arxiv-digest": {
     "stars": 1,
     "pushed_at": "2026-05-26T06:57:29Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:09.155Z"
+    "fetched_at": "2026-06-25T09:34:24.564Z"
   },
   "sparkleware/eth-gas-watch": {
     "stars": 1,
     "pushed_at": "2026-05-26T06:59:41Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:09.732Z"
+    "fetched_at": "2026-06-25T09:34:25.138Z"
   },
   "sparkleware/hn-top": {
     "stars": 1,
     "pushed_at": "2026-05-26T06:58:33Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:10.064Z"
+    "fetched_at": "2026-06-25T09:34:25.948Z"
   },
   "sparkleware/morning-briefing": {
     "stars": 1,
     "pushed_at": "2026-05-26T08:15:11Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:10.381Z"
+    "fetched_at": "2026-06-25T09:34:26.171Z"
   },
   "sparkleware/sparkleware-browse": {
     "stars": 0,
     "pushed_at": "2026-05-28T17:21:02Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:11.274Z"
+    "fetched_at": "2026-06-25T09:34:26.709Z"
   },
   "aaronjmars/miroshark-aeon": {
     "stars": 16,
-    "pushed_at": "2026-06-24T08:47:46Z",
+    "pushed_at": "2026-06-25T08:46:41Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:07.117Z"
+    "fetched_at": "2026-06-25T09:34:20.949Z"
   },
   "codexvritra/signa-miroshark-skills": {
     "stars": 0,
     "pushed_at": "2026-05-26T05:58:26Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:07.674Z"
+    "fetched_at": "2026-06-25T09:34:21.752Z"
   },
   "AntFleet/aeon-skills": {
     "stars": 1,
     "pushed_at": "2026-06-16T05:43:09Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:06.486Z"
+    "fetched_at": "2026-06-25T09:34:19.996Z"
   },
   "Atrium-Hermes/aeon-atrium-skills": {
     "stars": 0,
     "pushed_at": "2026-06-03T20:11:10Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:06.811Z"
+    "fetched_at": "2026-06-25T09:34:20.239Z"
   },
   "baseddevoloper/aeon-skill-pack-vvvkernel": {
     "stars": 0,
     "pushed_at": "2026-05-19T01:25:49Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:07.399Z"
+    "fetched_at": "2026-06-25T09:34:21.301Z"
   },
   "codexvritra/signa": {
     "stars": 2,
     "pushed_at": "2026-06-23T09:47:02Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:07.922Z"
+    "fetched_at": "2026-06-25T09:34:22.021Z"
   },
   "liquidpadbot/aeon-skill-pack-liquidpad": {
     "stars": 3,
     "pushed_at": "2026-05-30T15:35:35Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:08.336Z"
+    "fetched_at": "2026-06-25T09:34:23.629Z"
   },
   "mandateseal/mandateseal-guard": {
     "stars": 0,
     "pushed_at": "2026-05-29T20:55:33Z",
     "archived": false,
-    "fetched_at": "2026-06-24T09:42:08.621Z"
+    "fetched_at": "2026-06-25T09:34:24.032Z"
+  },
+  "UIZorrot/careful-finance-aeon-skill-pack": {
+    "stars": 1,
+    "pushed_at": "2026-06-08T09:17:27Z",
+    "archived": false,
+    "fetched_at": "2026-06-25T09:34:20.526Z"
+  },
+  "danbuildss/luca-aeon-skills": {
+    "stars": 2,
+    "pushed_at": "2026-05-24T10:56:12Z",
+    "archived": false,
+    "fetched_at": "2026-06-25T09:34:22.273Z"
+  },
+  "gitlawbounty/gitbounty-skill-pack": {
+    "stars": 1,
+    "pushed_at": "2026-05-22T14:50:35Z",
+    "archived": false,
+    "fetched_at": "2026-06-25T09:34:23.392Z"
   }
 }

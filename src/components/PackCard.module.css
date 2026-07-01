@@ -125,6 +125,32 @@
   filter: drop-shadow(0 1px 3px rgba(120, 60, 140, 0.5));
 }
 
+.quickAdd {
+  position: absolute;
+  top: 9px;
+  right: 40px;
+  z-index: 6;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--accent);
+  font: 700 13px/1 var(--font-display, 'Trebuchet MS'), sans-serif;
+  box-shadow: 0 2px 8px rgba(120, 60, 140, 0.35);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.quickAdd:hover {
+  transform: scale(1.1);
+}
+.quickAdd[data-in='true'] {
+  background: linear-gradient(120deg, var(--accent), #ff85c1);
+  color: #fff;
+}
+
 .seal {
   position: absolute;
   top: 11px;
@@ -396,7 +422,8 @@
   .card,
   .front::after,
   .emblem,
-  .frame {
+  .frame,
+  .quickAdd {
     transition: none;
     animation: none;
   }

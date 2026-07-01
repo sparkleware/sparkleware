@@ -70,6 +70,20 @@ export function PackCard({ pack }: { pack: EnrichedPack }) {
             <img className={styles.emblem} src={`/collection/emblem-${cat}.png`} alt="" loading="lazy" />
           </div>
           <img className={styles.logo} src="/logo.png" alt="" width={24} height={24} />
+          <button
+            type="button"
+            className={styles.quickAdd}
+            data-in={inDeck ? 'true' : undefined}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggle(pack.repo);
+            }}
+            onKeyDown={(e) => e.stopPropagation()}
+            aria-label={inDeck ? `Remove ${pack.name} from loadout` : `Add ${pack.name} to loadout`}
+            title={inDeck ? 'in loadout' : 'add to loadout'}
+          >
+            {inDeck ? '✓' : '＋'}
+          </button>
           {rarity.tier !== 'common' && (
             <span className={styles.seal} title={rarity.label}>
               ✦

@@ -1,7 +1,7 @@
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, relative, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -91,6 +91,5 @@ function main(): void {
   process.exit(failed === 0 ? 0 : 1);
 }
 
-const isDirectRun = import.meta.url === `file://${process.argv[1].replaceAll('\\', '/')}`
-  || import.meta.url.endsWith(process.argv[1].replaceAll('\\', '/'));
+const isDirectRun = process.argv[1] != null && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isDirectRun) main();

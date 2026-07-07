@@ -14,7 +14,8 @@ import { join } from 'node:path';
 import { pipeline } from '@xenova/transformers';
 import { type AeonSkill } from '../src/lib/skills';
 
-const SKILLS_URL = 'https://raw.githubusercontent.com/aaronjmars/aeon/main/skills.json';
+// Aeon moved catalogs under catalog/ in the 2026-07 repo-declutter (PR #607); root path now 404s.
+const SKILLS_URL = 'https://raw.githubusercontent.com/aaronjmars/aeon/main/catalog/skills.json';
 const MODEL = 'Xenova/all-MiniLM-L6-v2';
 const CACHE = join(process.cwd(), 'registry', '.cache', 'aeon-skills.json');
 const OUT = join(process.cwd(), 'public', 'skill-embeddings.json');

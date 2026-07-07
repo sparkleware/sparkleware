@@ -31,7 +31,8 @@ export interface ComposeResult {
 const MIN_SCORE = 0.2;
 
 // Never compose these into a user's loadout (self-referential / noise).
-const EXCLUDE = new Set(['sparkleware/demo-pack']);
+// demo-pack retired 2026-07 (Aeon delisted it as filler); kept empty for future use.
+const EXCLUDE = new Set<string>([]);
 
 const SPLIT_RE = /\s*(?:,|;|\band\b|\bthen\b|\bplus\b|\balso\b|&|\+)\s*/i;
 

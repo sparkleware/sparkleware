@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     description: 'A holographic registry for Aeon AI agent skill packs.',
     images: ['/og-image.jpg'],
   },
+  other: {
+    'virtual-protocol-site-verification': 'a7dc89bf58023b1f2456c79aa207f247',
+  },
 };
 
 export default function RootLayout({

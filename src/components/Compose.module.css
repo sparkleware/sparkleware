@@ -277,6 +277,88 @@
   font-family: var(--font-mono);
 }
 
+/* ── Proof-of-Loadout trust panel ─────────────── */
+.proof {
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)) padding-box,
+    linear-gradient(120deg, #ff8fc8, #b69bff 50%, #8fd0ff) border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.proofHead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.proofTitle {
+  font-family: var(--font-accent);
+  font-size: 17px;
+  color: var(--magenta-link);
+  letter-spacing: 0.02em;
+}
+.proofSub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--purple-medium);
+}
+.proofRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.proofCard {
+  border: 1.5px solid var(--purple-light);
+  border-radius: 12px;
+  padding: 11px 12px;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.proofIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+.proofCardTitle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--magenta-link);
+}
+.proofCardBody {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--purple-deep);
+}
+.proofCardBody code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(255, 209, 240, 0.5);
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+.proofCardBody a {
+  color: var(--magenta-link);
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.proofCardBody a:hover {
+  color: var(--pink-hot);
+}
+@media (max-width: 640px) {
+  .proofRow {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Loadout X-Ray — core coverage scorecard */
 .xray {
   border: 1.5px solid var(--purple-light);

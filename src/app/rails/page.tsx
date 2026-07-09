@@ -45,7 +45,7 @@ export default function RailsPage() {
         </div>
         <p className={styles.note}>
           a discovery lens, not a payment endpoint · machine-readable at <code>/api/rails.json</code>{' '}
-          ✦
+          + <code>/api/costs.json</code> ✦
         </p>
       </section>
 
@@ -76,6 +76,44 @@ export default function RailsPage() {
           </div>
         </div>
       </section>
+
+      {rails.length > 0 && (
+        <section className={styles.indexSection}>
+          <h2 className={styles.sectionTitle}>『 ✦ the priced map ✦ 』</h2>
+          <p className={styles.sectionNote}>
+            every indexed pack that settles real USDC when it runs — which pack, what rail, what
+            price. the one facet no one else indexes.
+          </p>
+          <div className={styles.indexTable}>
+            <div className={styles.indexHead}>
+              <span>pack</span>
+              <span>rail</span>
+              <span>chain</span>
+              <span>price</span>
+            </div>
+            {rails.map(({ pack, signals }) => (
+              <a
+                key={pack.repo}
+                className={styles.indexRow}
+                href={`/pack/${pack.author}/${pack.name}/`}
+              >
+                <span className={styles.indexName}>
+                  {pack.name} <small>{pack.repo}</small>
+                </span>
+                <span className={styles.indexRail}>
+                  {(pack.x402?.models?.length ? pack.x402.models : signals).join(', ')}
+                </span>
+                <span className={styles.indexChain}>{pack.x402?.chain ?? 'Base'}</span>
+                <span className={styles.indexPrice}>
+                  {pack.x402?.price
+                    ? `${pack.x402.price}${pack.x402.unit ? ` ${pack.x402.unit}` : ''}`
+                    : (pack.x402?.unit ?? 'usage-based')}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {railSkills.length > 0 && (
         <section className={styles.skillsSection}>

@@ -11,6 +11,7 @@ import {
 } from '@/lib/compose';
 import { loadoutCoverage, type CoverageData } from '@/lib/coverage';
 import { loadoutFromResult } from '@/lib/loadout';
+import { getRailPacks } from '@/lib/rails';
 import { AgentCardShare } from './AgentCardShare';
 import styles from './Compose.module.css';
 
@@ -152,6 +153,11 @@ export function Compose({ packs, coverage }: ComposeProps) {
       : '';
   // stable identity so the agent-card canvas only redraws when the loadout changes
   const sharePacks = useMemo(() => (result ? result.loadout.map((c) => c.pack) : []), [result]);
+  // Proof-of-Loadout: which packs move real USDC (drive the trust panel + prices)
+  const railPacks = useMemo(() => (result ? getRailPacks(sharePacks) : []), [result, sharePacks]);
+  const railPrices = railPacks
+    .map((r) => r.pack.x402?.price)
+    .filter((p): p is string => Boolean(p));
 
   return (
     <div className={styles.wrapper}>
@@ -231,6 +237,57 @@ export function Compose({ packs, coverage }: ComposeProps) {
             <summary>preview LOADOUT.md ✦</summary>
             <pre className={styles.loadoutPre}>{loadoutMd}</pre>
           </details>
+
+          <div className={styles.proof}>
+            <div className={styles.proofHead}>
+              <span className={styles.proofTitle}>Proof-of-Loadout ✦</span>
+              <span className={styles.proofSub}>safety-routed · priced · simulate-ready</span>
+            </div>
+            <div className={styles.proofRow}>
+              <div className={styles.proofCard}>
+                <div className={styles.proofIcon} aria-hidden="true">
+                  🛡️
+                </div>
+                <div className={styles.proofCardTitle}>safety</div>
+                <div className={styles.proofCardBody}>
+                  {railPacks.length > 0 ? (
+                    <>
+                      {railPacks.length} x402 pack{railPacks.length === 1 ? '' : 's'} — run{' '}
+                      <code>phylax-audit</code> before install
+                    </>
+                  ) : (
+                    'no money-moving packs — nothing to audit ✓'
+                  )}
+                </div>
+              </div>
+              <div className={styles.proofCard}>
+                <div className={styles.proofIcon} aria-hidden="true">
+                  💰
+                </div>
+                <div className={styles.proofCardTitle}>cost</div>
+                <div className={styles.proofCardBody}>
+                  {railPacks.length > 0 ? (
+                    <>
+                      {railPrices.length ? `${railPrices.join(' · ')} · ` : ''}
+                      {railPacks.length} pack{railPacks.length === 1 ? '' : 's'} settle USDC on Base ·{' '}
+                      <a href="/rails/">priced index →</a>
+                    </>
+                  ) : (
+                    'free to run — no per-call USDC ✓'
+                  )}
+                </div>
+              </div>
+              <div className={styles.proofCard}>
+                <div className={styles.proofIcon} aria-hidden="true">
+                  🦈
+                </div>
+                <div className={styles.proofCardTitle}>simulate</div>
+                <div className={styles.proofCardBody}>
+                  stress-test this loadout with MiroShark for ~$1 before you loop it
+                </div>
+              </div>
+            </div>
+          </div>
 
           {xray && (
             <div className={styles.xray}>

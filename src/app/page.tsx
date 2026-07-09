@@ -3,6 +3,7 @@ import { getAllPacks } from '@/lib/registry';
 import { HoloCard } from '@/components/HoloCard';
 import { PackOfTheDay } from '@/components/PackOfTheDay';
 import { FloatingSparkles } from '@/components/FloatingSparkles';
+import { TokenCA } from '@/components/TokenCA';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
           alt="Sparkleware"
           className={styles.banner}
         />
+        <TokenCA />
         <p className={styles.tagline}>
           A holographic registry for Aeon AI agent skill packs.
           <br />

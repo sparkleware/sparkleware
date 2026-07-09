@@ -116,6 +116,12 @@ export function PackCard({ pack }: { pack: EnrichedPack }) {
           </div>
           <div className={styles.backName}>{pack.name}</div>
           <p className={styles.desc}>{pack.description}</p>
+          {pack.x402 && (
+            <span className={styles.x402} title="settles real USDC over an x402 rail when it runs">
+              ✦ {pack.x402.price ?? 'x402'}
+              {pack.x402.unit ? ` ${pack.x402.unit}` : ''} · {pack.x402.chain ?? 'Base'}
+            </span>
+          )}
           {skills.length > 0 && (
             <div className={styles.skills}>
               {skills.slice(0, 3).map((s) => (

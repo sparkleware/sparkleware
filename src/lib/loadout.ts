@@ -20,6 +20,7 @@
 import type { ComposeResult } from './compose';
 import type { CoverageData, CoreSkill } from './coverage';
 import { loadoutCoverage } from './coverage';
+import { getRailPacks } from './rails';
 
 export interface LoadoutPack {
   repo: string;
@@ -27,6 +28,20 @@ export interface LoadoutPack {
   covers: string[];
   install: string;
   skills: { name: string; description: string }[];
+}
+
+/**
+ * A pack in the loadout that declares an onchain (x402) payment rail — it moves
+ * real USDC when it runs. Drives the Safety + Cost sections of the loadout.
+ */
+export interface RailInfo {
+  repo: string;
+  name: string;
+  signals: string[];
+  price?: string;
+  unit?: string;
+  asset?: string;
+  chain?: string;
 }
 
 export interface LoadoutInput {
@@ -42,6 +57,8 @@ export interface LoadoutInput {
   uncovered: string[];
   installBlock?: string;
   core?: CoreSkill[];
+  /** Packs in this loadout that declare an x402 rail (from getRailPacks). */
+  railPacks?: RailInfo[];
 }
 
 const SEP = '\n\n---\n\n';
@@ -70,6 +87,7 @@ export function renderLoadout(input: LoadoutInput): string {
   const installBlock = input.installBlock ?? loadout.map((p) => p.install).join(' && ');
   const bySlug = new Map((input.core ?? []).map((c) => [c.slug, c.name]));
   const nameOf = (slug: string) => bySlug.get(slug) ?? titleCase(slug);
+  const railPacks = input.railPacks ?? [];
 
   const sections: string[] = [];
 
@@ -79,8 +97,9 @@ export function renderLoadout(input: LoadoutInput): string {
       `# LOADOUT — ${goal}`,
       '',
       `> **Goal (unedited):** ${goal}`,
-      `> Sparkleware /compose · ${loadout.length} packs · ${skillCount} skills · core-15 ${coreCoverage.coveredCount}/${coreCoverage.total} · deterministic export (no LLM at runtime)`,
+      `> Sparkleware /compose · ${loadout.length} packs · ${skillCount} skills · core-15 ${coreCoverage.coveredCount}/${coreCoverage.total}${railPacks.length ? ` · ${railPacks.length} paid (x402) pack${railPacks.length === 1 ? '' : 's'}` : ''} · deterministic export (no LLM at runtime)`,
       '> The loadout layer — which packs to install + how to run them. Pairs with your STRATEGY.md (direction) + SOUL.md (identity).',
+      '> **Proof-of-Loadout:** capability-covered, safety-routed, and simulate-ready before you loop it.',
       '> This file is your loop memory. If it is not written here, it did not happen.',
     ].join('\n'),
   );
@@ -194,6 +213,63 @@ export function renderLoadout(input: LoadoutInput): string {
     sections.push(lines.join('\n'));
   }
 
+  // 5.5 — Safety (audit rail packs before install) — only when the loadout moves money
+  if (railPacks.length > 0) {
+    const lines: string[] = [
+      '## Safety — audit before you install',
+      '',
+      'This loadout includes packs that move real USDC over an x402 rail. Before you install any of them, run a pre-install security pass and read the ALLOW / WARN / DENY verdict:',
+      '',
+    ];
+    for (const r of railPacks) lines.push(`- [ ] audit **${r.name}** (\`${r.repo}\`)`);
+    lines.push('', '```sh', './add-skill aaronjmars/aeon phylax-audit', '```', '');
+    lines.push(
+      'Run phylax-audit on each rail pack before installing it. Recommend-only — read the findings and decide; the verdict is a signal, not a guarantee.',
+    );
+    sections.push(lines.join('\n'));
+  }
+
+  // 5.6 — Cost (estimated per-run spend for rail packs)
+  if (railPacks.length > 0) {
+    const lines: string[] = [
+      '## Cost — estimated per-run spend',
+      '',
+      'These packs settle real USDC when they run. Estimate before you loop:',
+      '',
+      '| Pack | Rail | Chain | Price |',
+      '|------|------|-------|-------|',
+    ];
+    for (const r of railPacks) {
+      const price = [r.price, r.unit].filter(Boolean).join(' ') || 'usage-based';
+      lines.push(
+        `| ${r.name} (\`${r.repo}\`) | ${r.signals.join(', ')} | ${r.chain ?? 'Base'} | ${price} |`,
+      );
+    }
+    lines.push('');
+    lines.push(
+      'Totals are estimates — some packs are usage-based and vary per call. Fund the runtime wallet accordingly and cap spend where the pack supports it.',
+    );
+    sections.push(lines.join('\n'));
+  }
+
+  // 5.7 — Simulate first (optional pre-flight swarm sim) — always offered
+  sections.push(
+    [
+      '## Simulate first — stress-test for ~$1',
+      '',
+      'Before you loop this loadout against the real world, simulate how it behaves. Attach the MiroShark kit and fire one swarm sim (~$1 USDC, <10 min), then read the verdict:',
+      '',
+      '```sh',
+      './install-skill-pack codexvritra/signa-miroshark-skills && ./install-skill-pack aaronjmars/miroshark-aeon',
+      '```',
+      '',
+      "- Fire `miroshark-fire` with a prompt describing this loadout's job → get a report URL + belief chart.",
+      '- Read the outcome back with `miroshark-stats`.',
+      '',
+      'Recommend-only — an optional pre-flight: spend ~$1 to catch a bad plan before it spends real money looping.',
+    ].join('\n'),
+  );
+
   // 6 — Done When (mechanical, inspectable termination test)
   sections.push(
     [
@@ -278,6 +354,16 @@ export function loadoutFromResult(
     core = coverage.core;
   }
 
+  const railPacks: RailInfo[] = getRailPacks(result.loadout.map((c) => c.pack)).map((r) => ({
+    repo: r.pack.repo,
+    name: r.pack.name,
+    signals: r.signals,
+    price: r.pack.x402?.price,
+    unit: r.pack.x402?.unit,
+    asset: r.pack.x402?.asset,
+    chain: r.pack.x402?.chain,
+  }));
+
   return renderLoadout({
     goal: goal.trim() || 'your Aeon agent',
     loadout,
@@ -285,5 +371,6 @@ export function loadoutFromResult(
     uncovered: result.uncovered,
     installBlock: result.installBlock,
     core,
+    railPacks,
   });
 }

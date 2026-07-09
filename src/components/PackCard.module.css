@@ -337,6 +337,18 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.x402 {
+  align-self: flex-start;
+  margin: 0 0 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font: 700 9px/1 var(--font-mono, 'Courier New'), monospace;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: linear-gradient(120deg, #ff5fae, #a06be0 60%, #4fb0ee);
+  box-shadow: 0 2px 8px -3px rgba(160, 60, 180, 0.6);
+}
 .skills {
   display: flex;
   flex-direction: column;

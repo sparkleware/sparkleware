@@ -9,108 +9,114 @@
     "stars": 1,
     "pushed_at": "2026-07-07T15:25:55Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:09.396Z"
+    "fetched_at": "2026-07-10T09:46:47.072Z"
   },
   "sparkleware/registry-watch": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:15Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:10.714Z"
+    "fetched_at": "2026-07-10T09:46:49.181Z"
   },
   "sparkleware/arxiv-digest": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:05Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:09.654Z"
+    "fetched_at": "2026-07-10T09:46:47.580Z"
   },
   "sparkleware/eth-gas-watch": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:10Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:09.903Z"
+    "fetched_at": "2026-07-10T09:46:47.890Z"
   },
   "sparkleware/hn-top": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:07Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:10.178Z"
+    "fetched_at": "2026-07-10T09:46:48.204Z"
   },
   "sparkleware/morning-briefing": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:12Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:10.444Z"
+    "fetched_at": "2026-07-10T09:46:48.528Z"
   },
   "sparkleware/sparkleware-browse": {
     "stars": 0,
     "pushed_at": "2026-05-28T17:21:02Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:10.975Z"
+    "fetched_at": "2026-07-10T09:46:49.497Z"
   },
   "aaronjmars/miroshark-aeon": {
     "stars": 17,
-    "pushed_at": "2026-07-09T09:46:33Z",
+    "pushed_at": "2026-07-10T07:06:51Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:07.285Z"
+    "fetched_at": "2026-07-10T09:46:44.353Z"
   },
   "codexvritra/signa-miroshark-skills": {
     "stars": 0,
     "pushed_at": "2026-05-26T05:58:26Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:07.813Z"
+    "fetched_at": "2026-07-10T09:46:45.049Z"
   },
   "AntFleet/aeon-skills": {
     "stars": 1,
     "pushed_at": "2026-06-16T05:43:09Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:06.431Z"
+    "fetched_at": "2026-07-10T09:46:43.303Z"
   },
   "Atrium-Hermes/aeon-atrium-skills": {
     "stars": 0,
     "pushed_at": "2026-06-03T20:11:10Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:06.738Z"
+    "fetched_at": "2026-07-10T09:46:43.626Z"
   },
   "baseddevoloper/aeon-skill-pack-vvvkernel": {
     "stars": 0,
     "pushed_at": "2026-05-19T01:25:49Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:07.559Z"
+    "fetched_at": "2026-07-10T09:46:44.703Z"
   },
   "codexvritra/signa": {
     "stars": 2,
     "pushed_at": "2026-07-02T11:24:53Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:08.081Z"
+    "fetched_at": "2026-07-10T09:46:45.376Z"
   },
   "liquidpadbot/aeon-skill-pack-liquidpad": {
     "stars": 2,
     "pushed_at": "2026-05-30T15:35:35Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:08.878Z"
+    "fetched_at": "2026-07-10T09:46:46.418Z"
   },
   "mandateseal/mandateseal-guard": {
     "stars": 0,
     "pushed_at": "2026-05-29T20:55:33Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:09.149Z"
+    "fetched_at": "2026-07-10T09:46:46.763Z"
   },
   "UIZorrot/careful-finance-aeon-skill-pack": {
     "stars": 1,
     "pushed_at": "2026-06-08T09:17:27Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:06.993Z"
+    "fetched_at": "2026-07-10T09:46:43.945Z"
   },
   "danbuildss/luca-aeon-skills": {
     "stars": 2,
     "pushed_at": "2026-05-24T10:56:12Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:08.343Z"
+    "fetched_at": "2026-07-10T09:46:45.727Z"
   },
   "gitlawbounty/gitbounty-skill-pack": {
     "stars": 1,
     "pushed_at": "2026-05-22T14:50:35Z",
     "archived": false,
-    "fetched_at": "2026-07-09T09:51:08.611Z"
+    "fetched_at": "2026-07-10T09:46:46.083Z"
+  },
+  "sparkleware/proof-of-loadout": {
+    "stars": 0,
+    "pushed_at": "2026-07-09T15:00:04Z",
+    "archived": false,
+    "fetched_at": "2026-07-10T09:46:48.862Z"
   }
 }

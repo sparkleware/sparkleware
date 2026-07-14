@@ -252,11 +252,11 @@ export function Compose({ packs, coverage }: ComposeProps) {
                 <div className={styles.proofCardBody}>
                   {railPacks.length > 0 ? (
                     <>
-                      {railPacks.length} x402 pack{railPacks.length === 1 ? '' : 's'} — run{' '}
-                      <code>phylax-audit</code> before install
+                      {railPacks.length} x402 pack{railPacks.length === 1 ? '' : 's'} — gate{' '}
+                      <code>charon</code> policy before they spend
                     </>
                   ) : (
-                    'no money-moving packs — nothing to audit ✓'
+                    'no money-moving packs — nothing to gate ✓'
                   )}
                 </div>
               </div>
@@ -269,7 +269,7 @@ export function Compose({ packs, coverage }: ComposeProps) {
                   {railPacks.length > 0 ? (
                     <>
                       {railPrices.length ? `${railPrices.join(' · ')} · ` : ''}
-                      {railPacks.length} pack{railPacks.length === 1 ? '' : 's'} settle USDC on Base ·{' '}
+                      {railPacks.length} pack{railPacks.length === 1 ? '' : 's'} settle real USDC onchain ·{' '}
                       <a href="/rails/">priced index →</a>
                     </>
                   ) : (

@@ -213,18 +213,18 @@ export function renderLoadout(input: LoadoutInput): string {
     sections.push(lines.join('\n'));
   }
 
-  // 5.5 — Safety (audit rail packs before install) — only when the loadout moves money
+  // 5.5 — Safety (gate rail packs behind a policy boundary) — only when the loadout moves money
   if (railPacks.length > 0) {
     const lines: string[] = [
-      '## Safety — audit before you install',
+      '## Safety — gate before they spend',
       '',
-      'This loadout includes packs that move real USDC over an x402 rail. Before you install any of them, run a pre-install security pass and read the ALLOW / WARN / DENY verdict:',
+      'This loadout includes packs that move real USDC over an x402 rail. Put a runtime policy boundary in front of them — Charon (from the official Aeon community catalog) checks every agent action against repo-local policy and returns PASS / PAUSE / DENY before it executes:',
       '',
     ];
-    for (const r of railPacks) lines.push(`- [ ] audit **${r.name}** (\`${r.repo}\`)`);
-    lines.push('', '```sh', './add-skill aaronjmars/aeon phylax-audit', '```', '');
+    for (const r of railPacks) lines.push(`- [ ] gate **${r.name}** (\`${r.repo}\`)`);
+    lines.push('', '```sh', './install-skill-pack CharonAI-code/charon --path skills/aeon', '```', '');
     lines.push(
-      'Run phylax-audit on each rail pack before installing it. Recommend-only — read the findings and decide; the verdict is a signal, not a guarantee.',
+      'Set the spend policy yourself and review the PAUSE queue + signed receipts — a policy boundary is a control, not a guarantee.',
     );
     sections.push(lines.join('\n'));
   }

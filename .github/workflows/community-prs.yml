@@ -1,0 +1,128 @@
+name: community-prs
+
+# Why this exists: PR #1 (clawhunter) sat unreviewed for 26 days because nothing
+# notified anyone and fork CI was gated behind a manual approval nobody saw.
+# This workflow (1) assigns + welcomes every community PR, (2) validates
+# registry JSON changes from forks WITHOUT running any untrusted code, and
+# (3) sweeps daily for PRs older than the ~3-business-day promise on /submit.
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, synchronize]
+  schedule:
+    - cron: '30 6 * * *' # daily 13:30 WIB, after the data refresh
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  notify:
+    if: github.event_name == 'pull_request_target' && github.event.action != 'synchronize'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign maintainer + welcome once
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh pr edit "$PR" -R "$REPO" --add-assignee sparkleware || true
+          if ! gh pr view "$PR" -R "$REPO" --json comments -q '.comments[].body' | grep -q 'sparkleware-welcome'; then
+            gh pr comment "$PR" -R "$REPO" --body "<!-- sparkleware-welcome -->thanks for the submission ✦ a maintainer reviews within ~3 business days. If this PR touches \`registry/packs/\`, schema validation runs automatically — check the status below."
+          fi
+
+  # Validates registry JSON from fork PRs safely: we check out OUR code only,
+  # then download the PR's changed files as DATA (path-gated to
+  # registry/packs/**/*.json) and run our own validator over them. The PR's
+  # code is never executed.
+  validate-registry-files:
+    if: github.event_name == 'pull_request_target'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: registry
+    steps:
+      - uses: actions/checkout@v5 # base branch — never the PR head
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Overlay changed registry JSONs from the PR (data only, path-gated)
+        id: overlay
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          files=$(gh api "repos/$REPO/pulls/$PR/files" --paginate -q '.[] | select(.status != "removed") | .filename') \
+            || { echo "::error::failed to list PR files"; exit 1; }
+          any=0
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            if [[ "$f" =~ ^registry/packs/[A-Za-z0-9._-]+/[A-Za-z0-9._-]+\.json$ ]]; then
+              content=$(gh api "repos/$REPO/contents/$f?ref=refs/pull/$PR/head" -q '.content') \
+                || { echo "::error::failed to fetch $f from the PR head (infra error, not the contributor's fault)"; exit 1; }
+              mkdir -p "$(dirname "$f")"
+              printf '%s' "$content" | base64 -d > "$f"
+              echo "overlaid $f"
+              any=1
+            else
+              echo "skipped (outside registry/packs): $f"
+            fi
+          done <<< "$files"
+          echo "any=$any" >> "$GITHUB_OUTPUT"
+
+      - name: Install dependencies
+        if: steps.overlay.outputs.any == '1'
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate all packs (base + PR overlay)
+        if: steps.overlay.outputs.any == '1'
+        run: pnpm validate
+
+      - name: Comment on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh pr comment "$PR" -R "$REPO" --body "<!-- registry-validation -->⚠️ the registry validation check failed for this PR — see the community-prs workflow logs for whether it's a schema issue (pack schema: \`registry/pack-schema.json\`) or an infrastructure error. A maintainer will take a look."
+
+  sla-sweep:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remind about PRs past the review SLA
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          now=$(date -u +%s)
+          gh pr list -R "$REPO" --state open --limit 100 --json number,createdAt,isDraft \
+            -q '.[] | select(.isDraft | not) | "\(.number) \(.createdAt)"' |
+          while read -r num created; do
+            created_s=$(date -u -d "$created" +%s)
+            age_days=$(( (now - created_s) / 86400 ))
+            if [ "$age_days" -ge 3 ]; then
+              last=$(gh pr view "$num" -R "$REPO" --json comments \
+                -q '[.comments[] | select(.body | contains("sla-reminder"))] | last | .createdAt')
+              remind=1
+              if [ -n "$last" ] && [ "$last" != "null" ]; then
+                last_s=$(date -u -d "$last" +%s)
+                [ $(( (now - last_s) / 86400 )) -lt 3 ] && remind=0
+              fi
+              if [ "$remind" = "1" ]; then
+                gh pr comment "$num" -R "$REPO" --body "<!-- sla-reminder -->⏰ @sparkleware — this community PR is ${age_days} days old, past the ~3-business-day review promise on /submit. Please review it."
+              fi
+            fi
+          done

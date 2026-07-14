@@ -26,6 +26,13 @@
     }
   ],
   "install_command": "./install-skill-pack clawhunter/clawhunter-skills",
+  "x402": {
+    "price": "$0.001–$0.05",
+    "unit": "per call",
+    "asset": "USDC",
+    "chain": "Solana / Base",
+    "models": ["pay-per-call"]
+  },
   "submitted_at": "2026-06-18T12:14:42.470Z",
   "license": "MIT"
 }

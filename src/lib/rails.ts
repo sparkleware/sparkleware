@@ -4,11 +4,12 @@ import type { AeonSkill } from './skills';
 /**
  * x402 Rails — the onchain-paid corner of the Aeon ecosystem.
  *
- * A pack is a "rail" if it DECLARES an onchain payment rail: an x402 / usdc /
- * onchain tag, or the precise token "x402" in its text. We match clean tags +
- * the precise "x402" string (never the repo slug) so e.g. "base" in an author
- * name can't false-positive. getRailSkills applies the same lens to Aeon's
- * first-party skills (BEAMR Route, CTRL, x402-monitor, …).
+ * A pack is a "rail" only if it DECLARES an onchain payment rail: an exact
+ * x402 / usdc / onchain tag, or an explicit `x402` pricing block. We do NOT
+ * scan description text — packs that merely *analyze* x402 activity (or plan
+ * someone else's x402 spend) mention the token without charging it, and text
+ * matching put them on the priced map with a blank price. getRailSkills
+ * applies a similar lens to Aeon's first-party skills.
  */
 
 const RAIL_TAGS = ['x402', 'usdc', 'onchain'] as const;
@@ -29,10 +30,9 @@ export function getRailPacks(packs: EnrichedPack[]): RailPack[] {
   return packs
     .map((pack): RailPack | null => {
       const tags = (pack.tags ?? []).map((t) => t.toLowerCase());
-      const text = `${pack.description} ${pack.long_description_md ?? ''}`.toLowerCase();
       const signals = new Set<string>();
       for (const s of RAIL_TAGS) if (tags.includes(s)) signals.add(s);
-      if (text.includes('x402')) signals.add('x402');
+      if (pack.x402) signals.add('x402'); // an explicit pricing block is the strongest declaration
       return signals.size > 0 ? { pack, signals: [...signals] } : null;
     })
     .filter((r): r is RailPack => r !== null)

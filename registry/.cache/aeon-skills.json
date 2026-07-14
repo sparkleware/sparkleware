@@ -3,736 +3,272 @@
     "slug": "action-converter",
     "name": "Action Converter",
     "description": "5 concrete real-life actions, leverage-scored against open loops with specificity and anti-fluff gates",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon action-converter",
-    "core": false
-  },
-  {
-    "slug": "agent-buzz",
-    "name": "Agent Buzz",
-    "description": "Curated AI-agent tweets, clustered into narratives with insight summaries",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon agent-buzz",
-    "core": false
-  },
-  {
-    "slug": "agent-displacement",
-    "name": "agent-displacement",
-    "description": "Tracker of AI agent substitution signals — which roles, companies, and industries show real headcount displacement. Named roles + real deployments only.",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon agent-displacement",
-    "core": false
-  },
-  {
-    "slug": "aixbt-pulse",
-    "name": "AIXBT Pulse",
-    "description": "Cross-domain market pulse from AIXBT's free grounding endpoint — crypto, macro, tradfi, geopolitics. Refreshes taxonomy references (clusters, chains) as a bonus.",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon aixbt-pulse",
-    "core": false
-  },
-  {
-    "slug": "api-health",
-    "name": "API Health",
-    "description": "Pre-batch API provider health check — detects credit exhaustion or auth failure for every configured provider key before the scheduled batch runs, giving the operator a window to act before skills degrade",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon api-health",
-    "core": false
-  },
-  {
-    "slug": "approval-audit",
-    "name": "Approval Audit",
-    "description": "List a wallet's live ERC-20 token approvals on Base and flag unlimited / risky spender grants. Keyless via Base RPC (eth_getLogs + eth_call) — no explorer key needed.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon approval-audit",
-    "core": false
-  },
-  {
-    "slug": "article-queue",
-    "name": "article-queue",
-    "description": "Article idea synthesizer — ranks signals from topic-momentum, beat-tracker, and narrative-tracker into a prioritized queue the article skill reads on its next run",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon article-queue",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon action-converter",
     "core": false
   },
   {
     "slug": "article",
     "name": "Article",
-    "description": "Research trending topics and write a publication-ready article",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon article",
-    "core": false
-  },
-  {
-    "slug": "atrium-watch",
-    "name": "Atrium Watch",
-    "description": "Diff of the Atrium marketplace catalog at https://atriumhermes.tech/.well-known/skills/index.json against the prior snapshot — surfaces newly-published skills, removed skills, and updated descriptions. Supply-side complement to sparkleware-catalog (curated skill-packs.json registry) and skill-update (version drift of installed skills).",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon atrium-watch",
+    "description": "Write a publication-ready article in one of three angles - a trending long-form piece, a watched-repo thesis, or a project-through-a-lens essay. Optional Replicate hero image with --visual.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon article",
     "core": false
   },
   {
     "slug": "auto-merge",
     "name": "Auto Merge",
     "description": "Automatically merge open PRs that have passing CI, no blocking reviews, and no conflicts",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon auto-merge",
-    "core": false
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon auto-merge",
+    "core": true
   },
   {
     "slug": "auto-workflow",
     "name": "Auto-Workflow Builder",
-    "description": "Analyze a URL and generate a tailored aeon.yml schedule with skill suggestions",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon auto-workflow",
-    "core": false
+    "description": "Two-mode aeon.yml workflow builder - analyze inspects URLs and emits a tiered, signal-verified skill-enablement plan plus an aeon.yml diff; enable flips slugs to enabled:true and opens a PR.",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon auto-workflow",
+    "core": true
   },
   {
     "slug": "autoresearch",
     "name": "Autoresearch",
     "description": "Evolve a skill by generating variations, evaluating them, and updating the best version",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon autoresearch",
-    "core": true
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon autoresearch",
+    "core": false
   },
   {
     "slug": "base-mcp",
     "name": "Base MCP",
-    "description": "Access a Base Account via the Base MCP server (mcp.base.org) — wallet, portfolio, sending, swapping, signing, x402 payments, batched contract calls, and transaction history across supported chains.",
+    "description": "Access a Base Account via the Base MCP server (mcp.base.org) - wallet, portfolio, sending, swapping, signing, x402 payments, batched calls, and transaction history.",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon base-mcp",
+    "install": "bin/add-skill aeonfun/aeon base-mcp",
     "core": false
   },
   {
-    "slug": "batch-health",
-    "name": "batch-health",
-    "description": "Post-batch audit — checks whether all enabled scheduled skills fired in their expected window, alerts on silent misses, files issues on batch-level outages",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon batch-health",
-    "core": false
-  },
-  {
-    "slug": "beamr-route",
-    "name": "BEAMR Route",
-    "description": "Route a prompt through a BEAMR x402 gateway and report the answer + onchain receipt",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon beamr-route",
-    "core": false
-  },
-  {
-    "slug": "beat-tracker",
-    "name": "beat-tracker",
-    "description": "Multi-beat news thread tracker — persists beat counts per active storyline, searches for new developments, alerts when a thread hits the article-ready threshold (3rd beat)",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon beat-tracker",
-    "core": false
-  },
-  {
-    "slug": "builder-map",
-    "name": "builder-map",
-    "description": "Map of who's building on top of watched repos — forks, third-party ecosystem repos, builder announcements. Answers the \"who's building on top\" question.",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon builder-map",
-    "core": false
-  },
-  {
-    "slug": "capabilities-map",
-    "name": "capabilities-map",
-    "description": "Read-only audit of installed skills' capability coverage — maps every enabled/disabled skill against the locked 6-value taxonomy in docs/CAPABILITIES.md, flags any capability tier with zero enabled coverage as an actionable gap",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon capabilities-map",
+    "slug": "bd-radar",
+    "name": "BD Radar",
+    "description": "Business-development radar across your product family - find who's building, forking, integrating, and mentioning your products, ranked into a who-to-talk-to-this-week lead list.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon bd-radar",
     "core": false
   },
   {
     "slug": "changelog",
     "name": "Changelog",
-    "description": "Generate a user-facing changelog (Keep a Changelog format) from recent commits across watched repos",
+    "description": "Generate a user-facing changelog from recent commits/PRs across watched repos - write it in-repo (Keep a Changelog format) or open a cross-repo changelog PR on a docs/marketing repo.",
     "category": "dev",
-    "install": "./add-skill aaronjmars/aeon changelog",
-    "core": false
-  },
-  {
-    "slug": "channel-recap",
-    "name": "Channel Recap",
-    "description": "Recap article from a public Telegram channel — rank posts by engagement, expand on the best",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon channel-recap",
-    "core": false
-  },
-  {
-    "slug": "code-health",
-    "name": "Code Health",
-    "description": "Report on TODOs, dead code, and test coverage gaps",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon code-health",
-    "core": false
-  },
-  {
-    "slug": "compute-pulse",
-    "name": "compute-pulse",
-    "description": "Tracker for the AI compute market — GPU/hardware deals, inference pricing trends, decentralized compute token signals, and lab vs hyperscaler dynamics.",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon compute-pulse",
-    "core": false
-  },
-  {
-    "slug": "config-validator",
-    "name": "Config Validator",
-    "description": "Validate aeon.yml and .github/workflows/aeon.yml for structural invariants that have caused past outages — checkout step ordering, duplicate skill keys, missing skill files",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon config-validator",
-    "core": false
-  },
-  {
-    "slug": "content-performance",
-    "name": "content-performance",
-    "description": "Operator tweet performance tracker — engagement metrics, top formats, topic resonance; closes the content feedback loop in the article/tweet production pipeline",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon content-performance",
-    "core": false
-  },
-  {
-    "slug": "contract-audit",
-    "name": "Contract Audit",
-    "description": "Audit any contract on Base — verification, proxy/upgradeability, ownership/admin roles, and mint/freeze/pause/drain powers as a live capability matrix. Keyless via Etherscan v2 + Base RPC.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon contract-audit",
-    "core": false
-  },
-  {
-    "slug": "contributor-leaderboard",
-    "name": "Contributor Leaderboard",
-    "description": "Ranking of developers contributing to the fork fleet and back upstream",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon contributor-leaderboard",
-    "core": false
-  },
-  {
-    "slug": "contributor-reward",
-    "name": "contributor-reward",
-    "description": "Closes the contributor flywheel — turns the contributor-leaderboard ranking into a tier-priced rewards plan, writes it into memory/distributions.yml, and hands off to distribute-tokens for the actual on-chain send",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon contributor-reward",
-    "core": true
-  },
-  {
-    "slug": "contributor-spotlight",
-    "name": "contributor-spotlight",
-    "description": "Recognition post for one fork operator — converts fork-cohort cohort data into a named human moment (POWER fork callout with their work, stars, and skills enabled)",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon contributor-spotlight",
-    "core": false
-  },
-  {
-    "slug": "cost-report",
-    "name": "cost-report",
-    "description": "API cost report — computes dollar costs from token usage, flags anomalies, forecasts burn, and prescribes concrete optimizations",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon cost-report",
-    "core": false
-  },
-  {
-    "slug": "create-campaign",
-    "name": "Create Campaign",
-    "description": "Provision Meta campaigns and ad sets on AdManage.ai from a declarative config. Runs on-demand — creates entities PAUSED, writes the returned IDs back into state so schedule-ads can launch into them.",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon create-campaign",
+    "install": "bin/add-skill aeonfun/aeon changelog",
     "core": false
   },
   {
     "slug": "create-skill",
     "name": "Create Skill",
     "description": "Generate a complete new skill from a one-line prompt and ship it as a PR",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon create-skill",
-    "core": true
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon create-skill",
+    "core": false
   },
   {
     "slug": "ctrl",
     "name": "CTRL",
-    "description": "Build on-chain automation workflows on Base via CTRL. Use for recurring or triggered actions — DCA, price-gated swaps, launchpad sniping, whale-follow — that should run autonomously after a single wallet signature. The wallet signs once (EIP-5792 batch), and the CTRL keeper executes every trigger after, bounded by per-swap and per-day caps the user pre-authorized.",
+    "description": "Build on-chain automation on Base via CTRL - DCA, price-gated swaps, launchpad sniping, or whale-follow that run autonomously after one EIP-5792 wallet signature, bounded by preset caps.",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon ctrl",
-    "core": false
-  },
-  {
-    "slug": "deal-flow",
-    "name": "Deal Flow",
-    "description": "Funding round tracker across configurable verticals",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon deal-flow",
-    "core": false
-  },
-  {
-    "slug": "deep-research",
-    "name": "Deep Research",
-    "description": "Exhaustive multi-source synthesis on any topic with explicit source credibility tiering and per-finding confidence — analyst-grade, not aggregator-grade",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon deep-research",
+    "install": "bin/add-skill aeonfun/aeon ctrl",
     "core": false
   },
   {
     "slug": "defi-overview",
     "name": "DeFi Overview",
-    "description": "DeFi read — regime verdict, biggest movers with \"why it matters\", sustainable vs incentive yields, fees fundamentals",
+    "description": "One-pass crypto read - tracked-protocol positions and health plus macro context, with regime take, DeFi verdict, biggest movers, yields, fees, breadth, Fear & Greed, and prediction markets.",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon defi-overview",
+    "install": "bin/add-skill aeonfun/aeon defi-overview",
     "core": false
   },
   {
     "slug": "deploy-prototype",
     "name": "Deploy Prototype",
     "description": "Generate a small app or tool and deploy it live to Vercel via API",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon deploy-prototype",
-    "core": true
-  },
-  {
-    "slug": "deployer-trace",
-    "name": "Deployer Trace",
-    "description": "Map every contract deployed by an address on Base, link reused patterns, and surface serial-rug signals. Keyless via Etherscan v2 + Base RPC.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon deployer-trace",
+    "category": "dev",
+    "install": "bin/add-skill aeonfun/aeon deploy-prototype",
     "core": false
   },
   {
     "slug": "digest",
     "name": "Digest",
-    "description": "Generate and send a digest on a configurable topic",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon digest",
-    "core": false
-  },
-  {
-    "slug": "disclosure-tracker",
-    "name": "disclosure-tracker",
-    "description": "Audit of the pending vulnerability disclosure queue — tracks draft advisories in memory/pending-disclosures/, alerts on aging CRITICAL/HIGH findings.",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon disclosure-tracker",
+    "description": "Generate and send a digest on a configurable topic, optionally pulling RSS/Atom feeds as an input source alongside web + X signal",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon digest",
     "core": false
   },
   {
     "slug": "distribute-tokens",
     "name": "Distribute Tokens",
-    "description": "Send tokens to a list of contributors via Bankr Wallet API with per-recipient idempotency, two-phase resolve→execute, dry-run, and recovery from partial runs",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon distribute-tokens",
-    "core": true
-  },
-  {
-    "slug": "ecosystem-links",
-    "name": "ecosystem-links",
-    "description": "Link-health audit of ECOSYSTEM.md — checks every GitHub repo for archived/disabled state and every project URL for HTTP 4xx/5xx or redirect chains, surfacing dead/archived/moved entries before a casual reader stumbles into one. Closes the three-skill ecosystem loop with ecosystem-entrants (arrivals) and ecosystem-pulse (liveness).",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon ecosystem-links",
-    "core": false
-  },
-  {
-    "slug": "ecosystem-pulse",
-    "name": "ecosystem-pulse",
-    "description": "Liveness check of the projects listed in ECOSYSTEM.md — stars/forks/last-commit recency + new releases for any project that can be matched to a GitHub repo",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon ecosystem-pulse",
-    "core": false
-  },
-  {
-    "slug": "engagement-act",
-    "name": "Engagement Act",
-    "description": "Turn flagged engagement opportunities into ready-to-post replies — read recent logs, draft specific responses, send as copy-paste-ready output",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon engagement-act",
-    "core": false
-  },
-  {
-    "slug": "external-feature",
-    "name": "External Feature",
-    "description": "Proactively enhance watched repos — fix issues, add features, improve code",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon external-feature",
-    "core": true
-  },
-  {
-    "slug": "farcaster-digest",
-    "name": "Farcaster Digest",
-    "description": "Clustered, signal-scored digest of Farcaster casts with conversation-shape lead and insight-first editorial notes",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon farcaster-digest",
-    "core": false
-  },
-  {
-    "slug": "fear-divergence",
-    "name": "Fear Divergence",
-    "description": "Conditional scan — fires only when Fear & Greed < 25. Identifies assets outperforming during broad market fear, synthesizes narrative catalysts from memory, and delivers a terse conviction setup brief. Skips silently when market conditions don't qualify.",
+    "description": "Two-phase contributor rewards - plan builds a tier-priced payout from the repo's merged-PR ranking; send executes it on-chain via Bankr Wallet API with per-recipient idempotency and dry-run.",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon fear-divergence",
+    "install": "bin/add-skill aeonfun/aeon distribute-tokens",
+    "core": false
+  },
+  {
+    "slug": "feature",
+    "name": "Feature",
+    "description": "Build, enhance, or revive GitHub repos - ship one feature PR per watched repo (watched), make the best single enhancement on one external repo (external), or revive the top dormant repo (dormant).",
+    "category": "dev",
+    "install": "bin/add-skill aeonfun/aeon feature",
     "core": false
   },
   {
     "slug": "fetch-tweets",
     "name": "Fetch Tweets",
-    "description": "Search X/Twitter for tweets about a token, keyword, username, or topic — clustered by sub-narrative",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon fetch-tweets",
+    "description": "Search and curate X/Twitter behind one selector - keyword, topic roundup, a single or tracked-account digest, an X list, or the AI-agent buzz preset - clustered into signal-scored sub-narratives.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon fetch-tweets",
     "core": false
   },
   {
     "slug": "fleet-control",
     "name": "Fleet Control",
-    "description": "Monitor managed Aeon instances — check health, dispatch skills, aggregate status",
+    "description": "Operate managed Aeon instances from memory/instances.json - health-check, dispatch, and status snapshots (control), plus a fleet scorecard of runs, tokens, cost, and reliability (scorecard).",
     "category": "core",
-    "install": "./add-skill aaronjmars/aeon fleet-control",
+    "install": "bin/add-skill aeonfun/aeon fleet-control",
     "core": true
-  },
-  {
-    "slug": "fleet-scorecard",
-    "name": "Fleet Scorecard",
-    "description": "Fleet-wide scorecard across this instance and every managed instance in memory/instances.json — runs, tokens (OpenRouter shape), est. cost, skills, and reliability, with deltas vs the previous run and alerts",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon fleet-scorecard",
-    "core": true
-  },
-  {
-    "slug": "fleet-state",
-    "name": "fleet-state",
-    "description": "Fleet-state digest — synthesises fork-cohort, contributor-spotlight, and fork-release into one \"state of the fleet\" narrative",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon fleet-state",
-    "core": false
-  },
-  {
-    "slug": "followup-patrol",
-    "name": "Followup Patrol",
-    "description": "Escalation audit — parses the follow-up / open-loop section of MEMORY.md plus the issue tracker, computes item ages, and alerts on items hitting urgency thresholds so nothing rots unattended",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon followup-patrol",
-    "core": false
-  },
-  {
-    "slug": "fork-cohort",
-    "name": "fork-cohort",
-    "description": "Fork-activation cohort tracker — buckets every fork by recent run activity (COLD / STALE / ACTIVE / POWER) with deltas since the prior snapshot",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon fork-cohort",
-    "core": false
-  },
-  {
-    "slug": "fork-digest",
-    "name": "Fork Digest",
-    "description": "Cross-fork customization digest — surfaces where the fleet's enable/disable/var/model decisions diverge from upstream defaults",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon fork-digest",
-    "core": false
-  },
-  {
-    "slug": "fork-firstrun",
-    "name": "Fork Firstrun",
-    "description": "Named alert when a fork completes its first ever workflow run — catches the activation moment that slower fork-cohort snapshots would miss",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon fork-firstrun",
-    "core": false
   },
   {
     "slug": "fork-fleet",
     "name": "fork-fleet",
-    "description": "Inventory active Aeon forks, detect diverged work, surface upstream contribution candidates",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon fork-fleet",
-    "core": false
-  },
-  {
-    "slug": "fork-health",
-    "name": "Fork Health",
-    "description": "Per-fork health tier synthesizing push recency + enabled skill count + 30d PR activity into ACTIVE/WARM/STALE/QUIET buckets; fleet health ratio + top-10 ACTIVE table; silent when nothing moves",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon fork-health",
-    "core": false
-  },
-  {
-    "slug": "fork-release",
-    "name": "Fork Release",
-    "description": "Scan that celebrates when any fork of the parent repo cuts a tagged GitHub release. Silent when no fork releases in the window.",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon fork-release",
-    "core": false
-  },
-  {
-    "slug": "framework-watch",
-    "name": "Framework Watch",
-    "description": "Competitive-intelligence digest on the AI agent framework space — momentum, releases, breaking changes across a curated watchlist",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon framework-watch",
-    "core": false
-  },
-  {
-    "slug": "frequency-guard",
-    "name": "Frequency Guard",
-    "description": "Per-skill run-count watchdog — checks if any capped skills exceeded their configured daily limit and alerts on breach",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon frequency-guard",
-    "core": false
-  },
-  {
-    "slug": "fund-flow",
-    "name": "Fund Flow",
-    "description": "Trace where funds move to (or came from) across multiple hops from a Base address and render a Mermaid flow graph. Keyless — no explorer key needed.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon fund-flow",
-    "core": false
+    "description": "Fork divergence monitor - tracks where the fleet's active forks diverge in CODE (unique commits, new/modified skills) and CONFIG (enable/var/model/schedule vs upstream), gated on real change.",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon fork-fleet",
+    "core": true
   },
   {
     "slug": "github-monitor",
     "name": "GitHub Monitor",
-    "description": "Watch repos for stale PRs, new issues, and new releases — tiered by urgency with concrete next actions",
+    "description": "Watch your GitHub repos across four views - a combined urgency monitor (stale PRs, new issues, releases), a new-issue triage queue, a release upgrade digest, or your own opened-PR tracker.",
     "category": "dev",
-    "install": "./add-skill aaronjmars/aeon github-monitor",
-    "core": false
-  },
-  {
-    "slug": "github-releases",
-    "name": "GitHub Releases",
-    "description": "Upgrade-triage digest of new releases across watched AI/infra/crypto repos",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon github-releases",
+    "install": "bin/add-skill aeonfun/aeon github-monitor",
     "core": false
   },
   {
     "slug": "github-trending",
     "name": "GitHub Trending",
-    "description": "Curated trending GitHub repos — clustered, filtered, and labeled by momentum",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon github-trending",
-    "core": false
-  },
-  {
-    "slug": "goal-tracker",
-    "name": "Goal Tracker",
-    "description": "Compare current progress against goals with quantified status, velocity, trend, and a concrete next action per goal",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon goal-tracker",
+    "description": "Curated trending across GitHub repos and the Hugging Face Hub (models, datasets, spaces) - filtered, clustered, and labeled by momentum with a one-line why-notable per pick.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon github-trending",
     "core": false
   },
   {
     "slug": "heartbeat",
     "name": "Heartbeat",
-    "description": "Proactive ambient check — surface anything worth attention",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon heartbeat",
-    "core": false
+    "description": "Ambient fleet-health check that surfaces anything worth attention (default), or an on-demand priority brief - the 3 things to focus on, why now, and what moved (var=brief)",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon heartbeat",
+    "core": true
   },
   {
-    "slug": "hn-digest",
-    "name": "HN Digest",
-    "description": "Top HN stories filtered by interests, with comment-mined insights and themed clustering",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon hn-digest",
-    "core": false
-  },
-  {
-    "slug": "holder-concentration",
-    "name": "Holder Concentration",
-    "description": "Analyze token holder distribution on Base — top-N share, HHI concentration, LP/lock/burn exclusions, and whale clusters. Keyless via Etherscan v2 + Base RPC.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon holder-concentration",
-    "core": false
-  },
-  {
-    "slug": "honeypot-check",
-    "name": "Honeypot Check",
-    "description": "Detect un-sellable / restricted (honeypot) tokens on Base by simulating a real holder's sell via eth_call. Keyless — no explorer key needed.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon honeypot-check",
-    "core": false
-  },
-  {
-    "slug": "huggingface-trending",
-    "name": "Hugging Face Trending",
-    "description": "Curated trending Hugging Face models, datasets, and spaces — filtered, clustered, and labeled with a \"why notable\" line per pick",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon huggingface-trending",
-    "core": false
-  },
-  {
-    "slug": "idea-capture",
-    "name": "Idea Capture",
-    "description": "Quick note capture triggered via Telegram — restates, triages, logs, and echoes back for confirmation",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon idea-capture",
+    "slug": "idea-forge",
+    "name": "Idea Forge",
+    "description": "Three-mode idea engine - generate collides the week's zeitgeist with what you can ship into scored wedges; validate viability-screens the idea backlog; memo writes evidence-backed startup memos.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon idea-forge",
     "core": false
   },
   {
     "slug": "idea-pipeline",
     "name": "idea-pipeline",
-    "description": "Execution-gap audit — cross-references the startup idea backlog against shipped skills, prototypes, and cross-repo PRs. Surfaces the top 3 ideas to build next based on narrative fit and operator fit.",
+    "description": "Execution-gap audit - cross-references the startup idea backlog against shipped skills, prototypes, and cross-repo PRs, surfacing the top 3 ideas to build next by narrative and operator fit.",
     "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon idea-pipeline",
+    "install": "bin/add-skill aeonfun/aeon idea-pipeline",
     "core": false
   },
   {
-    "slug": "idea-validator",
-    "name": "idea-validator",
-    "description": "Screen the startup idea backlog — research competitive landscape, score viability, surface the strongest picks from memory/topics/startup-ideas.md",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon idea-validator",
+    "slug": "inbox-triage",
+    "name": "Inbox Triage",
+    "description": "Daily GitHub notification inbox triage - surfaces aging vuln PR replies, security advisories, review requests, and mentions that need action",
+    "category": "dev",
+    "install": "bin/add-skill aeonfun/aeon inbox-triage",
     "core": false
   },
   {
     "slug": "install-skill",
     "name": "Install Skill",
     "description": "Install a community skill pack into this fork from a GitHub repo and ship it as an auto-merged PR",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon install-skill",
-    "core": true
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon install-skill",
+    "core": false
   },
   {
     "slug": "investigation-report",
     "name": "Investigation Report",
-    "description": "One-shot composite investigation of a Base token — runs rug-scan, contract-audit, deployer-trace and holder-concentration and merges them into a single report with an at-a-glance verdict. Keyless core; a Basescan key deepens it.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon investigation-report",
-    "core": false
-  },
-  {
-    "slug": "issue-triage",
-    "name": "Issue Triage",
-    "description": "Decision-ready triage — classify, dedupe, and emit a verdict + next action per new GitHub issue",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon issue-triage",
-    "core": false
-  },
-  {
-    "slug": "janitor",
-    "name": "Janitor",
-    "description": "Cleanup of accumulated temp files — .notify-* root-level files, .pending-notify-temp/, and stale .outputs/ chain artifacts older than their TTL",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon janitor",
+    "description": "One-shot Base-token investigation - runs any subset of six onchain-security checks (rug-scan, contract-audit, deployer-trace, holder-concentration, honeypot, lp-lock) into one verdict. Keyless core.",
+    "category": "crypto",
+    "install": "bin/add-skill aeonfun/aeon investigation-report",
     "core": false
   },
   {
     "slug": "last30",
     "name": "Last 30 Days",
-    "description": "Cross-platform social research — narrative-first intelligence on what people are saying about a topic across Reddit, X, HN, Polymarket, and the web over the last 30 days",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon last30",
+    "description": "Cross-platform social research - narrative-first intelligence on what people are saying about a topic across Reddit, X, HN, Polymarket, and the web over the last 30 days",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon last30",
     "core": false
   },
   {
-    "slug": "launch-radar",
-    "name": "launch-radar",
-    "description": "Competitive scan — searches ProductHunt, HN Show HN, and GitHub Trending for product launches matching the operator's startup idea backlog. Flags when someone ships an idea from the list.",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon launch-radar",
-    "core": false
-  },
-  {
-    "slug": "linked-wallets",
-    "name": "Linked Wallets",
-    "description": "Cluster addresses likely controlled by the same entity on Base via shared-funder and co-spend heuristics. Keyless — no explorer key needed.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon linked-wallets",
-    "core": false
-  },
-  {
-    "slug": "liquidpad-launch",
-    "name": "LiquidPad Launch",
-    "description": "Emit a LiquidPad token deploy payload through the prefetch/postprocess shim pair. Routes 80% fees to deployer, 15% to LPAD burn, 5% to LIQ buyback, contract-enforced.",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon liquidpad-launch",
-    "core": false
-  },
-  {
-    "slug": "list-digest",
-    "name": "List Digest",
-    "description": "Cross-list narrative resonance + signal-scored top tweets from tracked X lists in the past 24 hours",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon list-digest",
-    "core": false
-  },
-  {
-    "slug": "lp-lock",
-    "name": "LP Lock",
-    "description": "Resolve a token's main liquidity pool on Base and classify whether its LP is burned/locked or removable (rug-pull risk). Keyless — no explorer key needed.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon lp-lock",
-    "core": false
-  },
-  {
-    "slug": "market-context",
-    "name": "Market Context",
-    "description": "Fetch live crypto macro data and update memory/topics/market-context.md",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon market-context",
-    "core": false
-  },
-  {
-    "slug": "mcp-pulse",
-    "name": "mcp-pulse",
-    "description": "Tracker for the Model Context Protocol (MCP) ecosystem — new server implementations, adoption velocity, npm/GitHub signals, and protocol evolution. Thesis check — is MCP becoming the default tool-call rail for agents?",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon mcp-pulse",
-    "core": false
-  },
-  {
-    "slug": "memory-dedupe",
-    "name": "Memory Dedupe",
-    "description": "Detect and collapse structural duplicate rows in MEMORY.md — sections like Recent Articles and Skills Built that accumulate multiple content blocks across memory-flush cycles. Companion to scripts/memory-dedupe (topic-pointer dedup); this handles section-level row accumulation and duplicate H2 headings (the same section heading appearing 2+ times in the file).",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon memory-dedupe",
-    "core": false
+    "slug": "memory-flush",
+    "name": "Memory Flush",
+    "description": "Promote important recent log entries into MEMORY.md and prune stale ones",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon memory-flush",
+    "core": true
   },
   {
     "slug": "mention-radar",
     "name": "Mention Radar",
-    "description": "Monitor external web and social mentions of the operator's active projects — surface what people are discovering, where they're confused, and where to engage",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon mention-radar",
-    "core": false
-  },
-  {
-    "slug": "milestone-tracker",
-    "name": "milestone-tracker",
-    "description": "Progress tracking for key product and growth milestones — celebrates crossings, alerts on approaches, surfaces stalls",
+    "description": "Monitor external web and social mentions of the operator's active projects - surface what people are discovering, where they're confused, and where to engage",
     "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon milestone-tracker",
-    "core": false
-  },
-  {
-    "slug": "monitor-kalshi",
-    "name": "Monitor Kalshi",
-    "description": "Monitor specific Kalshi prediction markets for 24h price moves, volume changes, and top events",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon monitor-kalshi",
+    "install": "bin/add-skill aeonfun/aeon mention-radar",
     "core": false
   },
   {
     "slug": "monitor-polymarket",
-    "name": "Monitor Polymarket",
-    "description": "Monitor specific prediction markets for 24h price moves, volume changes, and fresh comments",
+    "name": "Monitor Prediction Markets",
+    "description": "Monitor Polymarket and/or Kalshi prediction markets for 24h price moves, volume changes, fresh comments, and high-conviction alerts",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon monitor-polymarket",
+    "install": "bin/add-skill aeonfun/aeon monitor-polymarket",
     "core": false
   },
   {
     "slug": "narrative-convergence",
     "name": "narrative-convergence",
-    "description": "Cross-skill signal detector — finds entities or themes surfaced independently by 3+ different skill categories within 48h and surfaces them as high-confidence write opportunities",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon narrative-convergence",
-    "core": false
+    "description": "Cross-skill signal detector - finds entities or themes surfaced independently by 3+ different skill categories within 48h and surfaces them as high-confidence write opportunities",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon narrative-convergence",
+    "core": true
   },
   {
     "slug": "narrative-tracker",
     "name": "Narrative Tracker",
     "description": "Track rising, peaking, and fading crypto/tech narratives with quantitative mindshare + velocity signals and explicit positioning calls",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon narrative-tracker",
+    "install": "bin/add-skill aeonfun/aeon narrative-tracker",
     "core": false
   },
   {
-    "slug": "onboard",
-    "name": "onboard",
-    "description": "One-shot setup validator — runs every check from the ./onboard CLI inside the workflow and sends the resulting checklist to the configured notification channel",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon onboard",
+    "slug": "okf-export",
+    "name": "OKF Export",
+    "description": "Backfill memory/topics into an OKF-conformant bundle by adding type frontmatter, then open a PR",
+    "category": "productivity",
+    "install": "bin/add-skill aeonfun/aeon okf-export",
+    "core": false
+  },
+  {
+    "slug": "okf-ingest",
+    "name": "OKF Ingest",
+    "description": "Fetch, validate, and quarantine an EXTERNAL OKF knowledge bundle into memory/topics/ingested, then open a PR",
+    "category": "productivity",
+    "install": "bin/add-skill aeonfun/aeon okf-ingest",
     "core": false
   },
   {
@@ -740,47 +276,23 @@
     "name": "Onchain Monitor",
     "description": "Monitor blockchain addresses and contracts for notable activity",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon onchain-monitor",
+    "install": "bin/add-skill aeonfun/aeon onchain-monitor",
     "core": false
   },
   {
     "slug": "operator-scorecard",
     "name": "operator-scorecard",
-    "description": "Plain-language synthesis of agent health + community growth + economic activity — answers \"was it worth it?\" in one notification",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon operator-scorecard",
-    "core": false
-  },
-  {
-    "slug": "ops-recap",
-    "name": "Ops Recap",
-    "description": "Operational summary — what Aeon shipped, what failed, what needs follow-up",
+    "description": "Three recap modes - default synthesizes agent health, community growth, and economic activity into a was-it-worth-it verdict; ops recaps what shipped and failed; push ranks push impact.",
     "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon ops-recap",
-    "core": false
-  },
-  {
-    "slug": "paper-digest",
-    "name": "Paper Digest",
-    "description": "Find and summarize new papers matching tracked research interests",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon paper-digest",
-    "core": false
-  },
-  {
-    "slug": "paper-pick",
-    "name": "Paper Pick",
-    "description": "Find the one paper most worth reading from Hugging Face Papers",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon paper-pick",
+    "install": "bin/add-skill aeonfun/aeon operator-scorecard",
     "core": false
   },
   {
     "slug": "picks-tracker",
     "name": "Picks Tracker",
-    "description": "Retrospective on past token and prediction market picks — what hit, what flopped, what the score is",
+    "description": "Retrospective on past token and prediction market picks - what hit, what flopped, what the score is",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon picks-tracker",
+    "install": "bin/add-skill aeonfun/aeon picks-tracker",
     "core": false
   },
   {
@@ -788,679 +300,175 @@
     "name": "PM Manipulation",
     "description": "Detect suspected manipulation on prediction markets over the past 3 days by cross-referencing price/volume/comment anomalies with multilingual local-press coverage",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon pm-manipulation",
-    "core": false
-  },
-  {
-    "slug": "pm-pulse",
-    "name": "pm-pulse",
-    "description": "Prediction-market & coordination-market tracker — volume on tracked platforms, new mechanism designs, reflexive market launches, regulatory moves",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon pm-pulse",
-    "core": false
-  },
-  {
-    "slug": "pr-merge",
-    "name": "PR Merge",
-    "description": "Survey of open external PRs across watched repos — buckets each PR by touched-file risk tier (FAST_TRACK / INFRA_REVIEW / SKILL_PASS / SKILL_WARN_OR_BLOCK / CORE_REVIEW), runs skill-scan on every SKILL.md PR, emits one structured digest so the operator can clear the safest candidates first",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pr-merge",
+    "install": "bin/add-skill aeonfun/aeon pm-manipulation",
     "core": false
   },
   {
     "slug": "pr-review",
     "name": "PR Review",
-    "description": "Auto-review open PRs with severity-tagged findings, inline comments, and a one-line verdict",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pr-review",
-    "core": false
-  },
-  {
-    "slug": "pr-tracker",
-    "name": "PR Tracker",
-    "description": "Track status of cross-repo PRs opened by this aeon instance — merges, stale open, and closures",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pr-tracker",
+    "description": "Review open PRs two ways - default is a per-PR deep review with severity-tagged findings, inline comments, and a verdict; --survey runs a risk-tiered triage digest of what's safe to merge first",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon pr-review",
     "core": false
   },
   {
     "slug": "pr-triage",
     "name": "PR Triage",
-    "description": "First-touch triage for external pull requests — verdict + label + welcoming comment within minutes of open",
+    "description": "First-touch triage for external pull requests - verdict, label, and a welcoming comment within minutes of open",
     "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pr-triage",
+    "install": "bin/add-skill aeonfun/aeon pr-triage",
     "core": false
   },
   {
     "slug": "price-alert",
     "name": "Price Alert",
-    "description": "Fire when the tracked token does something — new ATH, sharp 1h move, or operator-set target crossed. Silent on normal days.",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon price-alert",
-    "core": false
-  },
-  {
-    "slug": "priority-brief",
-    "name": "Priority Brief",
-    "description": "Priority-driven briefing — the 3 things to focus on, why now, and what moved",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon priority-brief",
-    "core": false
-  },
-  {
-    "slug": "product-hunt",
-    "name": "Product Hunt",
-    "description": "Draft the full Product Hunt launch asset package (tagline, description, first comment, maker comment, six-bullet feature list) from live repo state — operator reviews and submits.",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon product-hunt",
-    "core": false
-  },
-  {
-    "slug": "project-lens",
-    "name": "project-lens",
-    "description": "Write an article about the project through a surprising lens — connecting it to current events, trends, philosophy, or comparable projects",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon project-lens",
-    "core": false
-  },
-  {
-    "slug": "push-recap",
-    "name": "push-recap",
-    "description": "Deep-dive recap of all pushes — reads diffs, ranks impact, separates user-visible shipments from internal work, delivers a verdict",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon push-recap",
-    "core": false
-  },
-  {
-    "slug": "pvr-triage",
-    "name": "PVR Triage",
-    "description": "Lifecycle check on submitted private vulnerability reports — polls triage state, detects maintainer acceptance or rejection, surfaces action items when PVRs age past 30 days with no response",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pvr-triage",
-    "core": false
-  },
-  {
-    "slug": "pvr-watchlist",
-    "name": "pvr-watchlist",
-    "description": "Probe of repos on the security watchlist — check if private vulnerability reporting has been enabled, notify when status flips, re-submit any queued advisories or flag for re-research when draft was lost",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon pvr-watchlist",
-    "core": false
-  },
-  {
-    "slug": "reddit-digest",
-    "name": "Reddit Digest",
-    "description": "Detect cross-subreddit narratives — stories surfacing in multiple unrelated subs at once",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon reddit-digest",
-    "core": false
-  },
-  {
-    "slug": "reflect",
-    "name": "Reflect",
-    "description": "Review recent activity, consolidate memory, and prune stale entries",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon reflect",
-    "core": false
-  },
-  {
-    "slug": "refresh-x",
-    "name": "Refresh X",
-    "description": "Fetch a tracked X/Twitter account's latest tweets, cluster them, and save a decision-ready gist to memory",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon refresh-x",
-    "core": false
-  },
-  {
-    "slug": "reg-monitor",
-    "name": "Regulatory Monitor",
-    "description": "Track legislation, regulatory actions, and legal developments affecting prediction markets, crypto, and AI agents — triaged by stage × impact for decision-ready output",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon reg-monitor",
-    "core": false
-  },
-  {
-    "slug": "remix-tweets",
-    "name": "Remix Tweets",
-    "description": "Fetch ~30 older tweets, pre-filter for remixability, then produce 10 new rephrased versions across diverse strategies with post-write quality gates",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon remix-tweets",
+    "description": "Fire when the tracked token does something - new ATH, sharp 1h move, or operator-set target crossed. Silent on normal days.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon price-alert",
     "core": false
   },
   {
     "slug": "reply-maker",
     "name": "Reply Maker",
-    "description": "Generate two reply options for 5 tweets from tracked X accounts or topics",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon reply-maker",
-    "core": false
-  },
-  {
-    "slug": "repo-actions",
-    "name": "repo-actions",
-    "description": "Generate 5 anchored, implementable action ideas for a watched repo — specificity-gated, priority-ranked, with a Top Pick verdict",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon repo-actions",
-    "core": false
-  },
-  {
-    "slug": "repo-article",
-    "name": "repo-article",
-    "description": "Thesis-driven article about a watched repo — falsifiable claim, cited evidence, self-edit quality gate",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon repo-article",
-    "core": false
-  },
-  {
-    "slug": "repo-pulse",
-    "name": "repo-pulse",
-    "description": "Report on new stars, forks, and releases for watched repos — with notable-stargazer enrichment and a one-line growth verdict",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon repo-pulse",
-    "core": false
-  },
-  {
-    "slug": "repo-revive",
-    "name": "Repo Revive",
-    "description": "Pick the highest-★ dormant watched repo and make one targeted improvement to reactivate it — refresh stale model references, README, or metadata",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon repo-revive",
-    "core": false
-  },
-  {
-    "slug": "repo-scanner",
-    "name": "Repo Scanner",
-    "description": "Catalog GitHub repos into a prioritized fleet report with concrete, coded opportunities that downstream skills consume directly",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon repo-scanner",
-    "core": false
-  },
-  {
-    "slug": "research-brief",
-    "name": "Research Brief",
-    "description": "Deep dive on a topic with a falsifiable thesis, cited claims, and explicit uncertainty",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon research-brief",
-    "core": false
-  },
-  {
-    "slug": "retrospective",
-    "name": "Retrospective",
-    "description": "KALM retrospective grounded in objective metrics, with closed-loop tracking of prior actions and SMART next actions",
+    "description": "Draft copy-paste-ready X replies - two options per reply-worthy tweet from tracked accounts, topics, or lists (default), or ready-to-post responses to engagement opps in recent logs (from-logs)",
     "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon retrospective",
-    "core": false
-  },
-  {
-    "slug": "routine",
-    "name": "Routine",
-    "description": "Combined briefing — token movers, tweet roundup, paper pick, GitHub issues, and HN digest in one run",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon routine",
-    "core": false
-  },
-  {
-    "slug": "rss-digest",
-    "name": "RSS Digest",
-    "description": "Fetch, summarize, and deliver RSS feed highlights",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon rss-digest",
-    "core": false
-  },
-  {
-    "slug": "rss-feed",
-    "name": "RSS Feed Generator",
-    "description": "Generate an Atom XML feed from articles, validate it, and notify only when it actually changes",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon rss-feed",
-    "core": false
-  },
-  {
-    "slug": "rug-scan",
-    "name": "Rug Scan",
-    "description": "Assess rug-pull risk for any token on Base — ownership, mint/freeze powers, LP lock, and holder concentration rolled into one risk verdict. Keyless via Etherscan v2 + Base RPC.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon rug-scan",
-    "core": false
-  },
-  {
-    "slug": "rwa-pulse",
-    "name": "rwa-pulse",
-    "description": "Real World Asset tokenization momentum tracker — surfaces new protocol launches, TVL milestones, institutional adoption, and regulatory approvals",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon rwa-pulse",
+    "install": "bin/add-skill aeonfun/aeon reply-maker",
     "core": false
   },
   {
     "slug": "schedule-ads",
     "name": "Schedule Ads",
-    "description": "Schedule paid ads across Meta/TikTok/Snapchat/Pinterest/LinkedIn via the AdManage.ai API, driven by a declarative config file. Launches PAUSED by default — never auto-activates live spend.",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon schedule-ads",
+    "description": "Manage paid ads on AdManage.ai from declarative config - default schedules launches across Meta/TikTok/Snapchat/Pinterest/LinkedIn (always PAUSED); create provisions Meta campaigns and ad sets.",
+    "category": "productivity",
+    "install": "bin/add-skill aeonfun/aeon schedule-ads",
     "core": false
   },
   {
     "slug": "search-skill",
     "name": "Search Skills",
     "description": "Search the open agent skills ecosystem for skills that fill a real gap and install them via the native add-skill path",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon search-skill",
-    "core": false
-  },
-  {
-    "slug": "security-digest",
-    "name": "Security Digest",
-    "description": "Lead with confirmed exploitation (CISA KEV), enrich with EPSS, filter GitHub Advisories to your tracked stack, output one action per item",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon security-digest",
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon search-skill",
     "core": false
   },
   {
     "slug": "self-improve",
     "name": "self-improve",
-    "description": "Improve the agent itself — better skills, prompts, workflows, and config based on recent performance",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon self-improve",
-    "core": true
+    "description": "Improve the agent itself, or audit its recent performance - better skills, prompts, workflows, and config, plus a quality/reliability/memory-hygiene review of what it did and what failed",
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon self-improve",
+    "core": false
   },
   {
-    "slug": "self-review",
-    "name": "Self Review",
-    "description": "Audit of what the agent did, what failed, and what to improve",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon self-review",
+    "slug": "send-email",
+    "name": "Send Email",
+    "description": "Compose and send a one-off email to a named recipient via Resend - written in the operator's voice, then sent in-run through the shared send caps with an operator audit copy",
+    "category": "productivity",
+    "install": "bin/add-skill aeonfun/aeon send-email",
     "core": false
   },
   {
     "slug": "shiplog",
     "name": "Shiplog",
-    "description": "Narrative of everything shipped — features, fixes, and momentum, written as a compelling update",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon shiplog",
-    "core": false
-  },
-  {
-    "slug": "show-hn",
-    "name": "Show HN",
-    "description": "Draft a Show HN post (plus shorter Reddit r/MachineLearning + r/selfhosted variants) from the live repo state — README, SHOWCASE, recent repo-articles + project-lens, real autonomous behavior examples from logs, and current stars/forks/skill counts. Operator pastes; agent writes.",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon show-hn",
-    "core": false
-  },
-  {
-    "slug": "signal-verdict",
-    "name": "signal-verdict",
-    "description": "Accountability check on a configured set of tracker skills. Verifies each tracker is producing citable signals in articles/newsletters. Surfaces uncited trackers so the operator can demote or kill them.",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon signal-verdict",
-    "core": false
-  },
-  {
-    "slug": "skill-adoption",
-    "name": "Skill Adoption",
-    "description": "Fleet skill-adoption leaderboard — per-slug count of how many POWER+ACTIVE forks have each upstream skill enabled, top-15 most-adopted and bottom-15 least-adopted by fleet penetration, silent when nothing moves",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-adoption",
-    "core": false
-  },
-  {
-    "slug": "skill-analytics",
-    "name": "skill-analytics",
-    "description": "Fleet-level skill-run analytics — ranks skills by 7d run count, surfaces success rates, exit-taxonomy distribution, and anomaly flags (significance-gated)",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-analytics",
-    "core": false
-  },
-  {
-    "slug": "skill-enabler",
-    "name": "skill-enabler",
-    "description": "Flip enabled:false → enabled:true for a comma-separated list of skill slugs in aeon.yml — validate against skills/, fail loudly on already-enabled or missing slugs, commit, open a PR with per-skill rationale",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-enabler",
-    "core": false
-  },
-  {
-    "slug": "skill-evals",
-    "name": "Skill Evals",
-    "description": "Validate skill outputs against assertions, diff vs prior eval to flag regressions, file issues for new failures, and queue concrete fixes",
+    "description": "Recap of everything shipped since the last run - cross-repo PRs, security fixes, star deltas, and X traction, synthesized into a digest article and a ready-to-post shiplog in your voice.",
     "category": "core",
-    "install": "./add-skill aaronjmars/aeon skill-evals",
+    "install": "bin/add-skill aeonfun/aeon shiplog",
     "core": true
-  },
-  {
-    "slug": "skill-freshness",
-    "name": "skill-freshness",
-    "description": "Audit every enabled skill's upstream file dependencies for staleness — flags chained skills about to consume yesterday's article or a long-dead topic file",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-freshness",
-    "core": false
-  },
-  {
-    "slug": "skill-gap",
-    "name": "Skill Gap",
-    "description": "Cross-fork skill adoption digest — per-fork table of upstream skills the fork hasn't enabled, top forks by gap size called out, silent when gaps are small",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-gap",
-    "core": false
-  },
-  {
-    "slug": "skill-graph",
-    "name": "Skill Dependency Graph",
-    "description": "Generate a navigable Mermaid dependency map of all skills with change detection, per-category drill-downs, and enabled overlay",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-graph",
-    "core": false
   },
   {
     "slug": "skill-health",
     "name": "Skill Health",
-    "description": "Audit skill metrics, file/resolve issues in memory/issues/, and notify on state change only",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon skill-health",
-    "core": true
-  },
-  {
-    "slug": "skill-leaderboard",
-    "name": "skill-leaderboard",
-    "description": "Ranking of which skills are most popular across CONFIGURED Aeon forks (excludes untouched templates)",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-leaderboard",
+    "description": "Fleet skill observability with two views - health audits per-skill metrics and files/resolves issues in memory/issues/; analytics ranks the fleet by 7d runs, success rates, and anomaly flags.",
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon skill-health",
     "core": false
   },
   {
     "slug": "skill-repair",
     "name": "Skill Repair",
-    "description": "Diagnose and fix failing or degraded skills automatically — systemic-first triage, per-category playbooks, verification plan",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon skill-repair",
-    "core": true
-  },
-  {
-    "slug": "skill-scan",
-    "name": "Skill Scan",
-    "description": "Audit skills, workflows, and companion scripts for injection, exfiltration, traversal, and prompt-override risks with delta tracking, baseline suppression, issue filing, and per-finding remediation",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-scan",
-    "core": false
-  },
-  {
-    "slug": "skill-spotlight",
-    "name": "Skill Spotlight",
-    "description": "Pick one skill from a rotation, ship a paste-ready feature tweet spotlighting it, then dispatch the picked skill so the chosen channel also gets the live outcome",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon skill-spotlight",
-    "core": false
-  },
-  {
-    "slug": "skill-triage",
-    "name": "Skill Triage",
-    "description": "Structured triage for inbound PRs that introduce or modify SKILL.md files — security scan per skill, required-secrets enumeration, cron slot-conflict check, basic quality signals, posted as one PR comment. The receipt that turns a 10-minute manual skill-PR review into a 10-second human decision",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon skill-triage",
-    "core": false
-  },
-  {
-    "slug": "skill-update",
-    "name": "Skill Update",
-    "description": "Check imported skills for upstream changes and security regressions since the version in skills.lock",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon skill-update",
+    "description": "Diagnose and fix failing or degraded skills automatically - systemic-first triage, per-category playbooks, and a verification plan",
+    "category": "evolution",
+    "install": "bin/add-skill aeonfun/aeon skill-repair",
     "core": false
   },
   {
     "slug": "soul-builder",
     "name": "soul-builder",
-    "description": "Build a SOUL from an X handle — read a wide sample of someone's public X account, then draft soul/SOUL.md (identity, worldview, opinions, influences), soul/STYLE.md (voice), and soul/examples/good-outputs.md so every content skill can speak in that voice.",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon soul-builder",
-    "core": false
-  },
-  {
-    "slug": "sparkleware-catalog",
-    "name": "sparkleware-catalog",
-    "description": "Enriched export of skill-packs.json — joins the canonical community registry to live GitHub signals (stars, last-push, live manifest skill count) and writes a machine-readable skill-packs-catalog.json that external tools (e.g. Sparkleware) can consume without screen-scraping",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon sparkleware-catalog",
-    "core": false
+    "description": "Build a SOUL from an X handle - read a wide sample of a public X account, then draft SOUL.md (identity, worldview, opinions), STYLE.md (voice), and examples so every skill speaks in that voice.",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon soul-builder",
+    "core": true
   },
   {
     "slug": "spawn-instance",
     "name": "Spawn Instance",
-    "description": "Clone this Aeon agent into a new GitHub repo — fork, configure skills, validate, register in fleet",
+    "description": "Clone this Aeon agent into a new GitHub repo - fork, configure skills, validate, and register in the fleet",
     "category": "core",
-    "install": "./add-skill aaronjmars/aeon spawn-instance",
+    "install": "bin/add-skill aeonfun/aeon spawn-instance",
     "core": true
-  },
-  {
-    "slug": "spend-monitor",
-    "name": "Spend Monitor",
-    "description": "API spend watchdog — checks running cost against the configured weekly budget cap, alerts when approaching or exceeding it",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon spend-monitor",
-    "core": false
-  },
-  {
-    "slug": "star-milestone",
-    "name": "star-milestone",
-    "description": "Announces when a watched repo crosses a star-count milestone (100, 150, 200, 250, 500, 1000, ...) with a velocity-shaped narrative — time-to-milestone, growth shape, projection, and a tight highlight reel. Optionally auto-dispatches downstream skills (e.g. show-hn at 500⭐) per the rule map in `memory/topics/milestone-dispatch.json`.",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon star-milestone",
-    "core": false
-  },
-  {
-    "slug": "star-momentum",
-    "name": "Star Momentum",
-    "description": "Project the date a watched repo crosses its next star milestone — alert only when projected date lands inside the Show HN dispatch window (7-14 days out, Tue/Wed/Thu)",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon star-momentum",
-    "core": false
-  },
-  {
-    "slug": "startup-idea",
-    "name": "Startup Idea",
-    "description": "2 evidence-backed startup memos with ICP, wedge, monetization, and numeric kill criteria",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon startup-idea",
-    "core": false
   },
   {
     "slug": "strategy-builder",
     "name": "strategy-builder",
-    "description": "Draft STRATEGY.md from a goal — read the operator's brief (goal text, repo, links) plus the repo README + memory, then write a tight north-star/priorities/audience/constraints strategy that every skill reads on every run.",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon strategy-builder",
-    "core": false
-  },
-  {
-    "slug": "syndicate-article",
-    "name": "syndicate-article",
-    "description": "Cross-post articles to Dev.to and Farcaster with hook-driven copy and click-optimized metadata",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon syndicate-article",
-    "core": false
-  },
-  {
-    "slug": "technical-explainer",
-    "name": "Technical Explainer",
-    "description": "Generate a visual technical explanation of a recent topic using Replicate for the hero image",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon technical-explainer",
-    "core": false
-  },
-  {
-    "slug": "telegram-digest",
-    "name": "Telegram Digest",
-    "description": "Cross-channel digest of public Telegram posts — ranked by signal, clustered by narrative, not by channel",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon telegram-digest",
-    "core": false
-  },
-  {
-    "slug": "thread-writer",
-    "name": "Thread Writer",
-    "description": "Write a tweetstorm/thread (5–10 tweets) in the operator's voice on a given topic, grounded in memory and research",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon thread-writer",
-    "core": false
+    "description": "Draft STRATEGY.md from a goal - read the operator's brief (goal, repo, links) plus the repo README and memory, then write a tight north-star/priorities/audience/constraints strategy.",
+    "category": "core",
+    "install": "bin/add-skill aeonfun/aeon strategy-builder",
+    "core": true
   },
   {
     "slug": "token-movers",
     "name": "Token Movers",
-    "description": "Top movers, losers, and trending coins from CoinGecko — with signal enrichment and pump-risk flags",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon token-movers",
+    "description": "Crypto market scanner and single-token analyst - movers scans top winners/losers/trending or on-chain runners with pump-risk flags; single-token produces a verdict-first deep report for one token.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon token-movers",
     "core": false
   },
   {
     "slug": "token-pick",
     "name": "Token Pick",
-    "description": "One token recommendation and one prediction market pick — scored, quantified, with a skip branch when signals are weak",
+    "description": "One token recommendation and one prediction market pick - scored, quantified, with a skip branch when signals are weak",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon token-pick",
-    "core": false
-  },
-  {
-    "slug": "tool-builder",
-    "name": "Tool Builder",
-    "description": "Build automation scripts from action-converter suggestions and recurring manual tasks",
-    "category": "productivity",
-    "install": "./add-skill aaronjmars/aeon tool-builder",
-    "core": false
-  },
-  {
-    "slug": "topic-momentum",
-    "name": "topic-momentum",
-    "description": "Content-gap scanner — cross-references rising narrative signals (narrative-tracker, tweet-roundup, paper-pick, etc.) against recent article history and surfaces the top 3 uncovered angles to write next.",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon topic-momentum",
-    "core": false
-  },
-  {
-    "slug": "treasury-info",
-    "name": "Treasury Info",
-    "description": "Decision-ready treasury overview — verdict, concentration, depegs, significant changes",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon treasury-info",
-    "core": false
-  },
-  {
-    "slug": "tweet-digest",
-    "name": "Tweet Digest",
-    "description": "Account-based digest of recent tweets from tracked X/Twitter accounts. Sibling to fetch-tweets (keyword) and tweet-roundup (topic).",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon tweet-digest",
-    "core": false
-  },
-  {
-    "slug": "tweet-roundup",
-    "name": "Tweet Roundup",
-    "description": "Gist of the latest tweets on configurable topics",
-    "category": "social",
-    "install": "./add-skill aaronjmars/aeon tweet-roundup",
+    "install": "bin/add-skill aeonfun/aeon token-pick",
     "core": false
   },
   {
     "slug": "tx-explain",
     "name": "Tx Explain",
-    "description": "Decode any Base transaction into a plain-English story — method, token movements, swaps/approvals, counterparties, and suspicious-approval flags. Keyless via Base RPC + Etherscan v2.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon tx-explain",
+    "description": "Decode any Base transaction into a plain-English story - method, token movements, swaps/approvals, counterparties, and suspicious-approval flags. Keyless via Base RPC + Etherscan v2.",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon tx-explain",
     "core": false
   },
   {
     "slug": "unlock-monitor",
     "name": "Unlock Monitor",
-    "description": "Token unlock and vesting tracker — quantify supply pressure via absorption ratio, classify cliff vs linear, deliver one-line market reads",
+    "description": "Token unlock and vesting tracker - quantify supply pressure via absorption ratio, classify cliff vs linear, and deliver one-line market reads",
     "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon unlock-monitor",
-    "core": false
-  },
-  {
-    "slug": "update-gallery",
-    "name": "Update Gallery",
-    "description": "Publish new or changed articles to the GitHub Pages gallery with change detection, silent on no-op weeks",
-    "category": "meta",
-    "install": "./add-skill aaronjmars/aeon update-gallery",
-    "core": false
-  },
-  {
-    "slug": "vercel-projects",
-    "name": "Vercel Projects",
-    "description": "Triage Vercel deploy fleet — verdict, errored-first, what-changed since last snapshot",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon vercel-projects",
-    "core": false
-  },
-  {
-    "slug": "vibecoding-digest",
-    "name": "Vibecoding Digest",
-    "description": "Decision-ready pulse of r/vibecoding — ranked by signal score, narrative-clustered, with a one-line verdict and tools leaderboard",
-    "category": "research",
-    "install": "./add-skill aaronjmars/aeon vibecoding-digest",
-    "core": false
-  },
-  {
-    "slug": "vigil-revoke",
-    "name": "VIGIL Approval Revoker",
-    "description": "Revoke a single live ERC-20 approval on Base via Bankr. Confirms the approval is live, then submits `approve(spender, 0)` and waits for receipt. workflow_dispatch only — `var` is the `wallet:spender:token` triplet returned by VIGIL / approval-audit / wallet-risk. Closes the detection→revoke loop that VIGIL PR #323 explicitly split out.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon vigil-revoke",
-    "core": false
-  },
-  {
-    "slug": "vigil",
-    "name": "VIGIL Security Scanner",
-    "description": "Onchain security scanner on Base — scan token approvals, detect honeypots, analyze contracts for rugpull indicators, and score contract safety. Keyless read-only scanning via VIGIL API. Revoke actions require Bankr auth and are gated separately.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon vigil",
+    "install": "bin/add-skill aeonfun/aeon unlock-monitor",
     "core": false
   },
   {
     "slug": "vuln-scanner",
     "name": "Vuln Scanner",
-    "description": "Audit trending repos for real security vulnerabilities and disclose responsibly via PVR or dependency PRs",
-    "category": "core",
-    "install": "./add-skill aaronjmars/aeon vuln-scanner",
-    "core": true
+    "description": "Audit trending repos for real security vulnerabilities and disclose responsibly - scan and route findings (PVR / dependency PR), re-submit queued advisories, and send armed email disclosures",
+    "category": "dev",
+    "install": "bin/add-skill aeonfun/aeon vuln-scanner",
+    "core": false
   },
   {
     "slug": "vuln-tracker",
     "name": "Vuln Tracker",
-    "description": "Status check on every PR / advisory / queued draft produced by vuln-scanner — surfaces merges, stale opens, maintainer responses needing reply, and queued-too-long carve-outs",
+    "description": "One lifecycle poll over everything vuln-scanner produces - PR and advisory status, PVR triage transitions, and pending-disclosure aging, with a stars-secured impact headline and one action queue.",
     "category": "dev",
-    "install": "./add-skill aaronjmars/aeon vuln-tracker",
+    "install": "bin/add-skill aeonfun/aeon vuln-tracker",
     "core": false
   },
   {
-    "slug": "wallet-profile",
-    "name": "Wallet Profile",
-    "description": "Behavioral profile of any wallet on Base — age, activity class (bot/whale/sniper/trader), funding source, top counterparties, and risk flags. Keyless via Etherscan v2 + Base RPC.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon wallet-profile",
-    "core": false
-  },
-  {
-    "slug": "wallet-risk",
-    "name": "Wallet Risk",
-    "description": "Risk audit of this agent's own Base wallets — live ERC-20 approvals (unlimited flagged), honeypot simulation on every token with a live approval, severity-tiered findings. Keyless via Base RPC. First scheduled consumer of the HoundFlow security pack against `.x402books/wallets.json`.",
-    "category": "onchain-security",
-    "install": "./add-skill aaronjmars/aeon wallet-risk",
-    "core": false
-  },
-  {
-    "slug": "workflow-audit",
-    "name": "Workflow Audit",
-    "description": "Audit .github/workflows and composite actions with zizmor + actionlint, classify findings against the prior audit, auto-fix Critical/High regressions, and open a PR only when something actually changed.",
-    "category": "dev",
-    "install": "./add-skill aaronjmars/aeon workflow-audit",
-    "core": false
-  },
-  {
-    "slug": "x402-monitor",
-    "name": "Protocol Monitor (x402 default)",
-    "description": "Tracker for a configured protocol's ecosystem velocity — new GitHub integrations, npm adoption, notable announcements. Defaults to x402; operators swap in their own protocol via memory/topics/tracked-protocol.md.",
-    "category": "crypto",
-    "install": "./add-skill aaronjmars/aeon x402-monitor",
+    "slug": "write-tweet",
+    "name": "Write Tweet",
+    "description": "Multi-format tweet studio - standalone drafts (10 across 5 size tiers), a 5-10 tweet thread, or 10 remixes of past tweets, selected via ${var}",
+    "category": "basics",
+    "install": "bin/add-skill aeonfun/aeon write-tweet",
     "core": false
   }
 ]

@@ -96,7 +96,7 @@ async function loadCosts(): Promise<RailPack[]> {
   }
 }
 
-/** Of the given pack repos, which ones settle real USDC per call (so they warrant a phylax-audit + budget). */
+/** Of the given pack repos, which ones settle real USDC per call (so they warrant a policy gate + budget). */
 async function paidPacksIn(repos: string[]): Promise<RailPack[]> {
   const set = new Set(repos);
   const rails = await loadCosts();
@@ -202,7 +202,7 @@ function asText(obj: unknown) {
   return { content: [{ type: 'text' as const, text: JSON.stringify(obj, null, 2) }] };
 }
 
-const server = new McpServer({ name: 'sparkleware', version: '0.2.0' });
+const server = new McpServer({ name: 'sparkleware', version: '0.2.1' });
 
 server.tool(
   'search_packs',
@@ -346,11 +346,11 @@ server.tool(
         unit: p.unit,
         asset: p.asset,
         chain: p.chain,
-        note: 'settles real USDC per call — run phylax-audit before install and budget for it',
+        note: 'settles real USDC per call — gate it behind a runtime policy boundary (Charon) and budget for it',
       })),
       audit_hint: paid.length
-        ? './add-skill aaronjmars/aeon phylax-audit  # pre-pay ALLOW/WARN/DENY on money-moving packs'
-        : 'no money-moving packs in this loadout — nothing to pre-audit',
+        ? './install-skill-pack CharonAI-code/charon --path skills/aeon  # runtime PASS/PAUSE/DENY policy boundary for money-moving packs'
+        : 'no money-moving packs in this loadout — nothing to gate',
       next: 'call simulate_loadout with this goal to stress-test the loadout against MiroShark for ~$1 before you loop it',
     });
   },

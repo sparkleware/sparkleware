@@ -1,7 +1,7 @@
 /**
  * Build-time mirror + embeddings for Aeon's first-party skill catalog (Skill Atlas).
  *
- * Fetches aaronjmars/aeon skills.json, normalizes to AeonSkill[] (flagging the
+ * Fetches aeonfun/aeon skills.json, normalizes to AeonSkill[] (flagging the
  * load-bearing core set — the `core` category, the source of truth, so it tracks
  * Aaron's restructures automatically), caches it for the /atlas page, and embeds
  * each skill with the same MiniLM model packs use — so skill-level semantic
@@ -15,7 +15,7 @@ import { pipeline } from '@xenova/transformers';
 import { type AeonSkill } from '../src/lib/skills';
 
 // Aeon moved catalogs under catalog/ in the 2026-07 repo-declutter (PR #607); root path now 404s.
-const SKILLS_URL = 'https://raw.githubusercontent.com/aaronjmars/aeon/main/catalog/skills.json';
+const SKILLS_URL = 'https://raw.githubusercontent.com/aeonfun/aeon/main/catalog/skills.json';
 const MODEL = 'Xenova/all-MiniLM-L6-v2';
 const CACHE = join(process.cwd(), 'registry', '.cache', 'aeon-skills.json');
 const OUT = join(process.cwd(), 'public', 'skill-embeddings.json');
@@ -38,7 +38,7 @@ async function main() {
     name: s.name,
     description: s.description,
     category: s.category,
-    install: s.install || `./add-skill aaronjmars/aeon ${s.slug}`,
+    install: s.install || `./add-skill aeonfun/aeon ${s.slug}`,
     core: s.category === 'core',
   }));
 

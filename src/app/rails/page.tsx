@@ -8,7 +8,7 @@ import styles from './page.module.css';
 export const metadata = {
   title: 'x402 Rails',
   description:
-    "The paid-skill economy of Aeon — every pack and first-party skill that's a product paying for its own compute over x402 / USDC on Base. Priced and indexed in one place, with a machine-readable /api/rails.json feed.",
+    "The paid-skill economy of Aeon — every pack and first-party skill that's a product paying for its own compute over x402, settling USDC on Base + Solana. Priced and indexed in one place, with a machine-readable /api/rails.json feed.",
 };
 
 export default function RailsPage() {
@@ -24,7 +24,8 @@ export default function RailsPage() {
         </h1>
         <p className={styles.subtitle}>
           where an Aeon skill becomes a <em>product that pays for its own compute</em>. the
-          paid-skill economy — <em>x402 / USDC on Base</em> — priced and indexed in one place.
+          paid-skill economy — <em>x402 / USDC on Base + Solana</em> — priced and indexed in one
+          place.
         </p>
         <div className={styles.stats}>
           <span className={styles.stat}>
@@ -40,7 +41,7 @@ export default function RailsPage() {
             ·
           </span>
           <span className={styles.stat}>
-            settling in <b>USDC on Base</b>
+            settling in <b>USDC · Base + Solana</b>
           </span>
         </div>
         <p className={styles.note}>
@@ -55,22 +56,25 @@ export default function RailsPage() {
             🛡️
           </span>
           <div className={styles.phylaxBody}>
-            <h2 className={styles.phylaxTitle}>audit before you pay ✦</h2>
+            <h2 className={styles.phylaxTitle}>gate before you pay ✦</h2>
             <p className={styles.phylaxText}>
-              x402 skills move real USDC. Aeon now ships <strong>phylax-audit</strong> by Phylax — a
-              pre-install pass that checks the x402 payment schema, unbounded pricing, and onchain
-              contracts, returning an <em>ALLOW / WARN / DENY</em> verdict before a skill ever touches
+              x402 skills move real USDC. <strong>Charon</strong> — from the official Aeon community
+              catalog — puts a policy boundary outside the agent&rsquo;s reasoning path: every
+              attempted action is checked against repo-local policy and gets a{' '}
+              <em>PASS / PAUSE / DENY</em> verdict (with a signed receipt) before it ever touches
               your wallet.
             </p>
             <div className={styles.phylaxActions}>
-              <code className={styles.phylaxCmd}>./add-skill aaronjmars/aeon phylax-audit</code>
+              <code className={styles.phylaxCmd}>
+                ./install-skill-pack CharonAI-code/charon --path skills/aeon
+              </code>
               <a
                 className={styles.phylaxLink}
-                href="https://github.com/usephylax/phylax-skill-audit"
+                href="https://github.com/CharonAI-code/charon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                phylax ↗
+                charon ↗
               </a>
             </div>
           </div>

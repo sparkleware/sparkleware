@@ -36,7 +36,7 @@ export interface AeonSkill {
   name: string;
   description: string;
   category: string;
-  /** `./add-skill aaronjmars/aeon <slug>` — first-party skills install via add-skill. */
+  /** `./add-skill aeonfun/aeon <slug>` — first-party skills install via add-skill. */
   install: string;
   /** True for the load-bearing 15. */
   core: boolean;

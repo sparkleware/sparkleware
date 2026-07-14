@@ -107,8 +107,8 @@
     },
     "install_command": {
       "type": "string",
-      "pattern": "^\\./install-skill-pack [a-zA-Z0-9][a-zA-Z0-9-_]*\\/[a-zA-Z0-9][a-zA-Z0-9-_.]*$",
-      "description": "Exact command displayed in the install block (must match `./install-skill-pack <repo>`)."
+      "pattern": "^\\./install-skill-pack [a-zA-Z0-9][a-zA-Z0-9-_]*\\/[a-zA-Z0-9][a-zA-Z0-9-_.]*( --path [a-zA-Z0-9][a-zA-Z0-9-_.]*(\\/[a-zA-Z0-9][a-zA-Z0-9-_.]*)*)?$",
+      "description": "Exact command displayed in the install block (must match `./install-skill-pack <repo>`, with an optional ` --path <dir>` for packs whose manifest lives in a subdirectory)."
     },
     "submitted_at": {
       "type": "string",

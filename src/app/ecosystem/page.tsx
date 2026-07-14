@@ -30,7 +30,7 @@ export default async function EcosystemPage() {
         <p className={styles.subtitle}>
           a holographic constellation of every skill pack — sparkleware merged with{' '}
           <a
-            href="https://github.com/aaronjmars/aeon/blob/main/skill-packs.json"
+            href="https://github.com/aeonfun/aeon/blob/main/catalog/skill-packs.json"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.subtitleLink}
@@ -80,8 +80,8 @@ export default async function EcosystemPage() {
         sparkleware sits as a discovery surface downstream of canonical curation. installs always resolve through{' '}
         <code>./install-skill-pack &lt;author&gt;/&lt;name&gt;</code>. learn more at{' '}
         <a href="/about/">about</a> or{' '}
-        <a href="https://github.com/aaronjmars/aeon" target="_blank" rel="noopener noreferrer">
-          aaronjmars/aeon
+        <a href="https://github.com/aeonfun/aeon" target="_blank" rel="noopener noreferrer">
+          aeonfun/aeon
         </a>
         .
       </p>

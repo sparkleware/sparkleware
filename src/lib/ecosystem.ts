@@ -4,9 +4,9 @@ import type { EnrichedPack } from './types';
 import { getAllPacks } from './registry';
 
 // Aeon moved its registries under catalog/ in the 2026-07 repo-declutter
-// (aaronjmars/aeon PR #607); the old root path now 404s.
+// (aeonfun/aeon PR #607); the old root path now 404s.
 const AEON_CANONICAL_URL =
-  'https://raw.githubusercontent.com/aaronjmars/aeon/main/catalog/skill-packs.json';
+  'https://raw.githubusercontent.com/aeonfun/aeon/main/catalog/skill-packs.json';
 
 const CACHE_PATH = join(process.cwd(), 'registry', '.cache', 'aeon-canonical.json');
 

@@ -17,7 +17,7 @@ export function Footer() {
         </Link>
         <p className={styles.tagline}>
           the community discovery catalog for{' '}
-          <a href="https://github.com/aaronjmars/aeon">Aeon AI agent</a> skill packs
+          <a href="https://github.com/aeonfun/aeon">Aeon AI agent</a> skill packs
         </p>
       </div>
 

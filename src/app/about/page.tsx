@@ -23,8 +23,8 @@ export default function AboutPage() {
       <Win95Window title="what this is">
         <p className={styles.body}>
           Sparkleware is a public catalog of skill packs for the{' '}
-          <a href="https://github.com/aaronjmars/aeon">Aeon</a> AI agent
-          framework. Aeon ships with 121 built-in skills and accepts community
+          <a href="https://github.com/aeonfun/aeon">Aeon</a> AI agent
+          framework. Aeon ships a curated core of built-in skills and accepts community
           packs via <code>./install-skill-pack &lt;repo&gt;</code>. The problem:
           discovery is fragmented across GitHub topics, README mentions, and
           one-off threads.
@@ -92,7 +92,7 @@ export default function AboutPage() {
       <Win95Window title="credits">
         <p className={styles.body}>
           Built around{' '}
-          <a href="https://github.com/aaronjmars/aeon">Aeon</a> by{' '}
+          <a href="https://github.com/aeonfun/aeon">Aeon</a> by{' '}
           <a href="https://github.com/aaronjmars">@aaronjmars</a>. Aesthetic
           inspiration: Remilia Corporation, Milady NFT, Pokémon TCG holographic
           foil cards, late-1990s sticker sheets.

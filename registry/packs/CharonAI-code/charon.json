@@ -1,0 +1,25 @@
+{
+  "name": "charon",
+  "author": "CharonAI-code",
+  "repo": "CharonAI-code/charon",
+  "description": "Runtime security for agent actions — a local policy boundary that checks every attempted action against repo-local policy and returns PASS / PAUSE / DENY (with a signed receipt) before it executes.",
+  "long_description_md": "## What it does\n\nCharon is a local policy boundary for AI agents, MCP tools, and autonomous workflows. It receives attempted actions as typed data, evaluates repo-local policy, runs inspection, enforces a verdict, and writes a signed receipt:\n\n```txt\nPASS  -> launch\nPAUSE -> queue for review\nDENY  -> block before launch\n```\n\nThe Aeon pack ships two skills:\n\n- **charon-setup** — install and verify Charon enforcement in an Aeon repository.\n- **charon-policy** — inspect, test, and safely update the repo-local Charon policy.\n\n## Why\n\nAgent instructions live inside model context — tool output, repo content, web pages, and user messages can all influence it. Charon puts the enforcement point *outside* the agent's reasoning path: the agent can request an action; Charon checks the action before execution. For loadouts that move real USDC over x402 rails, that's the difference between a spend policy and a hope.\n\n## Notes\n\nListed in Aeon's official community skill-pack catalog. The pack manifest lives in the `skills/aeon` subdirectory — install with `--path skills/aeon`. Both skills are `default_enabled: false` and declare their capabilities (`external_api`, `writes_external_host`). MIT licensed; docs at charon.codes.",
+  "category": "dev",
+  "tags": ["security", "policy", "runtime", "enforcement", "guardrails"],
+  "version": "1.0.0",
+  "verified": true,
+  "skills_count": 2,
+  "skills": [
+    {
+      "name": "charon-setup",
+      "description": "Install and verify Charon enforcement in an AEON repository."
+    },
+    {
+      "name": "charon-policy",
+      "description": "Inspect, test, and safely update repo-local Charon policy."
+    }
+  ],
+  "install_command": "./install-skill-pack CharonAI-code/charon --path skills/aeon",
+  "submitted_at": "2026-07-15T00:00:00Z",
+  "license": "MIT"
+}

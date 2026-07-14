@@ -1,6 +1,6 @@
 {
   "name": "sparkleware-mcp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MCP server for the Sparkleware registry of Aeon AI agent skill packs — search, browse, compose a loadout, and simulate it (MiroShark x402) from inside any agent.",
   "type": "module",
   "license": "MIT",

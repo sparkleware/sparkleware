@@ -2,16 +2,16 @@
   "name": "proof-of-loadout",
   "author": "sparkleware",
   "repo": "sparkleware/proof-of-loadout",
-  "description": "Composes an Aeon loadout for a goal, flags packs that settle real USDC (routes phylax-audit), and preflights a MiroShark market simulation — proof a loadout is covered, safety-routed, and simulate-ready before you loop it.",
-  "long_description_md": "## What it does\n\nGive it a goal and it returns a **Proof-of-Loadout** — evidence that the agent you're about to loop is (1) **capability-covered** (the Aeon packs that cover the goal, composed from the Sparkleware registry), (2) **safety-routed** (which of those packs settle real USDC per call, each with a `phylax-audit` pre-pay check routed), and (3) **simulate-ready** (a MiroShark market simulation preflighted for free, with the exact `$1` paid run planned).\n\n## Why\n\nComposing a loadout is easy; knowing it's safe and behaves before you loop it is not. This pack is the reference implementation of *agents paying for their own compute*: Sparkleware **plans** the run; your agent **signs** the x402 payment.\n\n## How it works\n\nDeterministic keyword compose over `/api/packs.json`, a cost cross-ref against `/api/costs.json`, and a free MiroShark `/suggest` preflight. **Nothing spends money by default** — the paid MiroShark `/run` ($1 USDC · x402 · Base) only fires when you set `MIROSHARK_PAY=1` and wire an `X402_CMD`. Simulation output is not financial advice. Reads only unless you opt into the paid run.",
+  "description": "Composes an Aeon loadout for a goal, flags packs that settle real USDC (with a pre-pay safety check routed), and preflights a MiroShark market simulation — proof a loadout is covered, safety-routed, and simulate-ready before you loop it.",
+  "long_description_md": "## What it does\n\nGive it a goal and it returns a **Proof-of-Loadout** — evidence that the agent you're about to loop is (1) **capability-covered** (the Aeon packs that cover the goal, composed from the Sparkleware registry), (2) **safety-routed** (which of those packs settle real USDC per call, each with a pre-pay safety check routed), and (3) **simulate-ready** (a MiroShark market simulation preflighted for free, with the exact `$1` paid run planned).\n\n## Why\n\nComposing a loadout is easy; knowing it's safe and behaves before you loop it is not. This pack is the reference implementation of *agents paying for their own compute*: Sparkleware **plans** the run; your agent **signs** the x402 payment.\n\n## How it works\n\nDeterministic keyword compose over `/api/packs.json`, a cost cross-ref against `/api/costs.json`, and a free MiroShark `/suggest` preflight. **Nothing spends money by default** — the paid MiroShark `/run` ($1 USDC · x402 · Base) only fires when you set `MIROSHARK_PAY=1` and wire an `X402_CMD`. Simulation output is not financial advice. Reads only unless you opt into the paid run.",
   "category": "meta",
-  "tags": ["loadout", "compose", "x402", "miroshark", "phylax"],
+  "tags": ["loadout", "compose", "simulate", "miroshark", "safety"],
   "version": "0.1.0",
   "verified": true,
   "featured": false,
   "skills_count": 1,
   "skills": [
-    { "name": "proof-of-loadout", "description": "Goal → composed Aeon loadout + USDC-per-call flags + phylax-audit routing + a MiroShark simulation preflight, with the $1 x402 run planned (never auto-fired)." }
+    { "name": "proof-of-loadout", "description": "Goal → composed Aeon loadout + USDC-per-call flags + safety routing + a MiroShark simulation preflight, with the $1 x402 run planned (never auto-fired)." }
   ],
   "install_command": "./install-skill-pack sparkleware/proof-of-loadout",
   "submitted_at": "2026-07-09T14:45:00Z",

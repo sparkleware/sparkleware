@@ -20,7 +20,10 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "embed:skills": "tsx scripts/embed-skills.ts",
-    "coverage": "tsx scripts/build-core-coverage.ts"
+    "coverage": "tsx scripts/build-core-coverage.ts",
+    "remotion:studio": "remotion studio remotion/index.ts",
+    "remotion:render": "remotion render remotion/index.ts CardTeaser out/card-teaser.mp4",
+    "remotion:still": "remotion still remotion/index.ts CardTeaser out/still.png --frame=168"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -31,12 +34,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@remotion/cli": "^4.0.478",
     "@types/node": "^22.0.0",
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.0.0",
+    "remotion": "^4.0.478",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }

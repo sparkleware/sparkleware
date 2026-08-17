@@ -6,7 +6,7 @@
     "description": "Mneme as Aeon's persistent memory layer — vector search, graph memory, live Base chain streams, and async LLM reflection. 8 drop-in skills, one MNEME_API_KEY, zero infra.",
     "stars": 1,
     "pushed_at": "2026-06-08T05:49:45Z",
-    "fetched_at": "2026-08-16T06:49:49.658Z"
+    "fetched_at": "2026-08-17T07:06:13.597Z"
   },
   {
     "name": "signa-aeon-skills",
@@ -15,7 +15,7 @@
     "description": "SIGNA skill pack for Aeon — wallet-signed cross-platform agent messaging from inside any Aeon agent",
     "stars": 1,
     "pushed_at": "2026-06-07T12:50:37Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skill-pack-mythosforge",
@@ -24,7 +24,7 @@
     "description": "Read-only MythosForge ops-monitoring skills for the Aeon framework",
     "stars": 1,
     "pushed_at": "2026-05-26T14:07:35Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skill-pack-polymarket",
@@ -33,7 +33,7 @@
     "description": "Polymarket Trader — an AEON skill pack. Read, discover, and trade Polymarket from your agent. Powered by Simmer.",
     "stars": 1,
     "pushed_at": "2026-06-18T13:32:09Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skills",
@@ -42,7 +42,7 @@
     "description": "LoneStarOracle AEON skills — weather, crypto, macro, gov contracts, oil leases, audits & Floyd",
     "stars": 0,
     "pushed_at": "2026-07-31T14:20:27Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skill-pack-verdikta",
@@ -51,7 +51,7 @@
     "description": "Aeon skill pack for Verdikta — hunt AI-judged bounties on Base with hard client-side spend caps",
     "stars": 0,
     "pushed_at": "2026-07-29T18:22:35Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skill-pack-agentlink",
@@ -60,7 +60,7 @@
     "description": "AgentLink aeon skill pack — verified human-backed on-chain identity on Base (status check, human linking hand-off, signed free-endpoint access)",
     "stars": 0,
     "pushed_at": "2026-07-08T11:53:27Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "aeon-skill-pack-skim",
@@ -69,7 +69,7 @@
     "description": "Aeon skill pack: pay-per-call clean web reads via Skim (x402, $0.002 USDC on Base) — markdown ~4x smaller than raw HTML",
     "stars": 0,
     "pushed_at": "2026-08-04T23:56:19Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   },
   {
     "name": "ai2human-aeon-skill-pack",
@@ -78,6 +78,6 @@
     "description": "AI2Human Create Task - Aeon skill pack: dispatch blocked human steps to AI2Human, follow proof -> verify -> settle.",
     "stars": 0,
     "pushed_at": "2026-08-05T03:38:38Z",
-    "fetched_at": "2026-08-16T06:49:50.156Z"
+    "fetched_at": "2026-08-17T07:06:14.223Z"
   }
 ]

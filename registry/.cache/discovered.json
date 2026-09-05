@@ -6,7 +6,7 @@
     "description": "Mneme as Aeon's persistent memory layer — vector search, graph memory, live Base chain streams, and async LLM reflection. 8 drop-in skills, one MNEME_API_KEY, zero infra.",
     "stars": 1,
     "pushed_at": "2026-06-08T05:49:45Z",
-    "fetched_at": "2026-09-04T11:00:29.468Z"
+    "fetched_at": "2026-09-05T10:22:42.671Z"
   },
   {
     "name": "signa-aeon-skills",
@@ -15,7 +15,7 @@
     "description": "SIGNA skill pack for Aeon — wallet-signed cross-platform agent messaging from inside any Aeon agent",
     "stars": 1,
     "pushed_at": "2026-06-07T12:50:37Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-polymarket",
@@ -24,7 +24,7 @@
     "description": "Polymarket Trader — an AEON skill pack. Read, discover, and trade Polymarket from your agent. Powered by Simmer.",
     "stars": 1,
     "pushed_at": "2026-06-18T13:32:09Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-mythosforge",
@@ -33,7 +33,7 @@
     "description": "Read-only MythosForge ops-monitoring skills for the Aeon framework",
     "stars": 1,
     "pushed_at": "2026-05-26T14:07:35Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skills",
@@ -42,7 +42,7 @@
     "description": "LoneStarOracle AEON skills — weather, crypto, macro, gov contracts, oil leases, audits & Floyd",
     "stars": 0,
     "pushed_at": "2026-07-31T14:20:27Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "cultos-aeon-skills",
@@ -51,7 +51,7 @@
     "description": "Aeon skills for CultOS ACP jobs",
     "stars": 0,
     "pushed_at": "2026-08-26T19:13:49Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-verdikta",
@@ -60,16 +60,7 @@
     "description": "Aeon skill pack for Verdikta — hunt AI-judged bounties on Base with hard client-side spend caps",
     "stars": 0,
     "pushed_at": "2026-07-29T18:22:35Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
-  },
-  {
-    "name": "aeon-skill-pack-spoolis",
-    "author": "jsfranklin221",
-    "repo": "jsfranklin221/aeon-skill-pack-spoolis",
-    "description": "(no description provided)",
-    "stars": 0,
-    "pushed_at": "2026-08-27T17:44:04Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-agentlink",
@@ -78,7 +69,16 @@
     "description": "AgentLink aeon skill pack — verified human-backed on-chain identity on Base (status check, human linking hand-off, signed free-endpoint access)",
     "stars": 0,
     "pushed_at": "2026-07-08T11:53:27Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
+  },
+  {
+    "name": "aeon-skill-pack-spoolis",
+    "author": "jsfranklin221",
+    "repo": "jsfranklin221/aeon-skill-pack-spoolis",
+    "description": "(no description provided)",
+    "stars": 0,
+    "pushed_at": "2026-08-27T17:44:04Z",
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-farcaster",
@@ -87,7 +87,7 @@
     "description": "Farcaster skills for Aeon. cast: publish a cast via Neynar, drafted for review, posted behind a fail-closed gauntlet.",
     "stars": 0,
     "pushed_at": "2026-08-27T14:28:52Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "aeon-skill-pack-skim",
@@ -96,7 +96,7 @@
     "description": "Aeon x402 adapter for Skim clean and JavaScript-rendered reads. Skim's broader toolkit adds batch reads, extraction, crawl, PDFs, watches, and Signals. Typically ~4x smaller than raw HTML.",
     "stars": 0,
     "pushed_at": "2026-08-30T22:12:50Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   },
   {
     "name": "ai2human-aeon-skill-pack",
@@ -105,6 +105,6 @@
     "description": "AI2Human Create Task - Aeon skill pack: dispatch blocked human steps to AI2Human, follow proof -> verify -> settle.",
     "stars": 0,
     "pushed_at": "2026-08-05T03:38:38Z",
-    "fetched_at": "2026-09-04T11:00:30.088Z"
+    "fetched_at": "2026-09-05T10:22:43.163Z"
   }
 ]

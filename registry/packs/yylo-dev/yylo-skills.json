@@ -1,0 +1,57 @@
+{
+  "name": "yylo-skills",
+  "author": "yylo-dev",
+  "repo": "yylo-dev/yylo-skills",
+  "description": "Eight production skills for AI coding agents — Kanban/task lifecycle, work planning, project understanding, single-task execution, benchmarking, wiki, workflow, and artifact records — from the YYLO CLI orchestrator for Claude Code, Codex, and Pi.",
+  "long_description_md": "## What it does\n\n**yylo-skills** is the official skill pack for [YYLO](https://github.com/yylo-dev/yylo) — a command-line orchestrator for coding agents with typed task, validation, merge, and release-readiness boundaries. Each task runs in a dedicated branch/worktree behind the YYLO merge queue, and these eight skills expose that lifecycle to AI coding agents as plain `skills/<slug>/SKILL.md` files (the agentskills spec — no proprietary manifest needed):\n\n- **ledger-tasks-yylo** — universal record retrieval plus Kanban task/dependency management\n- **plan-ledger-tasks-yylo** — turn a request into a Product Development Requirement and implementation-sized tasks\n- **understand-project-yylo** — inspect architecture, dependencies, and validation loops before changing code\n- **ralph-loop-yylo** — execute exactly one assigned task to a validated queued commit\n- **benchmark-yylo** — prepare cases, compare models/harnesses, evaluate retained outputs with receipts\n- **wiki-yylo** — durable project knowledge as revision-safe wiki Records\n- **workflow-yylo** — validated workflow Records with storage/execution/evidence boundaries\n- **artifact-yylo** — capture and retrieve immutable, secret-safe artifact evidence\n\n## Install\n\n```\n./install-skill-pack yylo-dev/yylo-skills\n```\n\nThe skills drive the `yy` CLI (`npm install --global @yylo-cli/cli` is the runtime prerequisite; installing the skills does not install the CLI). They are written for Claude Code, Codex, and Pi harnesses and follow the same SKILL.md format Aeon consumes natively.\n\n## License\n\nMIT. Source: https://github.com/yylo-dev/yylo-skills",
+  "category": "dev",
+  "tags": [
+    "claude",
+    "codex",
+    "pi",
+    "kanban",
+    "task-management",
+    "planning",
+    "orchestrator",
+    "skills"
+  ],
+  "version": "2.1.0",
+  "skills_count": 8,
+  "skills": [
+    {
+      "name": "ledger-tasks-yylo",
+      "description": "Retrieve any YYLO Ledger Record by ID, discover PDRs and artifacts, and manage tasks and dependencies. Use for unknown record types, universal get/search, task operations, and source-of-truth boundaries."
+    },
+    {
+      "name": "plan-ledger-tasks-yylo",
+      "description": "Create a concise Product Development Requirement and one or more implementation-sized YYLO Ledger tasks when the user explicitly asks to plan or register work."
+    },
+    {
+      "name": "understand-project-yylo",
+      "description": "Inspect the current product architecture, dependencies, and validation loops before planning or implementing a requested change."
+    },
+    {
+      "name": "ralph-loop-yylo",
+      "description": "Execute exactly one explicitly assigned YYLO Ledger task through the Ralph loop to a validated queued commit. Use only when the user explicitly requests ralph-loop-yylo."
+    },
+    {
+      "name": "benchmark-yylo",
+      "description": "Prepare reviewed cases, compare models and harnesses, and independently evaluate retained outputs with YYLO Benchmark's thin trusted-host runner."
+    },
+    {
+      "name": "wiki-yylo",
+      "description": "Use YYLO Ledger wiki Records as durable project knowledge. Search before creating, classify information correctly, and make revision-safe Markdown updates without editing Ledger storage directly."
+    },
+    {
+      "name": "workflow-yylo",
+      "description": "Create and maintain validated YYLO Ledger workflow Records while keeping storage, execution, and run evidence as separate explicit boundaries."
+    },
+    {
+      "name": "artifact-yylo",
+      "description": "Capture and retrieve durable YYLO Ledger artifact Records with intentional profiles, payload modes, provenance, retention, and secret-safe immutable evidence."
+    }
+  ],
+  "install_command": "./install-skill-pack yylo-dev/yylo-skills",
+  "submitted_at": "2026-09-25T05:57:15Z",
+  "license": "MIT"
+}

@@ -9,120 +9,114 @@
     "stars": 1,
     "pushed_at": "2026-07-15T08:00:30Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:06.028Z"
+    "fetched_at": "2026-11-28T15:20:01.640Z"
   },
   "sparkleware/registry-watch": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:15Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:07.688Z"
+    "fetched_at": "2026-11-28T15:20:03.061Z"
   },
   "sparkleware/arxiv-digest": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:05Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:06.298Z"
+    "fetched_at": "2026-11-28T15:20:01.875Z"
   },
   "sparkleware/eth-gas-watch": {
     "stars": 1,
     "pushed_at": "2026-07-15T08:00:32Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:06.622Z"
+    "fetched_at": "2026-11-28T15:20:02.165Z"
   },
   "sparkleware/hn-top": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:07Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:06.900Z"
+    "fetched_at": "2026-11-28T15:20:02.393Z"
   },
   "sparkleware/morning-briefing": {
     "stars": 1,
     "pushed_at": "2026-07-07T15:32:12Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:07.182Z"
+    "fetched_at": "2026-11-28T15:20:02.671Z"
   },
   "sparkleware/sparkleware-browse": {
     "stars": 0,
     "pushed_at": "2026-05-28T17:21:02Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:07.937Z"
-  },
-  "aaronjmars/miroshark-aeon": {
-    "stars": 20,
-    "pushed_at": "2026-11-17T15:16:15Z",
-    "archived": false,
-    "fetched_at": "2026-11-27T16:27:03.671Z"
+    "fetched_at": "2026-11-28T15:20:03.312Z"
   },
   "codexvritra/signa-miroshark-skills": {
     "stars": 0,
     "pushed_at": "2026-05-26T05:58:26Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:04.391Z"
+    "fetched_at": "2026-11-28T15:20:00.270Z"
   },
   "AntFleet/aeon-skills": {
     "stars": 1,
     "pushed_at": "2026-06-16T05:43:09Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:02.352Z"
+    "fetched_at": "2026-11-28T15:19:58.781Z"
   },
   "Atrium-Hermes/aeon-atrium-skills": {
     "stars": 0,
     "pushed_at": "2026-06-03T20:11:10Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:02.625Z"
+    "fetched_at": "2026-11-28T15:19:58.983Z"
   },
   "codexvritra/signa": {
     "stars": 2,
     "pushed_at": "2026-09-25T02:01:09Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:04.673Z"
+    "fetched_at": "2026-11-28T15:20:00.519Z"
   },
   "liquidpadbot/aeon-skill-pack-liquidpad": {
     "stars": 2,
     "pushed_at": "2026-05-30T15:35:35Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:05.417Z"
+    "fetched_at": "2026-11-28T15:20:01.195Z"
   },
   "mandateseal/mandateseal-guard": {
     "stars": 0,
     "pushed_at": "2026-05-29T20:55:33Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:05.721Z"
+    "fetched_at": "2026-11-28T15:20:01.434Z"
   },
   "UIZorrot/careful-finance-aeon-skill-pack": {
     "stars": 2,
     "pushed_at": "2026-06-08T09:17:27Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:03.141Z"
+    "fetched_at": "2026-11-28T15:19:59.512Z"
   },
   "danbuildss/luca-aeon-skills": {
     "stars": 2,
     "pushed_at": "2026-05-24T10:56:12Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:04.890Z"
+    "fetched_at": "2026-11-28T15:20:00.797Z"
   },
   "gitlawbounty/gitbounty-skill-pack": {
     "stars": 1,
     "pushed_at": "2026-05-22T14:50:35Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:05.112Z"
+    "fetched_at": "2026-11-28T15:20:00.989Z"
   },
   "sparkleware/proof-of-loadout": {
     "stars": 0,
     "pushed_at": "2026-07-15T08:00:27Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:07.455Z"
+    "fetched_at": "2026-11-28T15:20:02.870Z"
   },
   "CharonAI-code/charon": {
     "stars": 2,
     "pushed_at": "2026-07-09T02:32:53Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:02.867Z"
+    "fetched_at": "2026-11-28T15:19:59.258Z"
   },
   "clawhunter/clawhunter-skills": {
     "stars": 2,
     "pushed_at": "2026-07-07T04:10:53Z",
     "archived": false,
-    "fetched_at": "2026-11-27T16:27:04.101Z"
+    "fetched_at": "2026-11-28T15:20:00.012Z"
   }
 }
